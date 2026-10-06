@@ -1,0 +1,2386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BorrowBox - Furniture</title>
+
+
+    <style>
+
+        /* =========================
+           BASIC CSS
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f9f8;
+            color: #183f36;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           MAIN NAVBAR
+        ========================= */
+
+        .navbar {
+            height: 60px;
+            background-color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            border-bottom: 1px solid #e2e8e5;
+        }
+
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+        }
+
+
+        .brand {
+            font-size: 17px;
+            font-weight: bold;
+            color: #08785d;
+        }
+
+
+        .brand span {
+            color: #f1b800;
+        }
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+
+        .nav-links a {
+            font-size: 10px;
+            color: #52655f;
+        }
+
+
+        .list-button {
+            background-color: #f5bb00;
+
+            padding: 8px 14px;
+
+            border-radius: 18px;
+
+            color: #183f36 !important;
+
+            font-weight: bold;
+        }
+
+
+        .profile {
+            width: 30px;
+            height: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: #08785d;
+
+            color: white !important;
+
+            border-radius: 50%;
+        }
+
+
+        /* =========================
+           CATEGORY NAVBAR
+        ========================= */
+
+        .category-bar {
+            background-color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 10px;
+
+            border-bottom: 1px solid #e3e9e6;
+        }
+
+
+        .category {
+            padding: 7px 14px;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+
+            color: #596b65;
+        }
+
+
+        .category:hover {
+            background-color: #e8f5f1;
+        }
+
+
+        .category.active {
+            background-color: #dff5ee;
+
+            color: #08785d;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hero {
+            padding: 30px 5% 20px;
+
+            background-color: #f7f9f8;
+        }
+
+
+        .hero-label {
+            display: inline-block;
+
+            background-color: #dff5ee;
+
+            color: #08785d;
+
+            padding: 6px 10px;
+
+            border-radius: 15px;
+
+            font-size: 8px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+
+        .hero h1 {
+            margin: 0;
+
+            font-size: 34px;
+
+            color: #173d36;
+        }
+
+
+        .hero p {
+            margin: 8px 0 15px;
+
+            max-width: 650px;
+
+            font-size: 10px;
+
+            line-height: 1.5;
+
+            color: #65746f;
+        }
+
+
+        /* =========================
+           HERO FILTER TAGS
+        ========================= */
+
+        .hero-bottom {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+
+        .tags {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+
+        .tag {
+            background-color: white;
+
+            border: 1px solid #dfe8e4;
+
+            padding: 7px 10px;
+
+            border-radius: 15px;
+
+            font-size: 8px;
+
+            color: #60706b;
+        }
+
+
+        .sort {
+            background-color: white;
+
+            border: 1px solid #dfe8e4;
+
+            padding: 8px 11px;
+
+            border-radius: 7px;
+
+            font-size: 8px;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           SEARCH BAR
+        ========================= */
+
+        .search-area {
+            padding: 0 5% 20px;
+
+            background-color: #f7f9f8;
+        }
+
+
+        .search-box {
+            background-color: white;
+
+            border: 1px solid #dce6e2;
+
+            border-radius: 7px;
+
+            padding: 11px 14px;
+
+            color: #89938f;
+
+            font-size: 9px;
+
+            max-width: 600px;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .main {
+            padding: 0 5% 30px;
+        }
+
+
+        .result-top {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 15px;
+        }
+
+
+        .result-top p {
+            margin: 0;
+
+            font-size: 9px;
+
+            color: #687771;
+        }
+
+
+        .result-top strong {
+            color: #173d36;
+        }
+
+
+        /* =========================
+           FILTER + CARDS
+        ========================= */
+
+        .content {
+            display: grid;
+
+            grid-template-columns: 180px 1fr;
+
+            gap: 18px;
+        }
+
+
+        .filters {
+            background-color: white;
+
+            border: 1px solid #dfe7e4;
+
+            border-radius: 9px;
+
+            padding: 15px;
+
+            height: fit-content;
+        }
+
+
+        .filters h3 {
+            margin: 0 0 15px;
+
+            font-size: 12px;
+        }
+
+
+        .filter-title {
+            margin-top: 15px;
+            margin-bottom: 8px;
+
+            font-size: 8px;
+
+            color: #08785d;
+
+            font-weight: bold;
+        }
+
+
+        .filter-item {
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            margin-bottom: 9px;
+
+            font-size: 8px;
+
+            color: #697872;
+        }
+
+
+        .filter-item input {
+            accent-color: #08785d;
+        }
+
+
+        /* =========================
+           PRODUCT GRID
+        ========================= */
+
+        .products {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 14px;
+        }
+
+
+        /* =========================
+           PRODUCT CARD
+        ========================= */
+
+        .card {
+            background-color: white;
+
+            border: 1px solid #dfe7e4;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            box-shadow: 0 3px 12px rgba(30, 60, 50, 0.04);
+        }
+
+
+        .card-image {
+            height: 170px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .card-label {
+            position: absolute;
+
+            top: 9px;
+            left: 9px;
+
+            background-color: #f5bb00;
+
+            padding: 5px 8px;
+
+            border-radius: 12px;
+
+            font-size: 7px;
+
+            font-weight: bold;
+        }
+
+
+        .heart {
+            position: absolute;
+
+            top: 8px;
+            right: 8px;
+
+            width: 26px;
+            height: 26px;
+
+            background-color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 14px;
+        }
+
+
+        .card-body {
+            padding: 12px;
+        }
+
+
+        .location {
+            font-size: 7px;
+
+            color: #667670;
+
+            margin-bottom: 6px;
+        }
+
+
+        .card h3 {
+            margin: 0 0 8px;
+
+            font-size: 12px;
+
+            line-height: 1.3;
+
+            color: #173d36;
+        }
+
+
+        .owner {
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            margin-bottom: 9px;
+        }
+
+
+        .owner-icon {
+            width: 22px;
+            height: 22px;
+
+            background-color: #dff5ee;
+
+            color: #08785d;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 8px;
+
+            font-weight: bold;
+        }
+
+
+        .owner-name {
+            font-size: 8px;
+
+            color: #697872;
+        }
+
+
+        .features {
+            background-color: #f4f7f6;
+
+            border-radius: 5px;
+
+            padding: 7px;
+
+            font-size: 7px;
+
+            line-height: 1.5;
+
+            color: #687771;
+
+            margin-bottom: 10px;
+        }
+
+
+        .price-row {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .price {
+            font-size: 14px;
+
+            font-weight: bold;
+
+            color: #08785d;
+        }
+
+
+        .price span {
+            font-size: 8px;
+
+            font-weight: normal;
+
+            color: #6d7a76;
+        }
+
+
+        .deposit {
+            display: block;
+
+            margin-top: 3px;
+
+            font-size: 7px;
+
+            color: #78847f;
+        }
+
+
+        .rent-button {
+            background-color: #85dff0;
+
+            color: white;
+
+            padding: 8px 12px;
+
+            border-radius: 5px;
+
+            font-size: 7px;
+
+            font-weight: bold;
+        }
+
+
+        .request-button {
+            background-color: #f5bb00;
+
+            color: #173d36;
+
+            padding: 8px 10px;
+
+            border-radius: 5px;
+
+            font-size: 7px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           EARN CARD
+        ========================= */
+
+        .earn-card {
+            background-color: #006852;
+
+            color: white;
+
+            border-radius: 10px;
+
+            padding: 23px;
+
+            min-height: 310px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .earn-small {
+            font-size: 7px;
+
+            letter-spacing: 3px;
+
+            color: #b9e5da;
+
+            margin-bottom: 10px;
+        }
+
+
+        .earn-card h2 {
+            margin: 0 0 10px;
+
+            font-size: 23px;
+
+            line-height: 1.25;
+        }
+
+
+        .earn-card p {
+            margin: 0 0 20px;
+
+            font-size: 9px;
+
+            line-height: 1.6;
+
+            color: #d5eee8;
+        }
+
+
+        .earn-button {
+            background-color: #f5bb00;
+
+            color: #173d36;
+
+            text-align: center;
+
+            padding: 10px;
+
+            border-radius: 6px;
+
+            font-size: 8px;
+
+            font-weight: bold;
+        }
+
+
+        .earn-note {
+            margin-top: 8px;
+
+            text-align: center;
+
+            font-size: 7px;
+
+            color: #bce7de;
+        }
+
+
+        /* =========================
+           PROTECTION SECTION
+        ========================= */
+
+        .protection {
+            margin: 0 5% 25px;
+
+            background-color: white;
+
+            border: 1px solid #dfe7e4;
+
+            border-radius: 10px;
+
+            padding: 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .protection-left {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .shield {
+            width: 36px;
+            height: 36px;
+
+            background-color: #e0f6ef;
+
+            color: #08785d;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .protection h3 {
+            margin: 0 0 5px;
+
+            font-size: 11px;
+        }
+
+
+        .protection p {
+            margin: 0;
+
+            font-size: 8px;
+
+            color: #6a7873;
+        }
+
+
+        .protection-button {
+            background-color: #84dff0;
+
+            color: white;
+
+            padding: 10px 15px;
+
+            border-radius: 6px;
+
+            font-size: 8px;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           HOST SECTION
+        ========================= */
+
+        .host-section {
+            background-color: #e8f7f2;
+
+            padding: 35px 5%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+
+        .host-section small {
+            color: #08785d;
+
+            font-size: 8px;
+
+            font-weight: bold;
+        }
+
+
+        .host-section h2 {
+            margin: 7px 0;
+
+            font-size: 25px;
+
+            color: #075d50;
+        }
+
+
+        .host-section p {
+            margin: 0;
+
+            max-width: 600px;
+
+            font-size: 9px;
+
+            line-height: 1.6;
+
+            color: #65746f;
+        }
+
+
+        .host-button {
+            background-color: #f5bb00;
+
+            padding: 11px 17px;
+
+            border-radius: 6px;
+
+            font-size: 8px;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           NEIGHBORHOODS
+        ========================= */
+
+        .neighborhood-section {
+            background-color: white;
+
+            padding: 35px 5%;
+        }
+
+
+        .neighborhood-section h2 {
+            margin: 0 0 7px;
+
+            font-size: 22px;
+
+            color: #173d36;
+        }
+
+
+        .neighborhood-section > p {
+            margin: 0 0 20px;
+
+            font-size: 9px;
+
+            color: #687771;
+        }
+
+
+        .neighborhoods {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .neighborhood {
+            border: 1px solid #e0e8e5;
+
+            background-color: #f8faf9;
+
+            border-radius: 8px;
+
+            padding: 13px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .place {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+        }
+
+
+        .place-icon {
+            width: 29px;
+            height: 29px;
+
+            border-radius: 50%;
+
+            background-color: #e0f5ef;
+
+            color: #08785d;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 11px;
+        }
+
+
+        .place h3 {
+            margin: 0 0 4px;
+
+            font-size: 10px;
+        }
+
+
+        .place span {
+            font-size: 7px;
+
+            color: #75817d;
+        }
+
+
+        .arrow {
+            font-size: 13px;
+
+            color: #687771;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background-color: #edf4ff;
+
+            padding: 40px 5% 15px;
+        }
+
+
+        .footer-content {
+            display: grid;
+
+            grid-template-columns: 2fr repeat(4, 1fr);
+
+            gap: 25px;
+        }
+
+
+        .footer-logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+        }
+
+
+        .footer-logo img {
+            width: 35px;
+            height: 35px;
+
+            object-fit: contain;
+        }
+
+
+        .footer-logo h3 {
+            margin: 0;
+
+            color: #08785d;
+
+            font-size: 16px;
+        }
+
+
+        .footer-brand p {
+            max-width: 250px;
+
+            font-size: 9px;
+
+            line-height: 1.6;
+
+            color: #687771;
+        }
+
+
+        .verified {
+            font-size: 7px;
+
+            color: #08785d;
+        }
+
+
+        .footer-column h3 {
+            margin: 0 0 12px;
+
+            font-size: 10px;
+        }
+
+
+        .footer-column a {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 8px;
+
+            color: #687771;
+        }
+
+
+        .footer-bottom {
+            margin-top: 30px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid #d6e0ec;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 7px;
+
+            color: #78847f;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media screen and (max-width: 1000px) {
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .neighborhoods {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media screen and (max-width: 650px) {
+
+            .navbar {
+                padding: 0 15px;
+            }
+
+
+            .nav-links a:not(.list-button):not(.profile) {
+                display: none;
+            }
+
+
+            .category-bar {
+                justify-content: flex-start;
+
+                overflow-x: auto;
+
+                white-space: nowrap;
+            }
+
+
+            .hero {
+                padding: 25px 20px 15px;
+            }
+
+
+            .hero h1 {
+                font-size: 27px;
+            }
+
+
+            .hero-bottom {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .search-area {
+                padding: 0 20px 15px;
+            }
+
+
+            .main {
+                padding: 0 20px 25px;
+            }
+
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+
+            .filters {
+                display: none;
+            }
+
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+
+            .protection {
+                margin: 0 20px 20px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .protection-button {
+                width: 100%;
+
+                text-align: center;
+            }
+
+
+            .host-section {
+                padding: 30px 20px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .host-button {
+                width: 100%;
+
+                text-align: center;
+            }
+
+
+            .neighborhood-section {
+                padding: 30px 20px;
+            }
+
+
+            .neighborhoods {
+                grid-template-columns: 1fr;
+            }
+
+
+            .footer {
+                padding: 30px 20px 15px;
+            }
+
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+
+
+            .footer-bottom {
+                flex-direction: column;
+
+                gap: 7px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         MAIN NAVBAR
+    ========================= -->
+
+    <header class="navbar">
+
+
+        <div class="logo-area">
+
+            <img
+                src="logo.png"
+                alt="BorrowBox Logo"
+                class="logo"
+            >
+
+            <div class="brand">
+                Borrow<span>Box</span>
+            </div>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="#">
+                Browse
+            </a>
+
+            <a href="#">
+                How it works
+            </a>
+
+            <a href="#">
+                Lend
+            </a>
+
+            <a href="#">
+                Community
+            </a>
+
+            <a href="addlist.html" class="list-button">
+                + List an Item
+            </a>
+
+            <a href="profile.html" class="profile">
+                👤
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         CATEGORY NAVBAR
+    ========================= -->
+
+    <nav class="category-bar">
+
+        <a href="all-cat.html" class="category">
+            All
+        </a>
+
+        <a href="electric-cat.html" class="category">
+            Electronics
+        </a>
+
+        <a href="vehicle-cat.html" class="category">
+            Vehicles
+        </a>
+
+        <a href="sport-cat.html" class="category">
+            Sports Equipment
+        </a>
+
+        <a href="Venues-cat.html" class="category">
+            Venues
+        </a>
+
+        <a href="Furniture-cat.html" class="category active">
+            Furniture
+        </a>
+
+        <a href="Home-Appliances.html" class="category">
+            Home Appliances
+        </a>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+
+        <div class="hero-label">
+            🛋️ VERIFIED NEIGHBORHOOD FURNITURE
+        </div>
+
+
+        <h1>
+            Rent Home &amp; Event Furniture near you
+        </h1>
+
+
+        <p>
+            5 curated furniture sets available for flexible
+            rental in Ahmedabad. Host inspected, sanitised,
+            and damage-protected.
+        </p>
+
+
+        <div class="hero-bottom">
+
+
+            <div class="tags">
+
+                <div class="tag">
+                    ⚡ Instant Book only
+                </div>
+
+                <div class="tag">
+                    📍 Within 5 km
+                </div>
+
+                <div class="tag">
+                    🏷️ Under ₹250/day
+                </div>
+
+                <div class="tag">
+                    ⭐ Top Rated (4.8+)
+                </div>
+
+                <div class="tag">
+                    🚚 Delivery Assistance Available
+                </div>
+
+            </div>
+
+
+            <div class="sort">
+                Sort: Newest first
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SEARCH
+    ========================= -->
+
+    <div class="search-area">
+
+        <div class="search-box">
+            🔍 What do you need? Try camera, headphones,
+            projector...
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="main">
+
+
+        <div class="result-top">
+
+            <p>
+                Showing
+                <strong>5 vetted furniture pieces</strong>
+                nearby
+            </p>
+
+            <div class="sort">
+                Filters ☰
+            </div>
+
+        </div>
+
+
+        <div class="content">
+
+
+            <!-- =========================
+                 FILTERS
+            ========================= -->
+
+            <aside class="filters">
+
+
+                <h3>
+                    Filters
+                </h3>
+
+
+                <div class="filter-title">
+                    BOOKING
+                </div>
+
+
+                <label class="filter-item">
+
+                    <input type="checkbox">
+
+                    Instant Book Available
+
+                </label>
+
+
+                <div class="filter-title">
+                    RATING
+                </div>
+
+
+                <label class="filter-item">
+
+                    <input type="checkbox">
+
+                    Top Rated Available
+
+                </label>
+
+
+                <div class="filter-title">
+                    PRICE
+                </div>
+
+
+                <label class="filter-item">
+
+                    <input type="checkbox">
+
+                    Under ₹250/day
+
+                </label>
+
+
+                <div class="filter-title">
+                    DELIVERY
+                </div>
+
+
+                <label class="filter-item">
+
+                    <input type="checkbox">
+
+                    Delivery Available
+
+                </label>
+
+            </aside>
+
+
+
+            <!-- =========================
+                 PRODUCT CARDS
+            ========================= -->
+
+            <section class="products">
+
+
+                <!-- CARD 1 -->
+
+                <div class="card">
+
+
+                    <div class="card-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
+                            alt="Boucle Lounge Chair"
+                        >
+
+                        <div class="card-label">
+                            Instant Book
+                        </div>
+
+                        <div class="heart">
+                            ♡
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="location">
+                            📍 Bodakdev · 1.2 km away · ⭐ 4.9 (32)
+                        </div>
+
+
+                        <h3>
+                            Oatmeal Bouclé Designer Lounge
+                            Chair &amp; Accent Side Table
+                        </h3>
+
+
+                        <div class="owner">
+
+                            <div class="owner-icon">
+                                P
+                            </div>
+
+                            <div class="owner-name">
+                                Priya S. • Verified Host
+                            </div>
+
+                        </div>
+
+
+                        <div class="features">
+                            Ergonomic Oak Wood Legs ·
+                            Stain-Resistant Fabric
+                        </div>
+
+
+                        <div class="price-row">
+
+
+                            <div>
+
+                                <div class="price">
+                                    ₹140 <span>/ day</span>
+                                </div>
+
+                                <div class="deposit">
+                                    or ₹1,800/mo · ₹1,500 deposit
+                                </div>
+
+                            </div>
+
+
+                            <a href="furniture-det.html" class="rent-button">
+                                Rent Now
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CARD 2 -->
+
+                <div class="card">
+
+
+                    <div class="card-image">
+
+                       <img
+    src="https://images.pexels.com/photos/4050291/pexels-photo-4050291.jpeg?auto=compress&cs=tinysrgb&w=900"
+    alt="Standing Desk"
+>
+
+                        <div class="card-label">
+                            Instant Book
+                        </div>
+
+                        <div class="heart">
+                            ♡
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="location">
+                            📍 Navrangpura · 2.0 km away · ⭐ 5.0 (27)
+                        </div>
+
+
+                        <h3>
+                            Motorized Height-Adjustable
+                            Standing Desk (Dual Monitor Ready)
+                        </h3>
+
+
+                        <div class="owner">
+
+                            <div class="owner-icon">
+                                K
+                            </div>
+
+                            <div class="owner-name">
+                                Kavita M. • Verified Host
+                            </div>
+
+                        </div>
+
+
+                        <div class="features">
+                            Solid Oak Top · Memory Presets ·
+                            Cable Management
+                        </div>
+
+
+                        <div class="price-row">
+
+
+                            <div>
+
+                                <div class="price">
+                                    ₹220 <span>/ day</span>
+                                </div>
+
+                                <div class="deposit">
+                                    or ₹2,500/mo · ₹2,500 deposit
+                                </div>
+
+                            </div>
+
+
+                            <a href="furniture-det.html" class="rent-button">
+                                Rent Now
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CARD 3 -->
+
+                <div class="card">
+
+
+                    <div class="card-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=900&q=80"
+                            alt="Dining Table"
+                        >
+
+                        <div class="card-label">
+                            Top Rated
+                        </div>
+
+                        <div class="heart">
+                            ♡
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="location">
+                            📍 Vastrapur · 2.5 km away · ⭐ 4.9 (38)
+                        </div>
+
+
+                        <h3>
+                            Scandinavian Solid Wood 4-Seater
+                            Round Dining Table Set
+                        </h3>
+
+
+                        <div class="owner">
+
+                            <div class="owner-icon">
+                                A
+                            </div>
+
+                            <div class="owner-name">
+                                Arjun P. • Verified Host
+                            </div>
+
+                        </div>
+
+
+                        <div class="features">
+                            Solid Oak · Woven Cord Chairs ·
+                            Compact 110cm Diameter
+                        </div>
+
+
+                        <div class="price-row">
+
+
+                            <div>
+
+                                <div class="price">
+                                    ₹260 <span>/ day</span>
+                                </div>
+
+                                <div class="deposit">
+                                    or ₹3,200/mo · ₹3,000 deposit
+                                </div>
+
+                            </div>
+
+
+                            <a href="furniture-det.html" class="request-button">
+                                Request Booking
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CARD 4 -->
+
+                <div class="card">
+
+
+                    <div class="card-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1550254478-ead40cc54513?auto=format&fit=crop&w=900&q=80"
+                            alt="Grey Sofa"
+                        >
+
+                        <div class="card-label">
+                            Instant Book
+                        </div>
+
+                        <div class="heart">
+                            ♡
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="location">
+                            📍 Satellite · 1.8 km away · ⭐ 4.8 (19)
+                        </div>
+
+
+                        <h3>
+                            Contemporary 3-Seater Grey Fabric
+                            Sofa with Throw Cushions
+                        </h3>
+
+
+                        <div class="owner">
+
+                            <div class="owner-icon">
+                                D
+                            </div>
+
+                            <div class="owner-name">
+                                Deepak R. • Verified Host
+                            </div>
+
+                        </div>
+
+
+                        <div class="features">
+                            Deep Seating · Removable Washable
+                            Covers · Sturdy Wood Frame
+                        </div>
+
+
+                        <div class="price-row">
+
+
+                            <div>
+
+                                <div class="price">
+                                    ₹290 <span>/ day</span>
+                                </div>
+
+                                <div class="deposit">
+                                    or ₹3,600/mo · ₹3,500 deposit
+                                </div>
+
+                            </div>
+
+
+                            <a href="furniture-det.html" class="rent-button">
+                                Rent Now
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CARD 5 -->
+
+                <div class="card">
+
+
+                    <div class="card-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=900&q=80"
+                            alt="Event Chairs"
+                        >
+
+                        <div class="card-label">
+                            Available
+                        </div>
+
+                        <div class="heart">
+                            ♡
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="location">
+                            📍 Prahlad Nagar · 3.2 km away · ⭐ 4.9 (16)
+                        </div>
+
+
+                        <h3>
+                            Event Party Set: 20 Chiavari
+                            White Chairs &amp; Cocktail Highboys
+                        </h3>
+
+
+                        <div class="owner">
+
+                            <div class="owner-icon">
+                                M
+                            </div>
+
+                            <div class="owner-name">
+                                Mehul K. • Verified Host
+                            </div>
+
+                        </div>
+
+
+                        <div class="features">
+                            Includes Soft Cushions · Stackable
+                            &amp; Easy Transport
+                        </div>
+
+
+                        <div class="price-row">
+
+
+                            <div>
+
+                                <div class="price">
+                                    ₹850 <span>/ day</span>
+                                </div>
+
+                                <div class="deposit">
+                                    Bulk party pack · ₹3,000 deposit
+                                </div>
+
+                            </div>
+
+
+                            <a href="furniture-det.html" class="rent-button">
+                                Rent Now
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     EARN CARD
+                ========================= -->
+
+                <div class="earn-card">
+
+
+                    <div class="earn-small">
+                        E A R N &nbsp; R E C U R R I N G
+                    </div>
+
+
+                    <h2>
+                        Have extra furniture or
+                        event decor sitting idle?
+                    </h2>
+
+
+                    <p>
+                        Rent out your spare designer chairs,
+                        standing desks, event seating, or patio
+                        furniture to verified neighbors in
+                        Ahmedabad with ₹50,000 damage
+                        protection guarantee.
+                    </p>
+
+
+                    <a href="#" class="earn-button">
+                        Calculate Furniture Earnings
+                    </a>
+
+
+                    <div class="earn-note">
+                        Takes less than 2 minutes to estimate
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         PROTECTION
+    ========================= -->
+
+    <section class="protection">
+
+
+        <div class="protection-left">
+
+
+            <div class="shield">
+                ✓
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Borrow and furnish with peace of mind
+                </h3>
+
+                <p>
+                    Every furniture rental includes up to
+                    ₹50,000 Damage Protection Guarantee,
+                    verified KYC identity check, and 100%
+                    refundable security deposits.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a href="#" class="protection-button">
+            Have furniture to lend? Earn ₹12,000+/mo
+        </a>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         HOST / EARN SECTION
+    ========================= -->
+
+    <section class="host-section">
+
+
+        <div>
+
+            <small>
+                HAVE FURNITURE TO LEND?
+            </small>
+
+
+            <h2>
+                Earn ₹12,000+/mo
+            </h2>
+
+
+            <p>
+                Turn unused furniture into extra income while
+                helping your neighborhood access quality pieces.
+            </p>
+
+        </div>
+
+
+        <a href="#" class="host-button">
+            List Your Furniture
+        </a>
+
+    </section>
+
+
+
+    <!-- =========================
+         NEIGHBORHOODS
+    ========================= -->
+
+    <section class="neighborhood-section">
+
+
+        <h2>
+            Rent Furniture in nearby neighborhoods
+        </h2>
+
+
+        <p>
+            Find living room pieces, work desks, and event
+            seating just blocks away across Ahmedabad.
+        </p>
+
+
+        <div class="neighborhoods">
+
+
+            <div class="neighborhood">
+
+                <div class="place">
+
+                    <div class="place-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Bodakdev
+                        </h3>
+
+                        <span>
+                            2 items available
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </div>
+
+
+
+            <div class="neighborhood">
+
+                <div class="place">
+
+                    <div class="place-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Navrangpura
+                        </h3>
+
+                        <span>
+                            1 item available
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </div>
+
+
+
+            <div class="neighborhood">
+
+                <div class="place">
+
+                    <div class="place-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Vastrapur
+                        </h3>
+
+                        <span>
+                            1 item available
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </div>
+
+
+
+            <div class="neighborhood">
+
+                <div class="place">
+
+                    <div class="place-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Satellite
+                        </h3>
+
+                        <span>
+                            1 item available
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+
+        <div class="footer-content">
+
+
+            <!-- FOOTER BRAND -->
+
+            <div class="footer-brand">
+
+
+                <div class="footer-logo">
+
+                    <img
+                        src="logo.png"
+                        alt="BorrowBox Logo"
+                    >
+
+                    <h3>
+                        BorrowBox
+                    </h3>
+
+                </div>
+
+
+                <p>
+                    Borrow • Share • Build Community.
+                    Empowering local neighborhoods to lend,
+                    borrow, and connect securely with trusted
+                    gear next door.
+                </p>
+
+
+                <div class="verified">
+                    ✓ Verified Neighborhood Lenders in Ahmedabad
+                </div>
+
+
+            </div>
+
+
+
+            <!-- BROWSE -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Browse
+                </h3>
+
+                <a href="#">
+                    All Listings
+                </a>
+
+                <a href="#">
+                    Near Me
+                </a>
+
+                <a href="#">
+                    Top Rated Gear
+                </a>
+
+                <a href="#">
+                    Newly Added
+                </a>
+
+            </div>
+
+
+
+            <!-- CATEGORIES -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Categories
+                </h3>
+
+                <a href="#">
+                    Furniture &amp; Home Decor
+                </a>
+
+                <a href="#">
+                    Venues &amp; Spaces
+                </a>
+
+                <a href="#">
+                    Cameras &amp; Optics
+                </a>
+
+                <a href="#">
+                    Audio &amp; Music
+                </a>
+
+                <a href="#">
+                    Projectors &amp; Screens
+                </a>
+
+                <a href="#">
+                    Outdoor &amp; DIY Tools
+                </a>
+
+            </div>
+
+
+
+            <!-- LEND -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Lend
+                </h3>
+
+                <a href="#">
+                    List an Item
+                </a>
+
+                <a href="#">
+                    Lender Guarantee
+                </a>
+
+                <a href="#">
+                    Pricing Calculator
+                </a>
+
+                <a href="#">
+                    How It Works
+                </a>
+
+            </div>
+
+
+
+            <!-- SUPPORT -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Support &amp; Legal
+                </h3>
+
+                <a href="#">
+                    Community Guidelines
+                </a>
+
+                <a href="#">
+                    Help Center
+                </a>
+
+                <a href="#">
+                    Trust &amp; Safety
+                </a>
+
+                <a href="#">
+                    Terms of Service
+                </a>
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2025 BorrowBox Marketplace. All rights reserved.
+            </span>
+
+            <span>
+                Borrow • Share • Build Community
+            </span>
+
+        </div>
+
+
+    </footer>
+
+
+</body>
+
+</html>

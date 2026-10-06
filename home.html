@@ -1,0 +1,2891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BorrowBox</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #17483e;
+            background-color: #f7f9ff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            height: 65px;
+
+            background-color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            border-bottom: 1px solid #e7eceb;
+        }
+
+
+        /* Logo + BorrowBox */
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        /* Fixed Logo Size */
+
+        .logo {
+            width: 32px;
+            height: 32px;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
+
+        /* BorrowBox Text */
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+
+            line-height: 1;
+        }
+
+        .brand-text strong {
+            font-size: 16px;
+
+            color: #08785d;
+        }
+
+        .brand-text strong span {
+            color: #f2b600;
+        }
+
+        .brand-text small {
+            margin-top: 4px;
+
+            font-size: 7px;
+
+            color: #6f7d79;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        /* Navigation */
+
+        .nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 22px;
+
+            font-size: 12px;
+
+            color: #4d6660;
+        }
+
+        .nav a {
+            color: #4d6660;
+        }
+
+        .nav a:hover {
+            color: #08785d;
+        }
+
+
+        /* Login */
+
+        .login {
+            color: #08785d !important;
+
+            font-weight: bold;
+        }
+
+
+        /* List Button */
+
+        .list-button {
+            background-color: #f7b900;
+
+            border: none;
+
+            border-radius: 7px;
+
+            padding: 9px 15px;
+
+            color: #173e36;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+
+        /* Profile Icon */
+
+        .profile-icon {
+            width: 32px;
+            height: 32px;
+
+            border-radius: 50%;
+
+            background-color: #e8f6f1;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 16px;
+
+            color: #08785d !important;
+
+            border: 1px solid #cce8df;
+        }
+
+        .profile-icon:hover {
+            background-color: #d8eee7;
+        }
+
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 430px;
+
+            padding: 60px 7% 40px;
+
+            background: linear-gradient(
+                135deg,
+                #e8f8ee,
+                #fffdf3
+            );
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 40px;
+        }
+
+
+        .hero-text {
+            width: 48%;
+        }
+
+
+        .small-title {
+            font-size: 11px;
+
+            color: #158064;
+
+            font-weight: bold;
+
+            margin-bottom: 12px;
+        }
+
+
+        .hero h1 {
+            font-size: 40px;
+
+            line-height: 1.1;
+
+            margin: 0 0 15px;
+
+            color: #075e50;
+        }
+
+
+        .hero h1 span {
+            color: #087b60;
+        }
+
+
+        .hero p {
+            max-width: 520px;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            color: #60716c;
+        }
+
+
+        .hero-buttons {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+
+        .yellow-button {
+            display: inline-block;
+
+            background-color: #f7b900;
+
+            border: none;
+
+            border-radius: 7px;
+
+            padding: 12px 20px;
+
+            font-weight: bold;
+
+            color: #173e36;
+        }
+
+
+        .white-button {
+            display: inline-block;
+
+            background-color: white;
+
+            border: 1px solid #dce6e2;
+
+            border-radius: 7px;
+
+            padding: 12px 20px;
+
+            color: #08785d;
+        }
+
+
+        .trusted {
+            margin-top: 20px;
+
+            font-size: 11px;
+
+            color: #63736e;
+        }
+
+
+
+        /* =========================
+           HERO IMAGES
+        ========================= */
+
+        .hero-images {
+            width: 45%;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10px;
+        }
+
+
+        .hero-image {
+            height: 140px;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            background-color: #d9e9e1;
+        }
+
+
+        .hero-image img {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .hero-image.big {
+            grid-row: span 2;
+
+            height: 290px;
+        }
+
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-section {
+            background-color: white;
+
+            margin: -25px auto 35px;
+
+            width: 90%;
+
+            max-width: 1100px;
+
+            padding: 18px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 5px 20px rgba(40, 70, 80, 0.10);
+        }
+
+
+        .search-box {
+            display: grid;
+
+            grid-template-columns: 2fr 1fr 1fr auto;
+
+            gap: 10px;
+        }
+
+
+        .search-field {
+            background-color: #f0f5ff;
+
+            border-radius: 8px;
+
+            padding: 10px 13px;
+        }
+
+
+        .search-field label {
+            display: block;
+
+            font-size: 9px;
+
+            color: #60716c;
+
+            margin-bottom: 5px;
+        }
+
+
+        .search-field input,
+        .search-field select {
+            width: 100%;
+
+            border: none;
+
+            outline: none;
+
+            background: transparent;
+
+            font-size: 12px;
+
+            color: #244d45;
+        }
+
+
+        .search-button {
+            background-color: #f7b900;
+
+            border: none;
+
+            border-radius: 8px;
+
+            padding: 0 25px;
+
+            font-weight: bold;
+        }
+
+
+        .popular-search {
+            margin-top: 12px;
+
+            font-size: 10px;
+
+            color: #71807b;
+        }
+
+
+        .popular-search span {
+            background-color: #eef4f1;
+
+            padding: 5px 8px;
+
+            border-radius: 6px;
+
+            margin-right: 4px;
+        }
+
+
+
+        /* =========================
+           TRUST
+        ========================= */
+
+        .trust-section {
+            background-color: #f0f4ff;
+
+            padding: 25px 7%;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .trust-card {
+            background-color: white;
+
+            padding: 17px;
+
+            border-radius: 9px;
+        }
+
+
+        .trust-card h3 {
+            margin: 0 0 5px;
+
+            font-size: 13px;
+        }
+
+
+        .trust-card p {
+            margin: 0;
+
+            font-size: 10px;
+
+            color: #71807b;
+
+            line-height: 1.5;
+        }
+
+
+
+        /* =========================
+           COMMON SECTION
+        ========================= */
+
+        .section {
+            padding: 55px 7%;
+        }
+
+
+        .section-heading {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: end;
+
+            margin-bottom: 25px;
+        }
+
+
+        .section-title small {
+            color: #138166;
+
+            font-size: 9px;
+
+            font-weight: bold;
+        }
+
+
+        .section-title h2 {
+            margin: 5px 0;
+
+            font-size: 26px;
+
+            color: #075e50;
+        }
+
+
+        .section-title p {
+            margin: 0;
+
+            font-size: 11px;
+
+            color: #71807b;
+        }
+
+
+        .view-all {
+            color: #08785d;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+
+
+        /* =========================
+           CATEGORIES
+        ========================= */
+
+        .categories {
+            display: grid;
+
+            grid-template-columns: repeat(6, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .category {
+            background-color: white;
+
+            border: 1px solid #e5ebe8;
+
+            border-radius: 9px;
+
+            overflow: hidden;
+
+            text-align: center;
+
+            padding-bottom: 12px;
+        }
+
+
+        .category img {
+            width: 100%;
+
+            height: 100px;
+
+            object-fit: cover;
+        }
+
+
+        .category h3 {
+            font-size: 11px;
+
+            margin: 8px 5px 3px;
+        }
+
+
+        .category p {
+            margin: 0;
+
+            font-size: 8px;
+
+            color: #7a8783;
+        }
+
+
+
+        /* =========================
+           ITEM CARDS
+        ========================= */
+
+        .items {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .item {
+            background-color: white;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            border: 1px solid #e5ebe8;
+        }
+
+
+        .item-image {
+            position: relative;
+
+            height: 170px;
+        }
+
+
+        .item-image img {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .available {
+            position: absolute;
+
+            top: 10px;
+
+            left: 10px;
+
+            background-color: #08785d;
+
+            color: white;
+
+            padding: 5px 8px;
+
+            border-radius: 5px;
+
+            font-size: 8px;
+        }
+
+
+        .item-info {
+            padding: 12px;
+        }
+
+
+        .item-category {
+            font-size: 8px;
+
+            color: #168064;
+        }
+
+
+        .item h3 {
+            font-size: 13px;
+
+            margin: 6px 0;
+        }
+
+
+        .item-owner {
+            font-size: 9px;
+
+            color: #788680;
+        }
+
+
+        .item-bottom {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-top: 10px;
+        }
+
+
+        .price {
+            font-size: 12px;
+
+            font-weight: bold;
+
+            color: #08785d;
+        }
+
+
+        .rating {
+            font-size: 9px;
+
+            color: #d69f00;
+        }
+
+
+
+        /* =========================
+           COLLECTIONS
+        ========================= */
+
+        .collections {
+            background-color: #f3f7ff;
+        }
+
+
+        .collection-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .collection {
+            height: 270px;
+
+            position: relative;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+        }
+
+
+        .collection img {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .collection-content {
+            position: absolute;
+
+            bottom: 0;
+
+            left: 0;
+
+            right: 0;
+
+            padding: 25px 20px;
+
+            color: white;
+
+            background: linear-gradient(
+                transparent,
+                rgba(0, 70, 60, 0.85)
+            );
+        }
+
+
+        .collection-content h3 {
+            margin: 5px 0;
+
+            font-size: 18px;
+        }
+
+
+        .collection-content p {
+            font-size: 10px;
+
+            line-height: 1.5;
+        }
+
+
+        .collection-content a {
+            display: inline-block;
+
+            background-color: #f7b900;
+
+            color: #173e36;
+
+            padding: 8px 12px;
+
+            border-radius: 6px;
+
+            font-size: 9px;
+
+            font-weight: bold;
+        }
+
+
+
+        /* =========================
+           HOW IT WORKS
+        ========================= */
+
+        .steps {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .step {
+            background-color: white;
+
+            border: 1px solid #e8ecea;
+
+            border-radius: 12px;
+
+            padding: 30px 20px;
+
+            text-align: center;
+        }
+
+
+        .step-number {
+            width: 35px;
+
+            height: 35px;
+
+            background-color: #76d9eb;
+
+            color: white;
+
+            border-radius: 8px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: auto;
+
+            font-weight: bold;
+        }
+
+
+        .step h3 {
+            font-size: 13px;
+
+            margin: 15px 0 7px;
+        }
+
+
+        .step p {
+            font-size: 9px;
+
+            line-height: 1.5;
+
+            color: #75827e;
+        }
+
+
+
+        /* =========================
+           LENDER
+        ========================= */
+
+        .lender {
+            margin: 0 7% 55px;
+
+            padding: 40px;
+
+            border-radius: 15px;
+
+            background: linear-gradient(
+                120deg,
+                #79dbea,
+                #91d8ce
+            );
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 30px;
+        }
+
+
+        .lender-text {
+            width: 55%;
+        }
+
+
+        .lender-text small {
+            color: #08785d;
+
+            font-weight: bold;
+
+            font-size: 9px;
+        }
+
+
+        .lender-text h2 {
+            color: white;
+
+            font-size: 27px;
+
+            margin: 8px 0;
+        }
+
+
+        .lender-text p {
+            color: white;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        .lender-image {
+            width: 35%;
+
+            height: 190px;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+
+        .lender-image img {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+
+        /* =========================
+           SAFETY
+        ========================= */
+
+        .safety {
+            background-color: #fffdf7;
+        }
+
+
+        .safety-cards {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .safety-card {
+            background-color: white;
+
+            border: 1px solid #e8e8df;
+
+            border-radius: 9px;
+
+            padding: 18px;
+        }
+
+
+        .safety-icon {
+            width: 30px;
+
+            height: 30px;
+
+            background-color: #e5f4ed;
+
+            border-radius: 6px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 12px;
+        }
+
+
+        .safety-card h3 {
+            font-size: 12px;
+
+            margin: 0 0 6px;
+        }
+
+
+        .safety-card p {
+            font-size: 9px;
+
+            color: #74807c;
+
+            line-height: 1.5;
+
+            margin: 0;
+        }
+
+
+
+        /* =========================
+           FINAL CTA
+        ========================= */
+
+        .cta {
+            margin: 55px 7%;
+
+            padding: 55px 20px;
+
+            text-align: center;
+
+            background: linear-gradient(
+                135deg,
+                #82dcec,
+                #7cd8dc
+            );
+
+            border-radius: 15px;
+
+            color: white;
+        }
+
+
+        .cta h2 {
+            font-size: 28px;
+
+            margin: 10px 0;
+        }
+
+
+        .cta h2 span {
+            color: #f7b900;
+        }
+
+
+        .cta p {
+            max-width: 600px;
+
+            margin: 0 auto 20px;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background-color: #edf2ff;
+
+            padding: 35px 7% 15px;
+        }
+
+
+        .footer-content {
+            display: grid;
+
+            grid-template-columns: 2fr repeat(4, 1fr);
+
+            gap: 30px;
+        }
+
+
+        .footer-logo {
+            width: 32px;
+
+            height: 32px;
+
+            object-fit: contain;
+
+            margin-bottom: 10px;
+        }
+
+
+        .footer-company p {
+            font-size: 9px;
+
+            line-height: 1.5;
+
+            color: #71807b;
+
+            max-width: 220px;
+        }
+
+
+        .footer-column h3 {
+            font-size: 11px;
+
+            margin-top: 0;
+        }
+
+
+        .footer-column a {
+            display: block;
+
+            font-size: 9px;
+
+            color: #6d7a76;
+
+            margin-bottom: 8px;
+        }
+
+
+        .footer-bottom {
+            margin-top: 25px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid #dbe1ef;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 8px;
+
+            color: #7a8581;
+        }
+
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media screen and (max-width: 900px) {
+
+            .nav {
+                gap: 10px;
+            }
+
+            .nav a:not(.login) {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+
+                padding-top: 40px;
+            }
+
+
+            .hero-text,
+            .hero-images {
+                width: 100%;
+            }
+
+
+            .search-box {
+                grid-template-columns: 1fr;
+            }
+
+
+            .search-button {
+                height: 40px;
+            }
+
+
+            .categories {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+
+            .items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+
+            .safety-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+
+            .lender {
+                flex-direction: column;
+            }
+
+
+            .lender-text,
+            .lender-image {
+                width: 100%;
+            }
+
+        }
+
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media screen and (max-width: 600px) {
+
+            .header {
+                padding: 0 20px;
+            }
+
+
+            .brand-text strong {
+                font-size: 14px;
+            }
+
+
+            .brand-text small {
+                font-size: 6px;
+            }
+
+
+            .logo {
+                width: 30px;
+
+                height: 30px;
+            }
+
+
+            .login {
+                display: none;
+            }
+
+
+            .list-button {
+                padding: 8px 10px;
+
+                font-size: 9px;
+            }
+
+
+            .profile-icon {
+                width: 30px;
+
+                height: 30px;
+            }
+
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+
+            .hero-images {
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .hero-image.big {
+                height: 220px;
+            }
+
+
+            .hero-image {
+                height: 105px;
+            }
+
+
+            .trust-section {
+                grid-template-columns: 1fr;
+            }
+
+
+            .section {
+                padding: 40px 5%;
+            }
+
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+
+            .items {
+                grid-template-columns: 1fr;
+            }
+
+
+            .collection-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+
+            .safety-cards {
+                grid-template-columns: 1fr;
+            }
+
+
+            .lender {
+                margin: 0 5% 40px;
+
+                padding: 25px;
+            }
+
+
+            .cta {
+                margin: 40px 5%;
+            }
+
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .footer-company {
+                grid-column: span 2;
+            }
+
+
+            .footer-bottom {
+                flex-direction: column;
+
+                gap: 5px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="header">
+
+
+        <!-- Logo and BorrowBox -->
+
+        <div class="brand">
+
+            <a href="#">
+
+                <img
+                    src="logo.png"
+                    alt="BorrowBox Logo"
+                    class="logo"
+                >
+
+            </a>
+
+
+            <div class="brand-text">
+
+                <strong>
+                    Borrow<span>Box</span>
+                </strong>
+
+                <small>
+                    NEIGHBORHOOD SHARING
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <nav class="nav">
+
+            <a href="#categories">
+                Browse
+            </a>
+
+            <a href="#how-it-works">
+                How It Works
+            </a>
+
+            <a href="#safety">
+                Trust & Safety
+            </a>
+
+            <a href="#lender">
+                Lend
+            </a>
+
+            <a href="#" class="login">
+                Login
+            </a>
+
+            <a href="addlist.html">
+            <button class="list-button">
+                List an Item
+            </button>
+            </a>
+
+
+            <!-- Profile Icon -->
+
+            <a
+                href="profile.html"
+                class="profile-icon"
+                title="Profile"
+            >
+                👤
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+
+        <div class="hero-text">
+
+            <div class="small-title">
+                ● HYPER-LOCAL NEIGHBORHOOD SHARING
+            </div>
+
+
+            <h1>
+
+                Borrow what you need.<br>
+
+                <span>
+                    Share what you have.
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Find useful things from people nearby —
+                or turn the things you own into extra income.
+                Safe, insured, and verified next door.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#categories"
+                    class="yellow-button"
+                >
+                    Browse Items →
+                </a>
+
+
+                <a
+                    href="#lender"
+                    class="white-button"
+                >
+                    List an Item
+                </a>
+
+            </div>
+
+
+            <div class="trusted">
+
+                ● ● ● &nbsp;
+
+                Trusted by 2,400+ neighbors across
+                Navrangpura, Bodakdev & Satellite
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Hero Images -->
+
+        <div class="hero-images">
+
+
+            <div class="hero-image big">
+                <a href="all-cat.html">
+                <img
+                    src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=80"
+                    alt="Camera"
+                >
+                </a>
+
+            </div>
+
+
+            <div class="hero-image">
+                <a href="all-cat.html">
+                <img
+                    src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=700&q=80"
+                    alt="Mountain Bike"
+                >
+                </a>
+
+            </div>
+
+
+            <div class="hero-image">
+                <a href="all-cat.html">
+                <img
+                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=700&q=80"
+                    alt="Fitness"
+                >
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SEARCH
+    ========================= -->
+
+    <section class="search-section">
+
+
+        <div class="search-box">
+
+
+            <div class="search-field">
+
+                <label>
+                    WHAT ARE YOU LOOKING FOR?
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Drill, DSLR camera, camping tent..."
+                >
+
+            </div>
+
+
+            <div class="search-field">
+
+                <label>
+                    WHERE
+                </label>
+
+                <select>
+
+                    <option>
+                        Ahmedabad, GJ
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="search-field">
+
+                <label>
+                    WHEN
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Add dates"
+                >
+
+            </div>
+
+
+            <button class="search-button">
+                🔍 Search
+            </button>
+
+        </div>
+
+
+        <div class="popular-search">
+
+            Popular:
+
+            <span>Drill</span>
+
+            <span>Camera</span>
+
+            <span>Tent</span>
+
+            <span>Ladder</span>
+
+            <span>Projector</span>
+
+            <span>Mountain Bike</span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         TRUST
+    ========================= -->
+
+    <section class="trust-section">
+
+
+        <div class="trust-card">
+
+            <h3>
+                🛡 Verified Community
+            </h3>
+
+            <p>
+                Govt ID & residential verification
+                for all members.
+            </p>
+
+        </div>
+
+
+        <div class="trust-card">
+
+            <h3>
+                🔒 Secure Rentals
+            </h3>
+
+            <p>
+                Up to ₹10,000 Lender Protection
+                Guarantee included.
+            </p>
+
+        </div>
+
+
+        <div class="trust-card">
+
+            <h3>
+                📍 Easy Local Pickup
+            </h3>
+
+            <p>
+                Convenient handovers 5–15 minutes
+                from your doorstep.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CATEGORIES
+    ========================= -->
+
+    <section
+        class="section"
+        id="categories"
+    >
+
+
+        <div class="section-heading">
+
+
+            <div class="section-title">
+
+                <small>
+                    EXPLORE THE NEIGHBORHOOD
+                </small>
+
+                <h2>
+                    Browse by Category
+                </h2>
+
+                <p>
+                    Find what you need from your community
+                    without buying brand new.
+                </p>
+
+            </div>
+
+
+            <a href="#" class="view-all">
+                All Categories →
+            </a>
+
+        </div>
+
+
+
+        <div class="categories">
+
+
+            <div class="category">
+
+                <img
+                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80"
+                    alt="Tools"
+                >
+
+                <h3>
+                    All Items
+                </h3>
+
+                <p>
+                    Browse all
+                </p>
+
+            </div>
+
+
+            <div class="category">
+
+                <img
+                    src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80"
+                    alt="Electronics"
+                >
+
+                <h3>
+                    Electronics
+                </h3>
+
+                <p>
+                    Cameras, tech
+                </p>
+
+            </div>
+
+
+            <div class="category">
+
+                <img
+                    src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=600&q=80"
+                    alt="Vehicles"
+                >
+
+                <h3>
+                    Vehicles
+                </h3>
+
+                <p>
+                    Bikes, scooters
+                </p>
+
+            </div>
+
+
+            <div class="category">
+
+                <img
+                    src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80"
+                    alt="Fitness"
+                >
+
+                <h3>
+                    Sports Equipment
+                </h3>
+
+                <p>
+                    Outdoor, fitness
+                </p>
+
+            </div>
+
+
+            <div class="category">
+
+                <img
+                    src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=600&q=80"
+                    alt="Party"
+                >
+
+                <h3>
+                    Venues
+                </h3>
+
+                <p>
+                    Parties, spaces
+                </p>
+
+            </div>
+
+
+            <div class="category">
+
+                <img
+                    src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80"
+                    alt="Furniture"
+                >
+
+                <h3>
+                    Furniture
+                </h3>
+
+                <p>
+                    Home, seating
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         POPULAR ITEMS
+    ========================= -->
+
+    <section
+        class="section"
+        style="background-color:#eef3ff;"
+    >
+
+
+        <div class="section-heading">
+
+
+            <div class="section-title">
+
+                <small>
+                    AHMEDABAD CENTRAL
+                </small>
+
+                <h2>
+                    Popular Near You
+                </h2>
+
+                <p>
+                    Useful items available to borrow today
+                    from highly rated neighbors.
+                </p>
+
+            </div>
+
+
+            <a href="#" class="view-all">
+                View All →
+            </a>
+
+        </div>
+
+
+
+        <div class="items">
+
+
+            <!-- Drill -->
+
+            <div class="item">
+
+                <div class="item-image">
+
+                    <img
+                        src="https://images.pexels.com/photos/5493670/pexels-photo-5493670.jpeg?auto=compress&cs=tinysrgb&w=800"
+                        alt="Cordless Drill"
+                    >
+
+                    <span class="available">
+                        Available
+                    </span>
+
+                </div>
+
+
+                <div class="item-info">
+
+                    <div class="item-category">
+                        DIY & Tools · 4.9
+                    </div>
+
+                    <h3>
+                        DeWalt Cordless Drill Kit
+                    </h3>
+
+                    <div class="item-owner">
+                        Rahul S.
+                    </div>
+
+
+                    <div class="item-bottom">
+
+                        <span class="price">
+                            ₹150 /day
+                        </span>
+
+                        <span class="rating">
+                            ★ 4.9
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Ladder -->
+
+            <div class="item">
+
+                <div class="item-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=800&q=80"
+                        alt="Ladder"
+                    >
+
+                    <span class="available">
+                        Available
+                    </span>
+
+                </div>
+
+
+                <div class="item-info">
+
+                    <div class="item-category">
+                        Home Maintenance · 4.8
+                    </div>
+
+                    <h3>
+                        Heavy-Duty Step Ladder
+                    </h3>
+
+                    <div class="item-owner">
+                        Priya M.
+                    </div>
+
+
+                    <div class="item-bottom">
+
+                        <span class="price">
+                            ₹100 /day
+                        </span>
+
+                        <span class="rating">
+                            ★ 4.8
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Bike -->
+
+            <div class="item">
+
+                <div class="item-image">
+
+                    <img
+                        src="https://images.pexels.com/photos/9258476/pexels-photo-9258476.jpeg?auto=compress&cs=tinysrgb&w=800"
+                        alt="Mountain Bike"
+                    >
+
+                    <span class="available">
+                        Available
+                    </span>
+
+                </div>
+
+
+                <div class="item-info">
+
+                    <div class="item-category">
+                        Sports & Fitness · 4.9
+                    </div>
+
+                    <h3>
+                        Trek Mountain Bike
+                    </h3>
+
+                    <div class="item-owner">
+                        Aman K.
+                    </div>
+
+
+                    <div class="item-bottom">
+
+                        <span class="price">
+                            ₹200 /day
+                        </span>
+
+                        <span class="rating">
+                            ★ 4.9
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Books -->
+
+            <div class="item">
+
+                <div class="item-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=800&q=80"
+                        alt="Books"
+                    >
+
+                    <span class="available">
+                        Available
+                    </span>
+
+                </div>
+
+
+                <div class="item-info">
+
+                    <div class="item-category">
+                        Books & Media · 4.7
+                    </div>
+
+                    <h3>
+                        Personal Finance Bundle
+                    </h3>
+
+                    <div class="item-owner">
+                        Deepa T.
+                    </div>
+
+
+                    <div class="item-bottom">
+
+                        <span class="price">
+                            ₹50 /day
+                        </span>
+
+                        <span class="rating">
+                            ★ 4.7
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         COLLECTIONS
+    ========================= -->
+
+    <section class="section collections">
+
+
+        <div class="section-heading">
+
+            <div class="section-title">
+
+                <small>
+                    CURATED COLLECTIONS
+                </small>
+
+                <h2>
+                    Rental Ideas for Every Occasion
+                </h2>
+
+                <p>
+                    Equip yourself with the best gear
+                    without spending thousands.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="collection-grid">
+
+
+            <!-- DIY -->
+
+            <div class="collection">
+
+                <img
+                    src="https://images.pexels.com/photos/5691659/pexels-photo-5691659.jpeg?auto=compress&cs=tinysrgb&w=1000"
+                    alt="DIY tools"
+                >
+
+
+                <div class="collection-content">
+
+                    <small>
+                        DIY & HOME
+                    </small>
+
+                    <h3>
+                        For your next project
+                    </h3>
+
+                    <p>
+                        Power tools, step ladders,
+                        pressure washers and more.
+                    </p>
+
+                    <a href="#">
+                        Explore DIY & Tools →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Camping -->
+
+            <div class="collection">
+
+                <img
+                    src="https://images.pexels.com/photos/8692427/pexels-photo-8692427.jpeg?auto=compress&cs=tinysrgb&w=1000"
+                    alt="Camping"
+                >
+
+
+                <div class="collection-content">
+
+                    <small>
+                        OUTDOOR
+                    </small>
+
+                    <h3>
+                        For your next adventure
+                    </h3>
+
+                    <p>
+                        Mountain bikes, tents,
+                        sleeping bags and trekking gear.
+                    </p>
+
+                    <a href="#">
+                        Explore Outdoors →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Party -->
+
+            <div class="collection">
+
+                <img
+                    src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1000&q=80"
+                    alt="Party"
+                >
+
+
+                <div class="collection-content">
+
+                    <small>
+                        PARTY
+                    </small>
+
+                    <h3>
+                        For your next event
+                    </h3>
+
+                    <p>
+                        Speakers, projectors, grills,
+                        lights and folding seats.
+                    </p>
+
+                    <a href="#">
+                        Explore Event Gear →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         HOW IT WORKS
+    ========================= -->
+
+    <section
+        class="section"
+        id="how-it-works"
+    >
+
+
+        <div class="section-heading">
+
+            <div class="section-title">
+
+                <small>
+                    SIMPLE & SEAMLESS
+                </small>
+
+                <h2>
+                    How BorrowBox Works
+                </h2>
+
+                <p>
+                    Borrowing in your neighborhood is easy,
+                    safe and saves money.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="steps">
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <h3>
+                    Find What You Need
+                </h3>
+
+                <p>
+                    Search nearby items or browse categories
+                    with real-time neighborhood availability
+                    and upfront daily pricing.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <h3>
+                    Request & Pick Up
+                </h3>
+
+                <p>
+                    Choose your rental dates, submit an instant
+                    booking request and meet your verified
+                    neighbor for a quick handover.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <h3>
+                    Use & Return
+                </h3>
+
+                <p>
+                    Complete your project or enjoy your weekend
+                    adventure and return the item smoothly.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         LENDER
+    ========================= -->
+
+    <section
+        class="lender"
+        id="lender"
+    >
+
+
+        <div class="lender-text">
+
+            <small>
+                BECOME A LENDER
+            </small>
+
+            <h2>
+                Your unused things can help someone nearby.
+            </h2>
+
+            <p>
+                List your tools, electronics, camping gear,
+                camera lenses and more. Earn steady passive
+                income while helping your local community thrive.
+            </p>
+
+            <a
+                href="#"
+                class="yellow-button"
+            >
+                Start Earning →
+            </a>
+
+        </div>
+
+
+
+        <div class="lender-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
+                alt="Community"
+            >
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SAFETY
+    ========================= -->
+
+    <section
+        class="section safety"
+        id="safety"
+    >
+
+
+        <div class="section-heading">
+
+            <div class="section-title">
+
+                <small>
+                    PEACE OF MIND
+                </small>
+
+                <h2>
+                    Borrow with Confidence
+                </h2>
+
+                <p>
+                    Every transaction is protected and verified
+                    so you can share without worry.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="safety-cards">
+
+
+            <div class="safety-card">
+
+                <div class="safety-icon">
+                    ✓
+                </div>
+
+                <h3>
+                    Verified Users
+                </h3>
+
+                <p>
+                    Comprehensive Government ID checks
+                    and neighborhood residence verification.
+                </p>
+
+            </div>
+
+
+            <div class="safety-card">
+
+                <div class="safety-icon">
+                    🔒
+                </div>
+
+                <h3>
+                    Secure Payments
+                </h3>
+
+                <p>
+                    Automated escrow processing with
+                    security deposit protection.
+                </p>
+
+            </div>
+
+
+            <div class="safety-card">
+
+                <div class="safety-icon">
+                    ★
+                </div>
+
+                <h3>
+                    Community Ratings
+                </h3>
+
+                <p>
+                    Transparent two-way reviews after every
+                    rental to build accountability and trust.
+                </p>
+
+            </div>
+
+
+            <div class="safety-card">
+
+                <div class="safety-icon">
+                    🛡
+                </div>
+
+                <h3>
+                    Protected Rentals
+                </h3>
+
+                <p>
+                    Up to ₹10,000 item protection guarantee
+                    on every approved booking.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         RECENT ITEMS
+    ========================= -->
+
+    <section
+        class="section"
+        style="background:#eef3ff;"
+    >
+
+
+        <div class="section-heading">
+
+            <div class="section-title">
+
+                <small>
+                    FRESH IN YOUR AREA
+                </small>
+
+                <h2>
+                    Recently Added in Ahmedabad
+                </h2>
+
+                <p>
+                    Fresh listings available immediately
+                    from your local neighbors.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="items">
+
+
+            <!-- Camera -->
+
+            <div class="item">
+
+                <div class="item-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80"
+                        alt="Camera"
+                    >
+
+                    <span class="available">
+                        Available
+                    </span>
+
+                </div>
+
+                <div class="item-info">
+
+                    <div class="item-category">
+                        Electronics · 5.0
+                    </div>
+
+                    <h3>
+                        Sony Alpha Camera
+                    </h3>
+
+                    <div class="item-bottom">
+
+                        <span class="price">
+                            ₹650 /day
+                        </span>
+
+                        <span class="rating">
+                            Rent Now →
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Tent -->
+
+            <div class="item">
+
+                <div class="item-image">
+
+                    <img
+                        src="https://images.pexels.com/photos/8692427/pexels-photo-8692427.jpeg?auto=compress&cs=tinysrgb&w=800"
+                        alt="Camping Tent"
+                    >
+
+                    <span class="available">
+                        Available
+                    </span>
+
+                </div>
+
+                <div class="item-info">
+
+                    <div class="item-category">
+                        Outdoor · 4.9
+                    </div>
+
+                    <h3>
+                        4-Person Camping Tent
+                    </h3>
+
+                    <div class="item-bottom">
+
+                        <span class="price">
+                            ₹250 /day
+                        </span>
+
+                        <span class="rating">
+                            Rent Now →
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Projector -->
+
+            <div class="item">
+
+                <div class="item-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?auto=format&fit=crop&w=800&q=80"
+                        alt="Projector"
+                    >
+
+                    <span class="available">
+                        Available
+                    </span>
+
+                </div>
+
+                <div class="item-info">
+
+                    <div class="item-category">
+                        Entertainment · 4.8
+                    </div>
+
+                    <h3>
+                        Full HD Projector
+                    </h3>
+
+                    <div class="item-bottom">
+
+                        <span class="price">
+                            ₹350 /day
+                        </span>
+
+                        <span class="rating">
+                            Rent Now →
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Cleaning -->
+
+            <div class="item">
+
+                <div class="item-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80"
+                        alt="Cleaning Equipment"
+                    >
+
+                    <span class="available">
+                        Available
+                    </span>
+
+                </div>
+
+                <div class="item-info">
+
+                    <div class="item-category">
+                        Cleaning & Home · 4.9
+                    </div>
+
+                    <h3>
+                        Pressure Washer
+                    </h3>
+
+                    <div class="item-bottom">
+
+                        <span class="price">
+                            ₹180 /day
+                        </span>
+
+                        <span class="rating">
+                            Rent Now →
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FINAL CTA
+    ========================= -->
+
+    <section class="cta">
+
+        <div>
+            ♻
+        </div>
+
+        <h2>
+
+            Share more. Buy less.<br>
+
+            <span>
+                Build community.
+            </span>
+
+        </h2>
+
+
+        <p>
+
+            Borrowing locally saves money, reduces manufacturing
+            footprint, and turns strangers into friendly neighbors.
+
+        </p>
+
+
+        <a
+            href="#"
+            class="yellow-button"
+        >
+            Explore BorrowBox →
+
+        </a>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+
+        <div class="footer-content">
+
+
+            <div class="footer-company">
+
+                <img
+                    src="logo.png"
+                    alt="BorrowBox"
+                    class="footer-logo"
+                >
+
+
+                <p>
+
+                    A hyper-local neighborhood sharing network
+                    to empower eco-friendly, trusted peer-to-peer
+                    resource exchange.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Borrow
+                </h3>
+
+                <a href="#">
+                    Browse
+                </a>
+
+                <a href="#">
+                    Tools & Hardware
+                </a>
+
+                <a href="#">
+                    Camping & Outdoors
+                </a>
+
+                <a href="#">
+                    Cameras & Audio
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Lend
+                </h3>
+
+                <a href="#">
+                    List an Item
+                </a>
+
+                <a href="#">
+                    Lender Protection
+                </a>
+
+                <a href="#">
+                    Pricing Guide
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Community
+                </h3>
+
+                <a href="#">
+                    Neighborhood Hubs
+                </a>
+
+                <a href="#">
+                    Borrower Stories
+                </a>
+
+                <a href="#">
+                    Eco Impact Tracker
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Support
+                </h3>
+
+                <a href="#">
+                    Help Center
+                </a>
+
+                <a href="#">
+                    How It Works
+                </a>
+
+                <a href="#">
+                    Contact Support
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 BorrowBox • Made for better communities
+            </span>
+
+            <span>
+                Terms &nbsp; Privacy &nbsp; Trust & Safety
+            </span>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
