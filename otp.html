@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BorrowBox - OTP Verification</title>
+
+
+    <style>
+
+        /* =========================
+           BASIC SETTINGS
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f7ff;
+            color: #183d36;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            height: 45px;
+            background-color: white;
+            border-bottom: 1px solid #e3e7ef;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 25px;
+        }
+
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+
+        .logo {
+            width: 85px;
+            height: auto;
+        }
+
+
+        .verified {
+            background-color: #fff1bd;
+            color: #806600;
+
+            padding: 4px 7px;
+
+            border-radius: 8px;
+
+            font-size: 7px;
+        }
+
+
+        /* =========================
+           TOP PROGRESS
+        ========================= */
+
+        .progress {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            background-color: #f1f4fb;
+
+            padding: 3px;
+
+            border-radius: 6px;
+        }
+
+
+        .progress span {
+            padding: 6px 9px;
+
+            font-size: 7px;
+
+            color: #68727c;
+        }
+
+
+        .progress .active {
+            background-color: #76d9eb;
+
+            color: white;
+
+            border-radius: 5px;
+
+            font-weight: bold;
+        }
+
+
+        .user-icon {
+            width: 15px;
+            height: 15px;
+
+            background-color: #82dbea;
+
+            color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            font-size: 7px;
+        }
+
+
+        /* =========================
+           MAIN AREA
+        ========================= */
+
+        .main {
+            min-height: calc(100vh - 85px);
+
+            padding: 18px 25px;
+
+            background-color: #f5f7ff;
+        }
+
+
+        /* =========================
+           SIMULATION BAR
+        ========================= */
+
+        .simulation {
+            width: 100%;
+
+            background-color: white;
+
+            border-radius: 6px;
+
+            padding: 8px;
+
+            box-shadow: 0 2px 8px rgba(50, 70, 100, 0.04);
+
+            margin-bottom: 12px;
+
+            font-size: 7px;
+
+            color: #68737b;
+        }
+
+
+        .simulation-title {
+            margin-right: 8px;
+
+            font-weight: bold;
+        }
+
+
+        .simulation span {
+            margin-right: 12px;
+        }
+
+
+        .simulation .selected {
+            color: white;
+
+            background-color: #73d5e8;
+
+            padding: 5px 8px;
+
+            border-radius: 5px;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .content {
+            max-width: 900px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            background-color: #eef3ff;
+
+            padding: 15px;
+
+            border-radius: 12px;
+        }
+
+
+        /* =========================
+           LEFT SIDE
+        ========================= */
+
+        .left-side {
+            width: 50%;
+
+            padding: 8px 15px;
+        }
+
+
+        .small-logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .small-logo img {
+            width: 70px;
+        }
+
+
+        .left-side h1 {
+            font-size: 17px;
+
+            margin: 10px 0 6px;
+
+            color: #075f52;
+        }
+
+
+        .left-description {
+            font-size: 8px;
+
+            line-height: 1.5;
+
+            color: #677674;
+
+            max-width: 220px;
+        }
+
+
+        /* =========================
+           SECURITY ILLUSTRATION
+        ========================= */
+
+        .illustration {
+            height: 120px;
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            margin: 8px 0;
+        }
+
+
+        .glow {
+            position: absolute;
+
+            width: 100px;
+            height: 80px;
+
+            border-radius: 50%;
+
+            background-color: #fff3bc;
+
+            opacity: 0.8;
+        }
+
+
+        .shield {
+            position: relative;
+
+            width: 45px;
+            height: 45px;
+
+            background-color: #f7b900;
+
+            border-radius: 8px;
+
+            z-index: 2;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+
+            font-size: 20px;
+        }
+
+
+        .shield:after {
+            content: "";
+
+            position: absolute;
+
+            width: 55px;
+            height: 10px;
+
+            background-color: #c9d6ed;
+
+            left: -20px;
+
+            bottom: -15px;
+
+            transform: rotate(-8deg);
+
+            z-index: -1;
+        }
+
+
+        .dot-one {
+            position: absolute;
+
+            width: 5px;
+            height: 5px;
+
+            background-color: #f0ae00;
+
+            border-radius: 50%;
+
+            left: 60px;
+            top: 40px;
+        }
+
+
+        .dot-two {
+            position: absolute;
+
+            width: 5px;
+            height: 5px;
+
+            background-color: #08795e;
+
+            border-radius: 50%;
+
+            right: 45px;
+            top: 48px;
+        }
+
+
+        .ground {
+            position: absolute;
+
+            width: 90px;
+            height: 8px;
+
+            background-color: #d7e3cf;
+
+            border-radius: 50%;
+
+            bottom: 17px;
+        }
+
+
+        /* =========================
+           SECURITY FEATURES
+        ========================= */
+
+        .features {
+            background-color: rgba(255, 255, 255, 0.65);
+
+            border-radius: 6px;
+
+            padding: 8px;
+
+            width: 220px;
+        }
+
+
+        .feature {
+            font-size: 6px;
+
+            color: #4d6961;
+
+            margin-bottom: 6px;
+        }
+
+
+        .feature:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .feature span {
+            display: inline-flex;
+
+            width: 11px;
+            height: 11px;
+
+            background-color: #e1f6ed;
+
+            color: #11805f;
+
+            border-radius: 50%;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-right: 4px;
+        }
+
+
+        /* =========================
+           RIGHT SIDE
+        ========================= */
+
+        .right-side {
+            width: 50%;
+
+            background-color: white;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            box-shadow: 0 7px 20px rgba(40, 60, 100, 0.10);
+        }
+
+
+        .security-badge {
+            display: block;
+
+            width: fit-content;
+
+            margin: 0 auto 8px;
+
+            background-color: #e7f3ff;
+
+            color: #4c6d83;
+
+            padding: 4px 8px;
+
+            border-radius: 8px;
+
+            font-size: 6px;
+        }
+
+
+        .right-side h2 {
+            text-align: center;
+
+            font-size: 17px;
+
+            margin: 0 0 5px;
+
+            color: #16272d;
+        }
+
+
+        .verify-text {
+            text-align: center;
+
+            font-size: 7px;
+
+            color: #7b8587;
+
+            margin: 0 0 6px;
+        }
+
+
+        .email {
+            text-align: center;
+
+            font-size: 7px;
+
+            color: #374f49;
+
+            margin-bottom: 12px;
+        }
+
+
+        .email span {
+            color: #12805f;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           OTP BOXES
+        ========================= */
+
+        .otp {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 6px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .otp input {
+            width: 25px;
+            height: 30px;
+
+            border: 1px solid #b9d2ca;
+
+            border-radius: 5px;
+
+            text-align: center;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            color: #145f50;
+
+            background-color: white;
+        }
+
+
+        .otp input:focus {
+            outline: none;
+
+            border: 2px solid #27a886;
+
+            box-shadow: 0 0 5px rgba(39, 168, 134, 0.2);
+        }
+
+
+        /* =========================
+           RESEND
+        ========================= */
+
+        .resend {
+            text-align: center;
+
+            font-size: 6px;
+
+            color: #7c8784;
+
+            margin-bottom: 10px;
+        }
+
+
+        .resend a {
+            color: #087d60;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           VERIFY BUTTON
+        ========================= */
+
+        .verify-button {
+            width: 100%;
+
+            height: 30px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background-color: #75d8e9;
+
+            color: white;
+
+            font-size: 8px;
+
+            cursor: pointer;
+        }
+
+
+        .verify-button:hover {
+            background-color: #58c8db;
+        }
+
+
+        /* =========================
+           WRONG EMAIL
+        ========================= */
+
+        .wrong-email {
+            text-align: center;
+
+            font-size: 6px;
+
+            color: #687975;
+
+            margin: 9px 0 3px;
+        }
+
+
+        .wrong-email a {
+            color: #078060;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+
+        .privacy {
+            text-align: center;
+
+            font-size: 6px;
+
+            color: #7a8581;
+        }
+
+
+        /* =========================
+           BOTTOM INFORMATION
+        ========================= */
+
+        .bottom-info {
+            max-width: 900px;
+
+            margin: 8px auto 0;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            font-size: 6px;
+
+            color: #65746f;
+        }
+
+
+        .bottom-right {
+            display: flex;
+
+            gap: 12px;
+
+            color: #18735d;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            height: 40px;
+
+            background-color: white;
+
+            border-top: 1px solid #dfe4eb;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 25px;
+
+            font-size: 7px;
+
+            color: #75807d;
+        }
+
+
+        .footer-left {
+            color: #537066;
+        }
+
+
+        .footer-right {
+            display: flex;
+
+            gap: 15px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media screen and (max-width: 700px) {
+
+            .header {
+                padding: 0 10px;
+            }
+
+
+            .progress {
+                display: none;
+            }
+
+
+            .content {
+                flex-direction: column;
+
+                max-width: 400px;
+            }
+
+
+            .left-side {
+                width: 100%;
+
+                text-align: center;
+            }
+
+
+            .right-side {
+                width: 100%;
+            }
+
+
+            .left-description {
+                margin-left: auto;
+
+                margin-right: auto;
+            }
+
+
+            .features {
+                margin: auto;
+
+                text-align: left;
+            }
+
+
+            .bottom-info {
+                display: none;
+            }
+
+
+            .footer-right {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+
+        <div class="header-left">
+
+            <img
+                src="logo.png"
+                alt="BorrowBox Logo"
+                class="logo"
+            >
+
+
+            <span class="verified">
+                ✓ Verified Hub
+            </span>
+
+        </div>
+
+
+        <div class="progress">
+
+            <span class="active">
+                1. OTP Verification
+            </span>
+
+            <span>
+                2. Success State
+            </span>
+
+            <span>
+                3. Error State
+            </span>
+
+        </div>
+
+
+        <div class="user-icon">
+            ●
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main">
+
+
+        <!-- SIMULATION BAR -->
+
+        <div class="simulation">
+
+            <span class="simulation-title">
+                SIMULATION STATE:
+            </span>
+
+            <span class="selected">
+                1. OTP Input
+            </span>
+
+            <span>
+                2. Success State ✓
+            </span>
+
+            <span>
+                3. Error State ⚠
+            </span>
+
+        </div>
+
+
+
+        <!-- MAIN CONTENT -->
+
+        <div class="content">
+
+
+            <!-- =====================
+                 LEFT SIDE
+            ====================== -->
+
+            <section class="left-side">
+
+
+                <div class="small-logo">
+
+                    <img
+                        src="logo.png"
+                        alt="BorrowBox Logo"
+                    >
+
+                </div>
+
+
+                <h1>
+                    Secure Your Account
+                </h1>
+
+
+                <p class="left-description">
+
+                    One quick step to verify that it's really you.
+                    Protecting our trusted neighborhood sharing community.
+
+                </p>
+
+
+                <!-- ILLUSTRATION -->
+
+                <div class="illustration">
+
+                    <div class="glow"></div>
+
+                    <div class="dot-one"></div>
+
+                    <div class="dot-two"></div>
+
+                    <div class="ground"></div>
+
+                    <div class="shield">
+                        🔒
+                    </div>
+
+                </div>
+
+
+                <!-- FEATURES -->
+
+                <div class="features">
+
+
+                    <div class="feature">
+
+                        <span>✓</span>
+
+                        ID-verified neighborhood members
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <span>✓</span>
+
+                        Encrypted end-to-end authentication
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <span>✓</span>
+
+                        Instant item protection guarantee
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================
+                 RIGHT SIDE
+            ====================== -->
+
+            <section class="right-side">
+
+
+                <div class="security-badge">
+
+                    ✉ Neighborhood Security Check
+
+                </div>
+
+
+                <h2>
+                    Verify Your Email
+                </h2>
+
+
+                <p class="verify-text">
+
+                    We've sent a 6-digit verification code to
+
+                </p>
+
+
+                <div class="email">
+
+                    🔒 gu***@gmail.com
+
+                    <span>
+                        Edit
+                    </span>
+
+                </div>
+
+
+                <!-- =====================
+                     OTP INPUTS
+                ====================== -->
+
+                <div class="otp">
+
+                    <input
+                        type="text"
+                        maxlength="1"
+                        id="otp1"
+                        inputmode="numeric"
+                        oninput="moveNext(this, 'otp2')"
+                    >
+
+
+                    <input
+                        type="text"
+                        maxlength="1"
+                        id="otp2"
+                        inputmode="numeric"
+                        oninput="moveNext(this, 'otp3')"
+                        onkeydown="moveBack(event, 'otp1')"
+                    >
+
+
+                    <input
+                        type="text"
+                        maxlength="1"
+                        id="otp3"
+                        inputmode="numeric"
+                        oninput="moveNext(this, 'otp4')"
+                        onkeydown="moveBack(event, 'otp2')"
+                    >
+
+
+                    <input
+                        type="text"
+                        maxlength="1"
+                        id="otp4"
+                        inputmode="numeric"
+                        oninput="moveNext(this, 'otp5')"
+                        onkeydown="moveBack(event, 'otp3')"
+                    >
+
+
+                    <input
+                        type="text"
+                        maxlength="1"
+                        id="otp5"
+                        inputmode="numeric"
+                        oninput="moveNext(this, 'otp6')"
+                        onkeydown="moveBack(event, 'otp4')"
+                    >
+
+
+                    <input
+                        type="text"
+                        maxlength="1"
+                        id="otp6"
+                        inputmode="numeric"
+                        onkeydown="moveBack(event, 'otp5')"
+                    >
+
+                </div>
+
+
+                <!-- RESEND -->
+
+                <div class="resend">
+
+                    Didn't receive the code?
+
+                    <a href="#">
+                        Resend OTP in 00:44
+                    </a>
+
+                </div>
+
+
+                <!-- VERIFY BUTTON -->
+
+                <a href="reaset-pass.html">
+                    <button class="verify-button">
+
+                    Verify & Continue →
+
+                    </button>
+                </a>
+
+
+                <!-- WRONG EMAIL -->
+
+                <p class="wrong-email">
+
+                    Entered the wrong email?
+
+                    <a href="forgot1.html">
+                        Change Email
+                    </a>
+
+                </p>
+
+
+                <p class="privacy">
+
+                    🔒 Your verification code is private and secure.
+
+                </p>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- BOTTOM INFORMATION -->
+
+        <div class="bottom-info">
+
+
+            <span>
+                ● 14 neighbors actively sharing tools & gear in Bolingbrook right now.
+            </span>
+
+
+            <div class="bottom-right">
+
+                <span>
+                    Community Standards
+                </span>
+
+                <span>
+                    Need Help?
+                </span>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+
+        <div class="footer-left">
+
+            ● BorrowBox &nbsp; • &nbsp;
+            Better Neighborhoods. Stronger Community.
+
+        </div>
+
+
+        <div class="footer-right">
+
+            <span>
+                Community Guidelines
+            </span>
+
+            <span>
+                Security Center
+            </span>
+
+            <span>
+                Privacy Policy
+            </span>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================
+         OTP JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function moveNext(current, nextId) {
+
+            if (current.value.length === 1) {
+
+                document.getElementById(nextId).focus();
+
+            }
+
+        }
+
+
+        function moveBack(event, previousId) {
+
+            if (
+                event.key === "Backspace" &&
+                event.target.value === ""
+            ) {
+
+                document.getElementById(previousId).focus();
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

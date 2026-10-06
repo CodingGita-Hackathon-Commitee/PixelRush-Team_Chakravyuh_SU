@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BorrowBox - Reset Password</title>
+
+
+    <style>
+
+        /* =========================
+           BASIC SETTINGS
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background-color: #f4f6fc;
+
+            color: #173c35;
+        }
+
+
+        /* =========================
+           MAIN PAGE
+        ========================= */
+
+        .page {
+            width: 92%;
+
+            max-width: 1050px;
+
+            min-height: 620px;
+
+            margin: 20px auto;
+
+            background-color: white;
+
+            border: 2px solid #249ee5;
+
+            padding: 8px;
+
+            position: relative;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            height: 45px;
+
+            border-bottom: 1px dotted #3aa8e8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 8px;
+        }
+
+
+        .header-left {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        .logo {
+            width: 85px;
+
+            height: auto;
+        }
+
+
+        .trust {
+            font-size: 6px;
+
+            color: #3c7063;
+
+            background-color: #edf7f1;
+
+            padding: 4px 7px;
+
+            border-radius: 8px;
+        }
+
+
+        .steps {
+            font-size: 7px;
+
+            color: #84908d;
+        }
+
+
+        .steps .active {
+            color: #08785b;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+            display: flex;
+
+            min-height: 520px;
+
+            border: 1px dotted #3aa8e8;
+        }
+
+
+        /* =========================
+           LEFT SIDE
+        ========================= */
+
+        .left-side {
+            width: 42%;
+
+            background-color: #f1f5ff;
+
+            padding: 20px;
+
+            border-right: 1px solid #e0e6f0;
+        }
+
+
+        .access {
+            display: inline-block;
+
+            background-color: #087c5c;
+
+            color: white;
+
+            padding: 5px 9px;
+
+            border-radius: 10px;
+
+            font-size: 6px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .left-side h1 {
+            font-size: 20px;
+
+            margin: 0 0 8px;
+
+            color: #173c35;
+        }
+
+
+        .left-description {
+            font-size: 8px;
+
+            line-height: 1.6;
+
+            color: #65736f;
+
+            max-width: 270px;
+        }
+
+
+        /* =========================
+           SIMPLE ICON BOX
+        ========================= */
+
+        .icons-box {
+            height: 90px;
+
+            margin-top: 18px;
+
+            background-color: white;
+
+            border-radius: 8px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 15px;
+
+            position: relative;
+        }
+
+
+        .icon-card {
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 7px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 23px;
+        }
+
+
+        .lock-icon {
+            background-color: #08795f;
+
+            color: white;
+
+            transform: rotate(-5deg);
+        }
+
+
+        .key-icon {
+            background-color: #e9f0ff;
+
+            color: #16715d;
+        }
+
+
+        .small-dot {
+            position: absolute;
+
+            width: 13px;
+
+            height: 13px;
+
+            background-color: #f4b800;
+
+            border-radius: 50%;
+
+            left: 95px;
+
+            top: 14px;
+        }
+
+
+        .encryption {
+            position: absolute;
+
+            bottom: 10px;
+
+            background-color: #eef5ff;
+
+            color: #526f8b;
+
+            padding: 5px 10px;
+
+            border-radius: 7px;
+
+            font-size: 6px;
+        }
+
+
+        /* =========================
+           SECURITY BOXES
+        ========================= */
+
+        .security-title {
+            font-size: 7px;
+
+            font-weight: bold;
+
+            color: #5c6c68;
+
+            margin-top: 15px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .security-box {
+            background-color: white;
+
+            border-radius: 6px;
+
+            padding: 8px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .security-box h3 {
+            margin: 0 0 3px;
+
+            font-size: 7px;
+
+            color: #23624f;
+        }
+
+
+        .security-box p {
+            margin: 0;
+
+            font-size: 6px;
+
+            line-height: 1.4;
+
+            color: #7a8581;
+        }
+
+
+        .security-icon {
+            color: #087c5c;
+
+            margin-right: 3px;
+        }
+
+
+        /* =========================
+           COMMUNITY BOX
+        ========================= */
+
+        .community {
+            margin-top: 8px;
+
+            padding: 8px;
+
+            display: flex;
+
+            gap: 8px;
+
+            align-items: center;
+        }
+
+
+        .community-icon {
+            width: 25px;
+
+            height: 25px;
+
+            background-color: #dff3ed;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #087c5c;
+
+            font-size: 10px;
+        }
+
+
+        .community-text {
+            font-size: 6px;
+
+            color: #66746f;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           RIGHT SIDE
+        ========================= */
+
+        .right-side {
+            width: 58%;
+
+            padding: 22px 25px;
+
+            background-color: white;
+        }
+
+
+        .form-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 5px;
+        }
+
+
+        .form-top h2 {
+            margin: 0;
+
+            font-size: 18px;
+
+            color: #17272c;
+        }
+
+
+        .step-badge {
+            background-color: #eef4ff;
+
+            color: #637286;
+
+            padding: 5px 8px;
+
+            border-radius: 7px;
+
+            font-size: 6px;
+        }
+
+
+        .form-description {
+            font-size: 7px;
+
+            color: #798583;
+
+            margin: 0 0 15px;
+        }
+
+
+        /* =========================
+           FORM LABEL
+        ========================= */
+
+        label {
+            display: block;
+
+            font-size: 7px;
+
+            color: #455b55;
+
+            margin-bottom: 5px;
+        }
+
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        .input-box {
+            position: relative;
+
+            margin-bottom: 4px;
+        }
+
+
+        .input-box input {
+            width: 100%;
+
+            height: 32px;
+
+            border: 1px solid #d8e1eb;
+
+            border-radius: 6px;
+
+            padding: 0 30px 0 10px;
+
+            background-color: #f7f9ff;
+
+            font-size: 8px;
+        }
+
+
+        .input-box input:focus {
+            outline: none;
+
+            border-color: #65cbdc;
+
+            background-color: white;
+        }
+
+
+        .eye {
+            position: absolute;
+
+            right: 10px;
+
+            top: 9px;
+
+            font-size: 9px;
+
+            color: #7a8986;
+        }
+
+
+        .input-note {
+            text-align: right;
+
+            font-size: 6px;
+
+            color: #8a9390;
+
+            margin-bottom: 13px;
+        }
+
+
+        /* =========================
+           SECURITY CHECKLIST
+        ========================= */
+
+        .checklist {
+            background-color: #f0f4fc;
+
+            border-radius: 7px;
+
+            padding: 8px;
+
+            margin-bottom: 13px;
+        }
+
+
+        .checklist-title {
+            font-size: 6px;
+
+            color: #546660;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+
+        .checks {
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 6px;
+
+            color: #7a8582;
+        }
+
+
+        .check {
+            display: flex;
+
+            align-items: center;
+
+            gap: 3px;
+        }
+
+
+        .circle {
+            width: 8px;
+
+            height: 8px;
+
+            border: 1px solid #9baaa5;
+
+            border-radius: 50%;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .update-button {
+            width: 100%;
+
+            height: 32px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background-color: #75d8e9;
+
+            color: white;
+
+            font-size: 8px;
+
+            cursor: pointer;
+        }
+
+
+        .update-button:hover {
+            background-color: #59c7da;
+        }
+
+
+        /* =========================
+           LOGIN LINK
+        ========================= */
+
+        .form-bottom {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-top: 8px;
+        }
+
+
+        .login-link {
+            color: #087c5c;
+
+            font-size: 7px;
+
+            text-decoration: none;
+        }
+
+
+        .help {
+            color: #9a9f9e;
+
+            font-size: 6px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            height: 32px;
+
+            border-top: 1px dotted #3aa8e8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 8px;
+
+            font-size: 6px;
+
+            color: #7b8582;
+        }
+
+
+        .footer-left {
+            color: #567269;
+        }
+
+
+        .footer-right {
+            display: flex;
+
+            gap: 15px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media screen and (max-width: 750px) {
+
+            .page {
+                width: 96%;
+
+                margin: 10px auto;
+            }
+
+
+            .steps {
+                display: none;
+            }
+
+
+            .content {
+                flex-direction: column;
+            }
+
+
+            .left-side,
+            .right-side {
+                width: 100%;
+            }
+
+
+            .left-side {
+                border-right: none;
+
+                border-bottom: 1px solid #e0e6f0;
+            }
+
+
+            .right-side {
+                padding: 20px;
+            }
+
+
+            .footer-right {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         PAGE
+    ========================== -->
+
+    <div class="page">
+
+
+        <!-- =====================
+             HEADER
+        ====================== -->
+
+        <header class="header">
+
+
+            <div class="header-left">
+
+                <img
+                    src="logo.png"
+                    alt="BorrowBox Logo"
+                    class="logo"
+                >
+
+
+                <span class="trust">
+                    NEIGHBORHOOD TRUST
+                </span>
+
+            </div>
+
+
+            <div class="steps">
+
+                1. Forgot Email
+                →
+                2. OTP Verified
+                →
+                <span class="active">
+                    3. New Password
+                </span>
+                →
+                4. Login
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================
+             MAIN CONTENT
+        ====================== -->
+
+        <div class="content">
+
+
+            <!-- =====================
+                 LEFT SIDE
+            ====================== -->
+
+            <section class="left-side">
+
+
+                <span class="access">
+                    ✓ Verified Neighborhood Access
+                </span>
+
+
+                <h1>
+                    Set new password
+                </h1>
+
+
+                <p class="left-description">
+
+                    Create a strong, unique password to safeguard
+                    your shared neighborhood items, ongoing
+                    borrowings, and established community reputation.
+
+                </p>
+
+
+                <!-- ICON AREA -->
+
+                <div class="icons-box">
+
+
+                    <div class="icon-card lock-icon">
+                        🔐
+                    </div>
+
+
+                    <div class="icon-card key-icon">
+                        🔑
+                    </div>
+
+
+                    <div class="small-dot"></div>
+
+
+                    <div class="encryption">
+                        ● 256-Bit Neighborhood Identity Encryption
+                    </div>
+
+                </div>
+
+
+                <!-- SECURITY TITLE -->
+
+                <div class="security-title">
+
+                    BORROWBOX SAFETY PRINCIPLES
+
+                </div>
+
+
+                <!-- SECURITY BOX -->
+
+                <div class="security-box">
+
+                    <h3>
+                        <span class="security-icon">●</span>
+                        Mutual Item Protection
+                    </h3>
+
+                    <p>
+                        Protect physical tools, gear, and deposit
+                        authorizations linked to your service.
+                    </p>
+
+                </div>
+
+
+                <div class="security-box">
+
+                    <h3>
+                        <span class="security-icon">●</span>
+                        Instant Session Revocation
+                    </h3>
+
+                    <p>
+                        Updating automatically invalidates any
+                        existing logins across unknown devices.
+                    </p>
+
+                </div>
+
+
+                <!-- COMMUNITY -->
+
+                <div class="community">
+
+
+                    <div class="community-icon">
+                        ♡
+                    </div>
+
+
+                    <div class="community-text">
+
+                        <strong>
+                            Local Community Assurance
+                        </strong>
+
+                        <br>
+
+                        Serving 4,200+ neighborhood lenders
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================
+                 RIGHT SIDE
+            ====================== -->
+
+            <section class="right-side">
+
+
+                <div class="form-top">
+
+                    <h2>
+                        Reset Your Password 🔐
+                    </h2>
+
+
+                    <span class="step-badge">
+                        Step 3 of 4
+                    </span>
+
+                </div>
+
+
+                <p class="form-description">
+
+                    Your new password must be distinct from previous passwords.
+
+                </p>
+
+
+
+                <!-- NEW PASSWORD -->
+
+                <label for="new-password">
+                    New Password
+                </label>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="password"
+                        id="new-password"
+                        placeholder="Enter new password"
+                    >
+
+
+                    <span class="eye">
+                        ◉
+                    </span>
+
+                </div>
+
+
+                <div class="input-note">
+                    UNENTERED
+                </div>
+
+
+                <div class="input-note">
+
+                    Aim for a strong paraphrase using mixed cases.
+
+                </div>
+
+
+
+                <!-- SECURITY CHECKLIST -->
+
+                <div class="checklist">
+
+
+                    <div class="checklist-title">
+
+                        SECURITY CHECKLIST
+
+                    </div>
+
+
+                    <div class="checks">
+
+
+                        <div class="check">
+
+                            <span class="circle"></span>
+
+                            8+ characters
+
+                        </div>
+
+
+                        <div class="check">
+
+                            <span class="circle"></span>
+
+                            At least 1 number
+
+                        </div>
+
+
+                        <div class="check">
+
+                            <span class="circle"></span>
+
+                            1 special symbol
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <label for="confirm-password">
+
+                    Confirm New Password
+
+                </label>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="password"
+                        id="confirm-password"
+                        placeholder="Re-enter your new password"
+                    >
+
+
+                    <span class="eye">
+                        ◉
+                    </span>
+
+                </div>
+
+
+
+                <!-- UPDATE BUTTON -->
+
+                <a href="accoune-created.html">
+                <button class="update-button">
+
+                    Update Password & Login →
+
+                </button>
+                </a>
+
+
+
+                <!-- LINKS -->
+
+                <div class="form-bottom">
+
+
+                    <a
+                        href="index.html"
+                        class="login-link"
+                    >
+                        ← Back to Login
+                    </a>
+
+
+                    <span class="help">
+                        Need assistance?
+                    </span>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- =====================
+             FOOTER
+        ====================== -->
+
+        <footer class="footer">
+
+
+            <div class="footer-left">
+
+                ● Protected by BorrowBox Community Guarantee
+
+            </div>
+
+
+            <div class="footer-right">
+
+                <span>
+                    Security Center
+                </span>
+
+                <span>
+                    Neighborhood Bylaws
+                </span>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+</body>
+
+</html>

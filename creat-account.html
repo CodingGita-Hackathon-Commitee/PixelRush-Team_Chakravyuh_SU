@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BorrowBox - Join Your Neighborhood</title>
+
+    <style>
+
+        /* ------------------------------
+           BASIC SETTINGS
+        ------------------------------ */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f3;
+            color: #123d2f;
+        }
+
+
+        /* ------------------------------
+           TOP HEADER
+        ------------------------------ */
+
+        .top-header {
+            height: 55px;
+            background-color: white;
+            border-bottom: 1px solid #dddddd;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 40px;
+        }
+
+        .logo {
+            height: 30px;
+            width: auto;
+        }
+
+        .secure {
+            font-size: 12px;
+            color: #34745b;
+            background-color: #edf7f0;
+            padding: 7px 12px;
+            border-radius: 15px;
+        }
+
+
+        /* ------------------------------
+           MAIN CONTAINER
+        ------------------------------ */
+
+        .main-box {
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 35px auto;
+
+            background-color: white;
+
+            border: 1px dashed #46a6ff;
+
+            display: flex;
+
+            min-height: 600px;
+        }
+
+
+        /* ------------------------------
+           LEFT SIDE
+        ------------------------------ */
+
+        .left-side {
+            width: 50%;
+            padding: 45px 40px;
+
+            background-color: #fbfaf4;
+        }
+
+        .small-text {
+            font-size: 11px;
+            color: #31735a;
+            margin-bottom: 10px;
+        }
+
+        .left-side h1 {
+            font-size: 38px;
+            line-height: 1;
+            margin: 0 0 15px 0;
+            color: #126247;
+        }
+
+        .description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #555555;
+
+            max-width: 420px;
+        }
+
+
+        /* ------------------------------
+           IMAGE
+        ------------------------------ */
+
+        .image-box {
+            width: 100%;
+            max-width: 420px;
+
+            margin: 30px 0;
+
+            background-color: #f0f3e9;
+            border-radius: 15px;
+
+            text-align: center;
+        }
+
+        .image-box img {
+            width: 100%;
+            max-width: 300px;
+        }
+
+
+        /* ------------------------------
+           FEATURES
+        ------------------------------ */
+
+        .features {
+            margin-top: 20px;
+        }
+
+        .feature {
+            margin-bottom: 14px;
+            font-size: 13px;
+            color: #555555;
+        }
+
+        .feature b {
+            color: #126247;
+        }
+
+
+        /* ------------------------------
+           RIGHT SIDE
+        ------------------------------ */
+
+        .right-side {
+            width: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 35px;
+        }
+
+        .form-box {
+            width: 100%;
+            max-width: 390px;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+            background-color: white;
+        }
+
+        .form-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+        .form-heading h2 {
+            margin: 0;
+            color: #123d2f;
+            font-size: 23px;
+        }
+
+        .badge {
+            background-color: #fff3c7;
+            color: #876600;
+
+            font-size: 10px;
+
+            padding: 6px 9px;
+
+            border-radius: 10px;
+        }
+
+        .join-text {
+            font-size: 12px;
+            color: #777777;
+
+            margin-top: -12px;
+            margin-bottom: 20px;
+        }
+
+
+        /* ------------------------------
+           FORM
+        ------------------------------ */
+
+        label {
+            display: block;
+
+            font-size: 11px;
+            color: #555555;
+
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 11px;
+
+            border: 1px solid #dddddd;
+            border-radius: 6px;
+
+            margin-bottom: 15px;
+
+            font-size: 12px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #39a980;
+        }
+
+        .password-text {
+            font-size: 9px;
+            color: #999999;
+
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+
+
+        /* ------------------------------
+           CHECKBOX
+        ------------------------------ */
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+
+            gap: 7px;
+
+            font-size: 10px;
+            color: #666666;
+
+            margin-bottom: 15px;
+        }
+
+        .checkbox input {
+            width: auto;
+            margin: 0;
+        }
+
+
+        /* ------------------------------
+           BUTTON
+        ------------------------------ */
+
+        .create-button {
+            width: 100%;
+
+            padding: 12px;
+
+            border: none;
+            border-radius: 6px;
+
+            background-color: #72d6e8;
+            color: white;
+
+            font-size: 12px;
+
+            cursor: pointer;
+        }
+
+        .create-button:hover {
+            background-color: #55c5da;
+        }
+
+
+        /* ------------------------------
+           GOOGLE BUTTON
+        ------------------------------ */
+
+        .google-button {
+            width: 100%;
+
+            padding: 11px;
+
+            margin-top: 10px;
+
+            border: 1px solid #dddddd;
+            border-radius: 6px;
+
+            background-color: white;
+
+            font-size: 12px;
+
+            cursor: pointer;
+        }
+
+        .google-button:hover {
+            background-color: #f7f7f7;
+        }
+
+
+        /* ------------------------------
+           LOGIN TEXT
+        ------------------------------ */
+
+        .login-text {
+            text-align: center;
+
+            font-size: 10px;
+
+            color: #777777;
+
+            margin-top: 15px;
+        }
+
+        .login-text a {
+            color: #16805b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+
+        /* ------------------------------
+           FOOTER
+        ------------------------------ */
+
+        footer {
+            height: 40px;
+
+            border-top: 1px solid #dddddd;
+
+            background-color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 40px;
+
+            font-size: 9px;
+            color: #777777;
+        }
+
+
+        /* ------------------------------
+           MOBILE
+        ------------------------------ */
+
+        @media screen and (max-width: 800px) {
+
+            .main-box {
+                flex-direction: column;
+            }
+
+            .left-side {
+                width: 100%;
+            }
+
+            .right-side {
+                width: 100%;
+            }
+
+            .top-header {
+                padding: 0 20px;
+            }
+
+            footer {
+                padding: 0 20px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- TOP HEADER -->
+
+    <header class="top-header">
+
+        <img src="logo.png" alt="BorrowBox Logo" class="logo">
+
+        <div class="secure">
+            🔒 Secure sign up flow
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-box">
+
+
+        <!-- LEFT SECTION -->
+
+        <section class="left-side">
+
+            <p class="small-text">
+                BORROW • SHARE • COMMUNITY
+            </p>
+
+            <h1>
+                Join Your<br>
+                Neighborhood.
+            </h1>
+
+            <p class="description">
+                Borrow what you need. Share what you have.
+                Build a stronger, more sustainable community
+                together.
+            </p>
+
+
+            <!-- IMAGE -->
+
+            <div class="image-box">
+
+                <img
+                    src="creat1.png.jpg"
+                    alt="People sharing items in a neighborhood"
+                >
+
+            </div>
+
+
+            <!-- FEATURES -->
+
+            <div class="features">
+
+                <div class="feature">
+                    ✓ <b>Trusted neighbors</b> — verified local accounts
+                </div>
+
+                <div class="feature">
+                    ✓ <b>Easy borrowing</b> — browse tools, gear & games
+                </div>
+
+                <div class="feature">
+                    ✓ <b>Simple and transparent</b> — clear borrowing rules
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- RIGHT SECTION -->
+
+        <section class="right-side">
+
+
+            <!-- FORM -->
+
+            <div class="form-box">
+
+                <div class="form-heading">
+
+                    <h2>Create your account</h2>
+
+                    <span class="badge">
+                        Free for now
+                    </span>
+
+                </div>
+
+
+                <p class="join-text">
+                    Join BorrowBox and start sharing with your community.
+                </p>
+
+
+                <!-- FULL NAME -->
+
+                <label for="name">
+                    Full name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="e.g. John Johnson"
+                    required
+                >
+
+
+                <!-- EMAIL -->
+
+                <label for="email">
+                    Email address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="you@example.com"
+                    required
+                >
+
+
+                <!-- PASSWORD -->
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <p class="password-text">
+                    Use at least 8 characters.
+                </p>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <label for="confirm-password">
+                    Confirm Password
+                </label>
+
+                <input
+                    type="password"
+                    id="confirm-password"
+                    placeholder="Enter password again"
+                    required
+                >
+
+
+                <!-- CHECKBOX -->
+
+                <div class="checkbox">
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                    >
+
+                    <label for="terms">
+                        I agree to the Terms & Conditions and Privacy Policy.
+                    </label>
+
+                </div>
+
+
+                <!-- CREATE ACCOUNT -->
+                <a href="accoune-created.html">
+                    <button class="create-button">
+                        Create Account →
+                    </button>
+                </a>
+
+
+                <!-- GOOGLE -->
+
+                <button class="google-button">
+                    🔴 Continue with Google
+                </button>
+
+
+                <!-- LOGIN -->
+
+                <p class="login-text">
+                    Already have an account?
+                    <a href="index.html">
+                        Log in
+                    </a>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <span>
+            © BorrowBox · Better Neighbourhoods. Stronger Community.
+        </span>
+
+        <span>
+            Designed for Desktop · Privacy Policy · Terms of Service
+        </span>
+
+    </footer>
+
+
+</body>
+
+</html>
