@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BorrowBox - Success</title>
+
+
+    <style>
+
+        /* -------------------------
+           BASIC SETTINGS
+        ------------------------- */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1f8ee;
+            color: #173b32;
+        }
+
+
+        /* -------------------------
+           TOP HEADER
+        ------------------------- */
+
+        .header {
+            height: 42px;
+
+            background-color: white;
+
+            border-bottom: 1px solid #dddddd;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 18px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo {
+            width: 85px;
+            height: auto;
+        }
+
+        .step {
+            background-color: #e7f6ed;
+
+            color: #217052;
+
+            padding: 5px 9px;
+
+            border-radius: 12px;
+
+            font-size: 8px;
+        }
+
+        .ready {
+            background-color: #e9f7ed;
+
+            color: #267351;
+
+            padding: 6px 12px;
+
+            border-radius: 12px;
+
+            font-size: 8px;
+        }
+
+
+        /* -------------------------
+           MAIN AREA
+        ------------------------- */
+
+        .main {
+            min-height: calc(100vh - 82px);
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 15% 85%,
+                    #fff2b5 0,
+                    #fff2b5 9%,
+                    transparent 25%
+                ),
+
+                radial-gradient(
+                    circle at 90% 20%,
+                    #fff4bd 0,
+                    #fff4bd 8%,
+                    transparent 25%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #e9f7e9,
+                    #f7fae9
+                );
+        }
+
+
+        /* -------------------------
+           SMALL SUN
+        ------------------------- */
+
+        .sun {
+            position: absolute;
+
+            top: 8px;
+            left: 17%;
+
+            width: 14px;
+            height: 14px;
+
+            background-color: #ffe59b;
+
+            border-radius: 50%;
+        }
+
+
+        /* -------------------------
+           HOUSE DECORATION
+        ------------------------- */
+
+        .house {
+            position: absolute;
+
+            left: 6%;
+            top: 30px;
+
+            width: 55px;
+            height: 55px;
+
+            border-left: 2px solid #a3c9bd;
+            border-bottom: 2px solid #a3c9bd;
+        }
+
+        .house:before {
+            content: "";
+
+            position: absolute;
+
+            width: 36px;
+            height: 36px;
+
+            border-left: 2px solid #a3c9bd;
+            border-top: 2px solid #a3c9bd;
+
+            transform: rotate(45deg);
+
+            top: -18px;
+            left: 8px;
+        }
+
+        .house-window {
+            position: absolute;
+
+            width: 10px;
+            height: 10px;
+
+            background-color: #fff1bd;
+
+            border: 1px solid #a3c9bd;
+
+            right: 5px;
+            top: 18px;
+        }
+
+
+        /* -------------------------
+           TREE DECORATION
+        ------------------------- */
+
+        .tree {
+            position: absolute;
+
+            left: 15%;
+
+            top: 35px;
+        }
+
+        .tree-top {
+            width: 14px;
+            height: 35px;
+
+            border: 2px solid #9ccbbb;
+
+            border-radius: 50%;
+        }
+
+        .tree-bottom {
+            width: 2px;
+            height: 20px;
+
+            background-color: #9ccbbb;
+
+            margin-left: 6px;
+        }
+
+
+        /* -------------------------
+           BICYCLE
+        ------------------------- */
+
+        .bicycle {
+            position: absolute;
+
+            right: 10%;
+            top: 65px;
+
+            width: 90px;
+            height: 55px;
+        }
+
+        .wheel {
+            position: absolute;
+
+            width: 34px;
+            height: 34px;
+
+            border: 2px solid #9dcabd;
+
+            border-radius: 50%;
+        }
+
+        .wheel-one {
+            left: 0;
+            bottom: 0;
+        }
+
+        .wheel-two {
+            right: 0;
+            bottom: 0;
+        }
+
+        .bike-line {
+            position: absolute;
+
+            width: 42px;
+            height: 2px;
+
+            background-color: #9dcabd;
+
+            left: 25px;
+            top: 27px;
+
+            transform: rotate(-15deg);
+        }
+
+        .bike-line-two {
+            position: absolute;
+
+            width: 35px;
+            height: 2px;
+
+            background-color: #9dcabd;
+
+            left: 38px;
+            top: 18px;
+
+            transform: rotate(45deg);
+        }
+
+
+        /* -------------------------
+           PLANTS
+        ------------------------- */
+
+        .plant {
+            position: absolute;
+
+            right: 9%;
+            bottom: 25px;
+        }
+
+        .pot {
+            width: 28px;
+            height: 24px;
+
+            background-color: #eadcae;
+
+            margin-left: 8px;
+
+            clip-path: polygon(
+                10% 0,
+                90% 0,
+                75% 100%,
+                25% 100%
+            );
+        }
+
+        .leaf {
+            width: 12px;
+            height: 30px;
+
+            background-color: #8fc7ae;
+
+            border-radius: 100% 0 100% 0;
+
+            transform: rotate(-35deg);
+
+            margin-left: 5px;
+        }
+
+
+        /* -------------------------
+           BENCH
+        ------------------------- */
+
+        .bench {
+            position: absolute;
+
+            right: 14%;
+            bottom: 35px;
+        }
+
+        .bench-seat {
+            width: 45px;
+            height: 8px;
+
+            background-color: #91cfba;
+
+            border-radius: 2px;
+
+            margin-bottom: 5px;
+        }
+
+        .bench-bottom {
+            width: 45px;
+            height: 7px;
+
+            background-color: #9ed8c4;
+        }
+
+
+        /* -------------------------
+           SUCCESS CARD
+        ------------------------- */
+
+        .card {
+            width: 300px;
+
+            background-color: white;
+
+            border-radius: 15px;
+
+            padding: 18px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 25px rgba(50, 80, 60, 0.12);
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* -------------------------
+           PROFILE IMAGE
+        ------------------------- */
+
+        .profile {
+            width: 55px;
+            height: 55px;
+
+            margin: 0 auto 10px;
+
+            background-color: #fffbea;
+
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .profile img {
+            width: 42px;
+            height: auto;
+        }
+
+        .check {
+            position: absolute;
+
+            top: 60px;
+            left: calc(50% + 18px);
+
+            width: 13px;
+            height: 13px;
+
+            background-color: #087d5b;
+
+            color: white;
+
+            border-radius: 50%;
+
+            font-size: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* -------------------------
+           CARD TEXT
+        ------------------------- */
+
+        .card h1 {
+            font-size: 17px;
+
+            margin: 8px 0 5px;
+
+            color: #172c35;
+        }
+
+        .success-title {
+            font-size: 9px;
+
+            color: #18805d;
+
+            margin-bottom: 8px;
+        }
+
+        .message {
+            font-size: 8px;
+
+            line-height: 1.5;
+
+            color: #7a8887;
+
+            margin: 0 auto 13px;
+
+            max-width: 235px;
+        }
+
+
+        /* -------------------------
+           USER INFORMATION
+        ------------------------- */
+
+        .user-box {
+            background-color: #f5f9f5;
+
+            border-radius: 9px;
+
+            padding: 9px;
+
+            text-align: left;
+
+            margin-bottom: 10px;
+        }
+
+        .user-name {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            font-size: 8px;
+
+            font-weight: bold;
+
+            color: #38534a;
+
+            margin-bottom: 8px;
+        }
+
+        .user-name span {
+            background-color: #e3f5ed;
+
+            color: #208063;
+
+            padding: 4px 7px;
+
+            border-radius: 8px;
+
+            font-size: 7px;
+        }
+
+        .status {
+            display: flex;
+
+            gap: 12px;
+
+            font-size: 6px;
+
+            color: #687976;
+        }
+
+        .status-item {
+            display: flex;
+
+            align-items: center;
+
+            gap: 3px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background-color: #36a982;
+        }
+
+        .dot.yellow {
+            background-color: #f3ae28;
+        }
+
+
+        /* -------------------------
+           BUTTONS
+        ------------------------- */
+
+        .button {
+            width: 100%;
+
+            height: 25px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            font-size: 8px;
+
+            cursor: pointer;
+
+            margin-top: 4px;
+        }
+
+        .explore {
+            background-color: #75d7e8;
+
+            color: white;
+        }
+
+        .home {
+            background-color: #f6a000;
+
+            color: white;
+        }
+
+
+        /* -------------------------
+           CARD FOOTER
+        ------------------------- */
+
+        .protected {
+            font-size: 6px;
+
+            color: #8b9693;
+
+            margin-top: 12px;
+        }
+
+
+        /* -------------------------
+           PAGE FOOTER
+        ------------------------- */
+
+        .footer {
+            height: 40px;
+
+            background-color: white;
+
+            border-top: 1px solid #dddddd;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 18px;
+
+            font-size: 7px;
+
+            color: #777f7c;
+        }
+
+        .footer-left {
+            color: #507066;
+        }
+
+        .footer-right {
+            display: flex;
+
+            gap: 15px;
+        }
+
+
+        /* -------------------------
+           RESPONSIVE
+        ------------------------- */
+
+        @media screen and (max-width: 700px) {
+
+            .header {
+                padding: 0 10px;
+            }
+
+            .main {
+                min-height: calc(100vh - 82px);
+            }
+
+            .card {
+                width: 280px;
+            }
+
+            .house {
+                left: 3%;
+            }
+
+            .bicycle {
+                right: 3%;
+            }
+
+            .footer-right {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="header-left">
+
+            <img
+                src="logo.png"
+                alt="BorrowBox Logo"
+                class="logo"
+            >
+
+            <span class="step">
+                ● Screen 2 • Success
+            </span>
+
+        </div>
+
+
+        <div class="ready">
+            ● Account Ready 100%
+        </div>
+
+    </header>
+
+
+
+    <!-- MAIN AREA -->
+
+    <main class="main">
+
+
+        <!-- BACKGROUND DECORATIONS -->
+
+        <div class="sun"></div>
+
+
+        <div class="house">
+
+            <div class="house-window"></div>
+
+        </div>
+
+
+        <div class="tree">
+
+            <div class="tree-top"></div>
+
+            <div class="tree-bottom"></div>
+
+        </div>
+
+
+        <div class="bicycle">
+
+            <div class="wheel wheel-one"></div>
+
+            <div class="wheel wheel-two"></div>
+
+            <div class="bike-line"></div>
+
+            <div class="bike-line-two"></div>
+
+        </div>
+
+
+        <div class="bench">
+
+            <div class="bench-seat"></div>
+
+            <div class="bench-bottom"></div>
+
+        </div>
+
+
+        <div class="plant">
+
+            <div class="leaf"></div>
+
+            <div class="pot"></div>
+
+        </div>
+
+
+
+        <!-- SUCCESS CARD -->
+
+        <div class="card">
+
+
+            <!-- LOGO -->
+
+            <div class="profile">
+
+                <img
+                    src="logo.png"
+                    alt="BorrowBox"
+                >
+
+            </div>
+
+
+            <div class="check">
+                ✓
+            </div>
+
+
+            <!-- TITLE -->
+
+            <h1>
+                Welcome to BorrowBox! 🎉
+            </h1>
+
+            <div class="success-title">
+                Your account has been created successfully.
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <p class="message">
+
+                You're ready to discover useful things nearby,
+                borrow from trusted neighbors, and share what you own.
+
+            </p>
+
+
+            <!-- USER INFORMATION -->
+
+            <div class="user-box">
+
+                <div class="user-name">
+
+                    <span>
+                        👤 &nbsp; Sarah Jenkins
+                    </span>
+
+                    <span>
+                        Maplewood Hub
+                    </span>
+
+                </div>
+
+
+                <div class="status">
+
+                    <div class="status-item">
+
+                        <div class="dot"></div>
+
+                        Account Created
+
+                    </div>
+
+
+                    <div class="status-item">
+
+                        <div class="dot"></div>
+
+                        Email Verified
+
+                    </div>
+
+
+                    <div class="status-item">
+
+                        <div class="dot yellow"></div>
+
+                        Community Ready
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <button class="button explore">
+                Explore BorrowBox →
+            </button>
+
+            <a href="home.html">
+            <button class="button home">
+                Go to Home
+            </button>
+            </a>
+
+
+            <!-- PROTECTED TEXT -->
+
+            <p class="protected">
+                🔒 Protected by BorrowBox Community Guarantee
+            </p>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-left">
+            ● BorrowBox &nbsp; • &nbsp;
+            Better Neighborhoods. Stronger Community.
+        </div>
+
+
+        <div class="footer-right">
+
+            <span>
+                Community Guidelines
+            </span>
+
+            <span>
+                Insurance Policy
+            </span>
+
+            <span>
+                Help Center
+            </span>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
