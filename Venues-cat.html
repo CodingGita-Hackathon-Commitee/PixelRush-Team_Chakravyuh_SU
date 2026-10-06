@@ -1,0 +1,2391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BorrowBox - Venues & Spaces</title>
+
+
+    <style>
+
+        /* =========================
+           BASIC
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            color: #173f37;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            height: 65px;
+            background-color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 4%;
+
+            border-bottom: 1px solid #e5ebe9;
+        }
+
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+        }
+
+
+        .brand {
+            font-size: 17px;
+            font-weight: bold;
+            color: #08785d;
+        }
+
+
+        .brand span {
+            color: #f0b500;
+        }
+
+
+        .location {
+            margin-left: 15px;
+
+            background-color: #f1f7f5;
+
+            border: 1px solid #dce9e4;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+
+            color: #51645e;
+        }
+
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+
+        .nav-right a {
+            font-size: 10px;
+            color: #53645f;
+        }
+
+
+        .list-button {
+            background-color: #f5bb00;
+
+            padding: 9px 15px;
+
+            border-radius: 20px;
+
+            font-size: 9px !important;
+
+            font-weight: bold;
+
+            color: #173f37 !important;
+        }
+
+
+        .profile {
+            width: 29px;
+            height: 29px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background-color: #08785d;
+
+            color: white !important;
+
+            font-size: 12px !important;
+        }
+
+
+        /* =========================
+           CATEGORY NAVBAR
+        ========================= */
+
+        .category-bar {
+            background-color: white;
+
+            padding: 10px 4%;
+
+            display: flex;
+            justify-content: center;
+
+            gap: 12px;
+
+            border-bottom: 1px solid #e7edeb;
+        }
+
+
+        .category {
+            background-color: #f1f5f9;
+
+            padding: 7px 15px;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+
+            color: #53645f;
+        }
+
+
+        .category.active {
+            background-color: #dff5ef;
+            color: #08785d;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            padding: 28px 4% 20px;
+
+            background-color: #f7f9fc;
+        }
+
+
+        .hero-tag {
+            display: inline-block;
+
+            background-color: #dff5ec;
+
+            color: #08785d;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 8px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+
+        .hero h1 {
+            margin: 0;
+
+            font-size: 34px;
+
+            color: #102b35;
+        }
+
+
+        .hero-text {
+            margin: 7px 0 15px;
+
+            color: #667773;
+
+            font-size: 10px;
+        }
+
+
+        .hero-bottom {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .filter-tags {
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .tag {
+            background-color: white;
+
+            border: 1px solid #dce6e3;
+
+            padding: 7px 11px;
+
+            border-radius: 15px;
+
+            font-size: 8px;
+
+            color: #64736e;
+        }
+
+
+        .tag:first-child {
+            color: #08785d;
+        }
+
+
+        .sort-area {
+            display: flex;
+            gap: 8px;
+        }
+
+
+        .sort-box {
+            background-color: white;
+
+            border: 1px solid #dce6e3;
+
+            padding: 8px 12px;
+
+            border-radius: 8px;
+
+            font-size: 9px;
+
+            color: #53645f;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            padding: 0 4% 30px;
+        }
+
+
+        .result-line {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+        }
+
+
+        .result-line p {
+            font-size: 10px;
+
+            color: #687873;
+        }
+
+
+        .result-line strong {
+            color: #173f37;
+        }
+
+
+        /* =========================
+           FILTER + LISTINGS
+        ========================= */
+
+        .main-content {
+            display: grid;
+
+            grid-template-columns: 180px 1fr;
+
+            gap: 18px;
+        }
+
+
+        .filter-box {
+            background-color: white;
+
+            border: 1px solid #dfe8e5;
+
+            border-radius: 10px;
+
+            padding: 15px;
+
+            height: fit-content;
+        }
+
+
+        .filter-box h3 {
+            margin: 0 0 15px;
+
+            font-size: 12px;
+        }
+
+
+        .filter-title {
+            margin-top: 17px;
+            margin-bottom: 8px;
+
+            font-size: 8px;
+
+            color: #08785d;
+
+            font-weight: bold;
+        }
+
+
+        .filter-option {
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            margin-bottom: 9px;
+
+            font-size: 8px;
+
+            color: #687873;
+        }
+
+
+        .filter-option input {
+            accent-color: #08785d;
+        }
+
+
+        /* =========================
+           LISTINGS
+        ========================= */
+
+        .listings {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 14px;
+        }
+
+
+        .card {
+            background-color: white;
+
+            border: 1px solid #dfe8e5;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            box-shadow: 0 3px 12px rgba(30, 60, 50, 0.04);
+        }
+
+
+        .card-image {
+            height: 145px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .image-tag {
+            position: absolute;
+
+            top: 9px;
+            left: 9px;
+
+            background-color: #f4c000;
+
+            color: #173f37;
+
+            padding: 5px 8px;
+
+            border-radius: 12px;
+
+            font-size: 7px;
+
+            font-weight: bold;
+        }
+
+
+        .heart {
+            position: absolute;
+
+            top: 8px;
+            right: 8px;
+
+            width: 25px;
+            height: 25px;
+
+            background-color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 12px;
+        }
+
+
+        .card-body {
+            padding: 12px;
+        }
+
+
+        .card-location {
+            font-size: 7px;
+
+            color: #5e716a;
+
+            margin-bottom: 5px;
+        }
+
+
+        .card-title {
+            margin: 0 0 7px;
+
+            font-size: 12px;
+
+            line-height: 1.3;
+
+            color: #173f37;
+        }
+
+
+        .host {
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .host-icon {
+            width: 22px;
+            height: 22px;
+
+            border-radius: 50%;
+
+            background-color: #dff5ec;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 8px;
+
+            color: #08785d;
+
+            font-weight: bold;
+        }
+
+
+        .host-name {
+            font-size: 8px;
+
+            color: #60716b;
+        }
+
+
+        .details {
+            background-color: #f4f7f6;
+
+            padding: 6px;
+
+            border-radius: 5px;
+
+            font-size: 7px;
+
+            color: #65756f;
+
+            margin-bottom: 10px;
+        }
+
+
+        .price-row {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .price {
+            font-size: 14px;
+
+            font-weight: bold;
+
+            color: #08785d;
+        }
+
+
+        .price span {
+            font-size: 8px;
+
+            color: #78857f;
+
+            font-weight: normal;
+        }
+
+
+        .deposit {
+            display: block;
+
+            font-size: 7px;
+
+            color: #687873;
+
+            margin-top: 3px;
+        }
+
+
+        .book-button {
+            background-color: #84dff0;
+
+            padding: 8px 12px;
+
+            border-radius: 5px;
+
+            font-size: 7px;
+
+            font-weight: bold;
+
+            color: white;
+        }
+
+
+        .request-button {
+            background-color: #f5bc00;
+
+            padding: 8px 11px;
+
+            border-radius: 5px;
+
+            font-size: 7px;
+
+            font-weight: bold;
+
+            color: #173f37;
+        }
+
+
+        .available {
+            display: inline-block;
+
+            margin-top: 8px;
+
+            font-size: 7px;
+
+            color: #08785d;
+        }
+
+
+        /* =========================
+           CASH CARD
+        ========================= */
+
+        .cash-card {
+            background-color: #006851;
+
+            color: white;
+
+            border-radius: 10px;
+
+            padding: 22px;
+
+            min-height: 280px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .cash-small {
+            font-size: 8px;
+
+            color: #aee9d9;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+
+        .cash-card h2 {
+            margin: 0 0 10px;
+
+            font-size: 23px;
+
+            line-height: 1.2;
+        }
+
+
+        .cash-card p {
+            margin: 0 0 20px;
+
+            font-size: 9px;
+
+            line-height: 1.5;
+
+            color: #d4eee8;
+        }
+
+
+        .calculate-button {
+            background-color: #f5bb00;
+
+            color: #173f37;
+
+            padding: 10px 14px;
+
+            border-radius: 6px;
+
+            text-align: center;
+
+            font-size: 8px;
+
+            font-weight: bold;
+        }
+
+
+        .cash-note {
+            margin-top: 8px;
+
+            text-align: center;
+
+            font-size: 7px;
+
+            color: #b9e5dc;
+        }
+
+
+        /* =========================
+           PROTECTION
+        ========================= */
+
+        .protection {
+            margin: 0 4%;
+
+            background-color: white;
+
+            border: 1px solid #dfe9e5;
+
+            border-radius: 10px;
+
+            padding: 18px 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .protection-text {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .protection-icon {
+            width: 35px;
+            height: 35px;
+
+            border-radius: 50%;
+
+            background-color: #e2f7ef;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #08785d;
+        }
+
+
+        .protection h3 {
+            margin: 0 0 5px;
+
+            font-size: 11px;
+        }
+
+
+        .protection p {
+            margin: 0;
+
+            font-size: 8px;
+
+            color: #687873;
+        }
+
+
+        .protection-button {
+            background-color: #85dff0;
+
+            color: white;
+
+            padding: 10px 15px;
+
+            border-radius: 6px;
+
+            font-size: 8px;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           EARN SECTION
+        ========================= */
+
+        .earn-section {
+            margin-top: 25px;
+
+            padding: 35px 4%;
+
+            background-color: #e8f7f2;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .earn-section small {
+            color: #08785d;
+
+            font-size: 8px;
+
+            font-weight: bold;
+        }
+
+
+        .earn-section h2 {
+            margin: 7px 0;
+
+            font-size: 24px;
+
+            color: #075e50;
+        }
+
+
+        .earn-section p {
+            max-width: 600px;
+
+            margin: 0;
+
+            font-size: 9px;
+
+            line-height: 1.6;
+
+            color: #687873;
+        }
+
+
+        .earn-link {
+            background-color: #f5bb00;
+
+            padding: 11px 17px;
+
+            border-radius: 6px;
+
+            font-size: 9px;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           NEIGHBORHOODS
+        ========================= */
+
+        .neighborhood-section {
+            padding: 35px 4%;
+
+            background-color: white;
+        }
+
+
+        .neighborhood-section h2 {
+            margin: 0 0 6px;
+
+            font-size: 21px;
+
+            color: #173f37;
+        }
+
+
+        .neighborhood-section p {
+            margin: 0 0 20px;
+
+            font-size: 9px;
+
+            color: #687873;
+        }
+
+
+        .neighborhoods {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .neighborhood {
+            background-color: #f8fafb;
+
+            border: 1px solid #e1e8e6;
+
+            border-radius: 8px;
+
+            padding: 14px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .neighborhood-left {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+        }
+
+
+        .place-icon {
+            width: 28px;
+            height: 28px;
+
+            border-radius: 50%;
+
+            background-color: #e1f5ef;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #08785d;
+
+            font-size: 11px;
+        }
+
+
+        .neighborhood h3 {
+            margin: 0 0 4px;
+
+            font-size: 10px;
+        }
+
+
+        .neighborhood span {
+            font-size: 7px;
+
+            color: #75827e;
+        }
+
+
+        .arrow {
+            color: #687873;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background-color: #eef4ff;
+
+            padding: 40px 4% 15px;
+        }
+
+
+        .footer-content {
+            display: grid;
+
+            grid-template-columns: 2fr repeat(4, 1fr);
+
+            gap: 30px;
+        }
+
+
+        .footer-logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+        }
+
+
+        .footer-logo img {
+            width: 35px;
+            height: 35px;
+
+            object-fit: contain;
+        }
+
+
+        .footer-logo h3 {
+            margin: 0;
+
+            font-size: 16px;
+
+            color: #08785d;
+        }
+
+
+        .footer-brand p {
+            max-width: 250px;
+
+            font-size: 9px;
+
+            line-height: 1.6;
+
+            color: #687873;
+        }
+
+
+        .footer-brand small {
+            font-size: 7px;
+
+            color: #08785d;
+        }
+
+
+        .footer-column h3 {
+            margin: 0 0 12px;
+
+            font-size: 10px;
+        }
+
+
+        .footer-column a {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 8px;
+
+            color: #687873;
+        }
+
+
+        .footer-bottom {
+            margin-top: 30px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid #d7e0eb;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 7px;
+
+            color: #78847f;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media screen and (max-width: 1000px) {
+
+            .listings {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .main-content {
+                grid-template-columns: 160px 1fr;
+            }
+
+            .neighborhoods {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media screen and (max-width: 650px) {
+
+            .navbar {
+                padding: 0 15px;
+            }
+
+
+            .location {
+                display: none;
+            }
+
+
+            .nav-right a:not(.list-button):not(.profile) {
+                display: none;
+            }
+
+
+            .nav-right {
+                gap: 7px;
+            }
+
+
+            .category-bar {
+                justify-content: flex-start;
+
+                overflow-x: auto;
+            }
+
+
+            .hero {
+                padding: 25px 20px;
+            }
+
+
+            .hero h1 {
+                font-size: 27px;
+            }
+
+
+            .hero-bottom {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 15px;
+            }
+
+
+            .main {
+                padding: 0 20px 25px;
+            }
+
+
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+
+            .filter-box {
+                display: none;
+            }
+
+
+            .listings {
+                grid-template-columns: 1fr;
+            }
+
+
+            .cash-card {
+                min-height: 250px;
+            }
+
+
+            .protection {
+                margin: 0 20px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .protection-button {
+                width: 100%;
+
+                text-align: center;
+            }
+
+
+            .earn-section {
+                padding: 30px 20px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 20px;
+            }
+
+
+            .earn-link {
+                width: 100%;
+
+                text-align: center;
+            }
+
+
+            .neighborhood-section {
+                padding: 30px 20px;
+            }
+
+
+            .neighborhoods {
+                grid-template-columns: 1fr;
+            }
+
+
+            .footer {
+                padding: 30px 20px 15px;
+            }
+
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+
+
+            .footer-bottom {
+                flex-direction: column;
+
+                gap: 7px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <header class="navbar">
+
+
+        <div class="logo-area">
+
+            <img
+                src="logo.png"
+                alt="BorrowBox Logo"
+                class="logo"
+            >
+
+            <div class="brand">
+                Borrow<span>Box</span>
+            </div>
+
+
+            <div class="location">
+                📍 Ahmedabad
+            </div>
+
+        </div>
+
+
+        <div class="nav-right">
+
+            <a href="#">
+                Browse
+            </a>
+
+            <a href="#">
+                How it works
+            </a>
+
+            <a href="#">
+                Lend
+            </a>
+
+            <a href="#">
+                Community
+            </a>
+
+            <a href="addlist.html" class="list-button">
+                + List an Item
+            </a>
+
+            <a href="profile.html" class="profile">
+                👤
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         CATEGORY NAVBAR
+    ========================= -->
+
+    <nav class="category-bar">
+
+        <a href="all-cat.html" class="category">
+            All
+        </a>
+
+        <a href="electric-cat.html" class="category">
+            Electronics
+        </a>
+
+        <a href="vehicle-cat.html" class="category">
+            Vehicles
+        </a>
+
+        <a href="sport-cat.html" class="category">
+            Sports Equipment
+        </a>
+
+        <a href="Venues-cat.html" class="category active">
+            Venues
+        </a>
+
+        <a href="Furniture-cat.html" class="category">
+            Furniture
+        </a>
+
+        <a href="Home-Appliances.html" class="category">
+            Home Appliances
+        </a>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+
+        <div class="hero-tag">
+            ✓ VERIFIED NEIGHBORHOOD VENUES & SPACES
+        </div>
+
+
+        <h1>
+            Rent Venues &amp; Spaces near you
+        </h1>
+
+
+        <p class="hero-text">
+            5 unique spaces available to book in Ahmedabad.
+            Host verified, deposit-protected &amp; sanitized
+            before handoff.
+        </p>
+
+
+        <div class="hero-bottom">
+
+
+            <div class="filter-tags">
+
+                <div class="tag">
+                    ⚡ Instant Book only
+                </div>
+
+                <div class="tag">
+                    📍 Within 5 km
+                </div>
+
+                <div class="tag">
+                    🏷️ Under ₹1,500/hr or ₹5,000/day
+                </div>
+
+                <div class="tag">
+                    ⭐ Top Rated (4.8+)
+                </div>
+
+                <div class="tag">
+                    👥 20+ Guest Capacity
+                </div>
+
+            </div>
+
+
+            <div class="sort-area">
+
+                <div class="sort-box">
+                    Sort: Newest first
+                </div>
+
+                <div class="sort-box">
+                    ☰ Filters
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="main">
+
+
+        <div class="result-line">
+
+            <p>
+                Showing
+                <strong>5 vetted spaces</strong>
+                nearby
+            </p>
+
+        </div>
+
+
+
+        <div class="main-content">
+
+
+            <!-- =========================
+                 FILTERS
+            ========================= -->
+
+            <aside class="filter-box">
+
+
+                <h3>
+                    Filters
+                </h3>
+
+
+                <div class="filter-title">
+                    BOOKING
+                </div>
+
+
+                <label class="filter-option">
+
+                    <input type="checkbox">
+
+                    Instant Book Available
+
+                </label>
+
+
+                <div class="filter-title">
+                    AVAILABILITY
+                </div>
+
+
+                <label class="filter-option">
+
+                    <input type="checkbox">
+
+                    Available Today
+
+                </label>
+
+
+                <div class="filter-title">
+                    RATING
+                </div>
+
+
+                <label class="filter-option">
+
+                    <input type="checkbox">
+
+                    Top Rated Available
+
+                </label>
+
+
+                <div class="filter-title">
+                    GUEST CAPACITY
+                </div>
+
+
+                <label class="filter-option">
+
+                    <input type="checkbox">
+
+                    20+ Guests
+
+                </label>
+
+            </aside>
+
+
+
+            <!-- =========================
+                 LISTINGS
+            ========================= -->
+
+            <section class="listings">
+
+
+                <!-- CARD 1 -->
+
+                <div class="card">
+
+
+                    <div class="card-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=80"
+                            alt="Skyline Terrace Garden"
+                        >
+
+                        <div class="image-tag">
+                            Instant Book
+                        </div>
+
+                        <div class="heart">
+                            ♡
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="card-location">
+                            📍 Bodakdev · 1.4 km away
+                            · ⭐ 4.9 (38)
+                        </div>
+
+
+                        <h3 class="card-title">
+                            Skyline Terrace Garden &amp;
+                            Rooftop
+                        </h3>
+
+
+                        <div class="host">
+
+                            <div class="host-icon">
+                                P
+                            </div>
+
+                            <div class="host-name">
+                                Pratik V. · Verified Host
+                            </div>
+
+                        </div>
+
+
+                        <div class="details">
+                            Up to 35 Guests · Ambient String
+                            Lighting &amp; Bar counter
+                        </div>
+
+
+                        <div class="price-row">
+
+                            <div>
+
+                                <div class="price">
+                                    ₹1,500
+                                    <span>/ hr</span>
+                                </div>
+
+                                <div class="deposit">
+                                    ₹5,000 security deposit
+                                </div>
+
+                            </div>
+
+
+                            <a href="vehicle-det.html" class="book-button">
+                                Book Space
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CARD 2 -->
+
+                <div class="card">
+
+
+                    <div class="card-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80"
+                            alt="Creative Photography Loft"
+                        >
+
+                        <div class="image-tag">
+                            Instant Book
+                        </div>
+
+                        <div class="heart">
+                            ♡
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="card-location">
+                            📍 Navrangpura · 2.1 km away
+                            · ⭐ 5.0 (29)
+                        </div>
+
+
+                        <h3 class="card-title">
+                            Lumina Creative Loft &amp;
+                            Photography Studio
+                        </h3>
+
+
+                        <div class="host">
+
+                            <div class="host-icon">
+                                A
+                            </div>
+
+                            <div class="host-name">
+                                Ananya S. · Verified Host
+                            </div>
+
+                        </div>
+
+
+                        <div class="details">
+                            Cyclorama White Wall · Godox
+                            Softbox Lights · 1,200 sq.ft
+                        </div>
+
+
+                        <div class="price-row">
+
+                            <div>
+
+                                <div class="price">
+                                    ₹850
+                                    <span>/ hr</span>
+                                </div>
+
+                                <div class="deposit">
+                                    ₹3,000 security deposit
+                                </div>
+
+                            </div>
+
+
+                            <a href="venue-det.html" class="book-button">
+                                Book Space
+                            </a>
+
+                        </div>
+
+
+                        <div class="available">
+                            ✓ Available
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CARD 3 -->
+
+                <div class="card">
+
+
+                    <div class="card-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80"
+                            alt="Secret Lawn"
+                        >
+
+                        <div class="image-tag">
+                            Top Rated
+                        </div>
+
+                        <div class="heart">
+                            ♡
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="card-location">
+                            📍 Vastrapur · 2.8 km away
+                            · ⭐ 4.9 (44)
+                        </div>
+
+
+                        <h3 class="card-title">
+                            The Secret Lawn &amp;
+                            Pergola Dining
+                        </h3>
+
+
+                        <div class="host">
+
+                            <div class="host-icon">
+                                M
+                            </div>
+
+                            <div class="host-name">
+                                Mehul K. · Verified Host
+                            </div>
+
+                        </div>
+
+
+                        <div class="details">
+                            Up to 50 Guests · Wooden Pergola,
+                            Festoon Lights &amp; Lawn
+                        </div>
+
+
+                        <div class="price-row">
+
+                            <div>
+
+                                <div class="price">
+                                    ₹1,800
+                                    <span>/ hr</span>
+                                </div>
+
+                                <div class="deposit">
+                                    ₹6,000 security deposit
+                                </div>
+
+                            </div>
+
+
+                            <a href="venue-det.html" class="request-button">
+                                Request Booking
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CARD 4 -->
+
+                <div class="card">
+
+
+                    <div class="card-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80"
+                            alt="Seminar Hall"
+                        >
+
+                        <div class="image-tag">
+                            Instant Book
+                        </div>
+
+                        <div class="heart">
+                            ♡
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="card-location">
+                            📍 Satellite · 1.6 km away
+                            · ⭐ 4.8 (21)
+                        </div>
+
+
+                        <h3 class="card-title">
+                            Nexus Boutique Seminar Hall &amp;
+                            Meeting Space
+                        </h3>
+
+
+                        <div class="host">
+
+                            <div class="host-icon">
+                                R
+                            </div>
+
+                            <div class="host-name">
+                                Rohan M. · Verified Host
+                            </div>
+
+                        </div>
+
+
+                        <div class="details">
+                            Projector &amp; Screen · Modular
+                            Desks · High Speed Wi-Fi
+                        </div>
+
+
+                        <div class="price-row">
+
+                            <div>
+
+                                <div class="price">
+                                    ₹950
+                                    <span>/ hr</span>
+                                </div>
+
+                                <div class="deposit">
+                                    ₹3,500 security deposit
+                                </div>
+
+                            </div>
+
+
+                            <a href="venue-det.html" class="book-button">
+                                Book Space
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CARD 5 -->
+
+                <div class="card">
+
+
+                    <div class="card-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
+                            alt="Acoustic Lounge"
+                        >
+
+                        <div class="image-tag">
+                            Available
+                        </div>
+
+                        <div class="heart">
+                            ♡
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="card-location">
+                            📍 Prahlad Nagar · 3.5 km away
+                            · ⭐ 4.9 (18)
+                        </div>
+
+
+                        <h3 class="card-title">
+                            Acoustic Lounge &amp;
+                            Private Media Room
+                        </h3>
+
+
+                        <div class="host">
+
+                            <div class="host-icon">
+                                S
+                            </div>
+
+                            <div class="host-name">
+                                Siddharth D. · Verified Host
+                            </div>
+
+                        </div>
+
+
+                        <div class="details">
+                            Soundproofed · 4K Cinema Projector
+                            · 12 Recliner Seats
+                        </div>
+
+
+                        <div class="price-row">
+
+                            <div>
+
+                                <div class="price">
+                                    ₹1,200
+                                    <span>/ hr</span>
+                                </div>
+
+                                <div class="deposit">
+                                    ₹4,000 security deposit
+                                </div>
+
+                            </div>
+
+
+                            <a href="venue-det.html" class="book-button">
+                                Book Space
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     CASH CARD
+                ========================= -->
+
+                <div class="cash-card">
+
+
+                    <div class="cash-small">
+                        TURN UNUSED SPACE INTO CASH
+                    </div>
+
+
+                    <h2>
+                        Have a rooftop, lawn,
+                        or studio sitting idle?
+                    </h2>
+
+
+                    <p>
+                        Host private workshops, photo shoots,
+                        or intimate gatherings for verified
+                        neighbors in Ahmedabad with
+                        ₹1,00,000 property protection coverage.
+                    </p>
+
+
+                    <a href="#" class="calculate-button">
+                        Calculate Space Earnings
+                    </a>
+
+
+                    <div class="cash-note">
+                        Takes less than 2 minutes to estimate
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         PROTECTION
+    ========================= -->
+
+    <section class="protection">
+
+
+        <div class="protection-text">
+
+
+            <div class="protection-icon">
+                ✓
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Borrow and host with peace of mind.
+                </h3>
+
+                <p>
+                    Every venue rental includes up to
+                    ₹1,00,000 Host Protection Guarantee,
+                    verified guest KYC/Aadhaar verification,
+                    and 100% refundable security deposits.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a href="#" class="protection-button">
+            Have a space to host? Earn ₹25,000+/mo →
+        </a>
+
+    </section>
+
+
+
+    <!-- =========================
+         EARN SECTION
+    ========================= -->
+
+    <section class="earn-section">
+
+
+        <div>
+
+            <small>
+                HAVE A SPACE TO HOST?
+            </small>
+
+
+            <h2>
+                Earn ₹25,000+/mo
+            </h2>
+
+
+            <p>
+                Turn your unused rooftop, lawn, studio,
+                or private room into extra income while
+                helping your neighborhood.
+            </p>
+
+        </div>
+
+
+        <a href="#" class="earn-link">
+            Book Space
+        </a>
+
+    </section>
+
+
+
+    <!-- =========================
+         NEIGHBORHOODS
+    ========================= -->
+
+    <section class="neighborhood-section">
+
+
+        <h2>
+            Rent Venues in nearby neighborhoods
+        </h2>
+
+
+        <p>
+            Find photography studios, terrace gardens,
+            and event spaces just blocks away across Ahmedabad.
+        </p>
+
+
+        <div class="neighborhoods">
+
+
+            <div class="neighborhood">
+
+                <div class="neighborhood-left">
+
+                    <div class="place-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Bodakdev
+                        </h3>
+
+                        <span>
+                            2 spaces available
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </div>
+
+
+
+            <div class="neighborhood">
+
+                <div class="neighborhood-left">
+
+                    <div class="place-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Navrangpura
+                        </h3>
+
+                        <span>
+                            1 space available
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </div>
+
+
+
+            <div class="neighborhood">
+
+                <div class="neighborhood-left">
+
+                    <div class="place-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Vastrapur
+                        </h3>
+
+                        <span>
+                            1 space available
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </div>
+
+
+
+            <div class="neighborhood">
+
+                <div class="neighborhood-left">
+
+                    <div class="place-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Satellite
+                        </h3>
+
+                        <span>
+                            1 space available
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+
+        <div class="footer-content">
+
+
+            <!-- BRAND -->
+
+            <div class="footer-brand">
+
+
+                <div class="footer-logo">
+
+                    <img
+                        src="logo.png"
+                        alt="BorrowBox Logo"
+                    >
+
+                    <h3>
+                        BorrowBox
+                    </h3>
+
+                </div>
+
+
+                <p>
+                    Borrow • Share • Build Community.
+                    Empowering local neighborhoods to lend,
+                    borrow, and connect securely with trusted
+                    gear next door.
+                </p>
+
+
+                <small>
+                    ✓ Verified Neighborhood Lenders in Ahmedabad
+                </small>
+
+
+            </div>
+
+
+
+            <!-- BROWSE -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Browse
+                </h3>
+
+                <a href="#">
+                    All Listings
+                </a>
+
+                <a href="#">
+                    Near Me
+                </a>
+
+                <a href="#">
+                    Top Rated Gear
+                </a>
+
+                <a href="#">
+                    Newly Added
+                </a>
+
+            </div>
+
+
+
+            <!-- CATEGORIES -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Categories
+                </h3>
+
+                <a href="#">
+                    Cameras &amp; Optics
+                </a>
+
+                <a href="#">
+                    Audio &amp; Music
+                </a>
+
+                <a href="#">
+                    Projectors &amp; Screens
+                </a>
+
+                <a href="#">
+                    Outdoor &amp; DIY Tools
+                </a>
+
+            </div>
+
+
+
+            <!-- LEND -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Lend
+                </h3>
+
+                <a href="#">
+                    List an Item
+                </a>
+
+                <a href="#">
+                    Lender Guarantee
+                </a>
+
+                <a href="#">
+                    Pricing Calculator
+                </a>
+
+                <a href="#">
+                    How It Works
+                </a>
+
+            </div>
+
+
+
+            <!-- SUPPORT -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Support &amp; Legal
+                </h3>
+
+                <a href="#">
+                    Community Guidelines
+                </a>
+
+                <a href="#">
+                    Help Center
+                </a>
+
+                <a href="#">
+                    Trust &amp; Safety
+                </a>
+
+                <a href="#">
+                    Terms of Service
+                </a>
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2025 BorrowBox Marketplace. All rights reserved.
+            </span>
+
+            <span>
+                Borrow • Share • Build Community
+            </span>
+
+        </div>
+
+
+    </footer>
+
+
+</body>
+
+</html>
