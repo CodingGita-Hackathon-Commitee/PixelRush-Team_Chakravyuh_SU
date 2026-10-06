@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BorrowBox - Sports & Fitness</title>
+
+
+    <style>
+
+        /* =========================
+           BASIC
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #173f37;
+            background-color: #f8fbfa;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           MAIN NAVBAR
+        ========================= */
+
+        .navbar {
+            height: 68px;
+            background-color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            border-bottom: 1px solid #e2ebe7;
+        }
+
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+        }
+
+
+        .brand-name {
+            font-size: 19px;
+            font-weight: bold;
+            color: #08785d;
+        }
+
+
+        .brand-name span {
+            color: #eeb400;
+        }
+
+
+        .brand-small {
+            font-size: 7px;
+            color: #7b8985;
+            letter-spacing: 1px;
+        }
+
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+
+        .nav-right a {
+            font-size: 11px;
+            color: #526660;
+        }
+
+
+        .list-button {
+            background-color: #f3b900;
+            padding: 10px 17px;
+            border-radius: 6px;
+
+            font-size: 10px !important;
+            font-weight: bold;
+
+            color: #173f37 !important;
+        }
+
+
+        .profile {
+            width: 32px;
+            height: 32px;
+
+            background-color: #e7f4ef;
+
+            border: 1px solid #cfe3dc;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 15px !important;
+        }
+
+
+        /* =========================
+           CATEGORY NAVBAR
+        ========================= */
+
+        .category-navbar {
+            height: 45px;
+
+            background-color: #f3f8f6;
+
+            border-bottom: 1px solid #dce7e3;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 32px;
+
+            padding: 0 20px;
+        }
+
+
+        .category-navbar a {
+            font-size: 10px;
+            color: #60716c;
+            white-space: nowrap;
+        }
+
+
+        .category-navbar a:first-child {
+            color: #08785d;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: linear-gradient(
+                135deg,
+                #e4f8ef,
+                #fffef4
+            );
+
+            padding: 50px 7% 40px;
+        }
+
+
+        .hero-small {
+            color: #08785d;
+
+            font-size: 9px;
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .hero h1 {
+            margin: 0;
+
+            font-size: 38px;
+
+            line-height: 1.15;
+
+            color: #075e50;
+        }
+
+
+        .hero h1 span {
+            color: #08785d;
+        }
+
+
+        .hero p {
+            max-width: 680px;
+
+            margin: 12px 0 25px;
+
+            color: #71807b;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           QUICK FILTERS
+        ========================= */
+
+        .quick-filters {
+            display: flex;
+            gap: 8px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .quick-filter {
+            background-color: white;
+
+            border: 1px solid #dce8e3;
+
+            border-radius: 5px;
+
+            padding: 7px 10px;
+
+            font-size: 9px;
+
+            color: #60716c;
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-area {
+            max-width: 1000px;
+
+            background-color: white;
+
+            padding: 9px;
+
+            border-radius: 9px;
+
+            display: flex;
+            gap: 8px;
+
+            box-shadow: 0 5px 20px rgba(20, 70, 55, 0.08);
+        }
+
+
+        .search-area input {
+            flex: 1;
+
+            border: none;
+            outline: none;
+
+            background-color: #f4f7f6;
+
+            padding: 12px;
+
+            border-radius: 6px;
+
+            font-size: 10px;
+        }
+
+
+        .search-button {
+            border: none;
+
+            background-color: #f3b900;
+
+            padding: 0 20px;
+
+            border-radius: 6px;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            padding: 35px 7%;
+        }
+
+
+        .top-line {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+
+        .result-text {
+            font-size: 11px;
+            color: #72817c;
+        }
+
+
+        .result-text strong {
+            color: #173f37;
+        }
+
+
+        .sort {
+            border: 1px solid #d8e3df;
+
+            background-color: white;
+
+            padding: 8px 12px;
+
+            border-radius: 5px;
+
+            font-size: 10px;
+
+            color: #50635d;
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+            display: grid;
+
+            grid-template-columns: 200px 1fr;
+
+            gap: 25px;
+        }
+
+
+        /* =========================
+           FILTERS
+        ========================= */
+
+        .filter-box {
+            background-color: white;
+
+            border: 1px solid #dfe9e5;
+
+            border-radius: 9px;
+
+            padding: 16px;
+
+            height: fit-content;
+        }
+
+
+        .filter-box h3 {
+            margin: 0 0 15px;
+
+            font-size: 13px;
+        }
+
+
+        .filter-title {
+            margin-top: 18px;
+            margin-bottom: 8px;
+
+            font-size: 9px;
+
+            font-weight: bold;
+
+            color: #08785d;
+        }
+
+
+        .filter-option {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            margin: 9px 0;
+
+            font-size: 9px;
+
+            color: #687873;
+        }
+
+
+        .filter-option input {
+            accent-color: #08785d;
+        }
+
+
+        /* =========================
+           LISTINGS
+        ========================= */
+
+        .listings {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .listing {
+            background-color: white;
+
+            border: 1px solid #dfe9e5;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+
+        .listing-image {
+            height: 165px;
+
+            background-color: #eaf1ef;
+
+            overflow: hidden;
+        }
+
+
+        .listing-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .listing-content {
+            padding: 13px;
+        }
+
+
+        .location {
+            font-size: 8px;
+
+            color: #08785d;
+
+            margin-bottom: 7px;
+        }
+
+
+        .listing h3 {
+            margin: 0 0 8px;
+
+            font-size: 13px;
+
+            line-height: 1.3;
+
+            color: #173f37;
+        }
+
+
+        /* =========================
+           OWNER
+        ========================= */
+
+        .owner {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .owner-icon {
+            width: 25px;
+            height: 25px;
+
+            background-color: #e4f1ed;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            color: #08785d;
+        }
+
+
+        .owner-text {
+            font-size: 8px;
+
+            color: #74817d;
+        }
+
+
+        /* =========================
+           PRICE
+        ========================= */
+
+        .price-row {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .price {
+            color: #08785d;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        .deposit {
+            display: block;
+
+            margin-top: 3px;
+
+            font-size: 8px;
+
+            font-weight: normal;
+
+            color: #87928e;
+        }
+
+
+        .rent-button {
+            background-color: #08785d;
+
+            color: white;
+
+            padding: 8px 11px;
+
+            border-radius: 5px;
+
+            font-size: 8px;
+
+            font-weight: bold;
+        }
+
+
+        .request-button {
+            background-color: #f3b900;
+
+            color: #173f37;
+
+            padding: 8px 11px;
+
+            border-radius: 5px;
+
+            font-size: 8px;
+
+            font-weight: bold;
+        }
+
+
+        .verified {
+            display: inline-block;
+
+            margin-top: 10px;
+
+            font-size: 8px;
+
+            color: #08785d;
+        }
+
+
+        /* =========================
+           EARN BANNER
+        ========================= */
+
+        .earn-banner {
+            grid-column: span 2;
+
+            background-color: #edf8f3;
+
+            border: 1px solid #d3e9df;
+
+            border-radius: 10px;
+
+            padding: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .earn-banner h2 {
+            margin: 0 0 7px;
+
+            font-size: 20px;
+
+            color: #075e50;
+        }
+
+
+        .earn-banner p {
+            max-width: 600px;
+
+            margin: 0;
+
+            font-size: 9px;
+
+            line-height: 1.6;
+
+            color: #6e7e78;
+        }
+
+
+        .earn-button {
+            background-color: #f3b900;
+
+            padding: 10px 15px;
+
+            border-radius: 6px;
+
+            font-size: 9px;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           PROTECTION
+        ========================= */
+
+        .protection {
+            margin-top: 35px;
+
+            padding: 40px 7%;
+
+            background-color: #eef8f4;
+
+            text-align: center;
+        }
+
+
+        .protection small {
+            color: #08785d;
+
+            font-size: 9px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+        }
+
+
+        .protection h2 {
+            margin: 8px 0;
+
+            font-size: 27px;
+
+            color: #075e50;
+        }
+
+
+        .protection p {
+            max-width: 650px;
+
+            margin: auto;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+
+            color: #708079;
+        }
+
+
+        .protection strong {
+            color: #08785d;
+        }
+
+
+        /* =========================
+           EARN MORE
+        ========================= */
+
+        .earn-more {
+            padding: 30px 7%;
+
+            background-color: #f7fbf9;
+
+            text-align: center;
+        }
+
+
+        .earn-more h3 {
+            margin: 0;
+
+            font-size: 20px;
+
+            color: #075e50;
+        }
+
+
+        .earn-more p {
+            font-size: 10px;
+
+            color: #71807b;
+        }
+
+
+        .earn-more a {
+            display: inline-block;
+
+            margin-top: 5px;
+
+            background-color: #f3b900;
+
+            padding: 10px 16px;
+
+            border-radius: 6px;
+
+            font-size: 9px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           NEIGHBORHOODS
+        ========================= */
+
+        .neighborhood-section {
+            padding: 45px 7%;
+
+            background-color: white;
+        }
+
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 25px;
+        }
+
+
+        .section-title small {
+            color: #08785d;
+
+            font-size: 9px;
+
+            font-weight: bold;
+        }
+
+
+        .section-title h2 {
+            margin: 7px 0;
+
+            font-size: 25px;
+
+            color: #075e50;
+        }
+
+
+        .section-title p {
+            margin: 0;
+
+            font-size: 10px;
+
+            color: #71807b;
+        }
+
+
+        .neighborhoods {
+            max-width: 900px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .neighborhood {
+            background-color: #f4f8f6;
+
+            border: 1px solid #e1eae6;
+
+            border-radius: 8px;
+
+            padding: 15px;
+
+            text-align: center;
+        }
+
+
+        .neighborhood h3 {
+            margin: 0 0 5px;
+
+            font-size: 12px;
+
+            color: #08785d;
+        }
+
+
+        .neighborhood p {
+            margin: 0;
+
+            font-size: 9px;
+
+            color: #77847f;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background-color: #edf2f8;
+
+            padding: 40px 7% 15px;
+        }
+
+
+        .footer-content {
+            display: grid;
+
+            grid-template-columns: 2fr repeat(4, 1fr);
+
+            gap: 30px;
+        }
+
+
+        .footer-logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        .footer-logo img {
+            width: 35px;
+            height: 35px;
+
+            object-fit: contain;
+        }
+
+
+        .footer-logo h3 {
+            margin: 0;
+
+            font-size: 16px;
+
+            color: #08785d;
+        }
+
+
+        .footer-brand p {
+            max-width: 250px;
+
+            margin-top: 12px;
+
+            font-size: 9px;
+
+            line-height: 1.6;
+
+            color: #73807d;
+        }
+
+
+        .footer-column h3 {
+            margin: 0 0 12px;
+
+            font-size: 11px;
+
+            color: #173f37;
+        }
+
+
+        .footer-column a {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 9px;
+
+            color: #72807c;
+        }
+
+
+        .footer-bottom {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-top: 30px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid #d7e0ea;
+
+            font-size: 8px;
+
+            color: #7a8581;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media screen and (max-width: 900px) {
+
+            .category-navbar {
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+
+
+            .content {
+                grid-template-columns: 170px 1fr;
+            }
+
+
+            .listings {
+                grid-template-columns: 1fr;
+            }
+
+
+            .earn-banner {
+                grid-column: span 1;
+            }
+
+
+            .neighborhoods {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media screen and (max-width: 600px) {
+
+            .navbar {
+                padding: 0 15px;
+            }
+
+
+            .logo {
+                width: 32px;
+                height: 32px;
+            }
+
+
+            .brand-name {
+                font-size: 16px;
+            }
+
+
+            .nav-right {
+                gap: 7px;
+            }
+
+
+            .nav-right a:not(.list-button):not(.profile) {
+                display: none;
+            }
+
+
+            .list-button {
+                padding: 8px 9px;
+            }
+
+
+            .category-navbar {
+                justify-content: flex-start;
+
+                gap: 20px;
+
+                overflow-x: auto;
+            }
+
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+
+            .hero h1 {
+                font-size: 29px;
+            }
+
+
+            .quick-filters {
+                flex-wrap: wrap;
+            }
+
+
+            .search-area {
+                flex-direction: column;
+            }
+
+
+            .search-button {
+                height: 38px;
+            }
+
+
+            .main {
+                padding: 30px 20px;
+            }
+
+
+            .top-line {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 10px;
+            }
+
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+
+            .listings {
+                grid-template-columns: 1fr;
+            }
+
+
+            .earn-banner {
+                grid-column: span 1;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .protection {
+                padding: 35px 20px;
+            }
+
+
+            .neighborhood-section {
+                padding: 40px 20px;
+            }
+
+
+            .neighborhoods {
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .footer {
+                padding: 35px 20px 15px;
+            }
+
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+
+
+            .footer-bottom {
+                flex-direction: column;
+
+                gap: 7px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         MAIN NAVBAR
+    ========================= -->
+
+    <header class="navbar">
+
+
+        <div class="logo-area">
+
+            <img
+                src="logo.png"
+                alt="BorrowBox Logo"
+                class="logo"
+            >
+
+
+            <div>
+
+                <div class="brand-name">
+                    Borrow<span>Box</span>
+                </div>
+
+                <div class="brand-small">
+                    NEIGHBORHOOD SHARING
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="nav-right">
+
+            <a href="#">
+                Browse
+            </a>
+
+            <a href="#">
+                How it works
+            </a>
+
+            <a href="#">
+                Community
+            </a>
+
+            <a href="addlist.html" class="list-button">
+                List an Item
+            </a>
+
+            <a href="profile.html" class="profile">
+                👤
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         CATEGORY NAVBAR
+    ========================= -->
+
+    <nav class="category-navbar">
+
+        <a href="all-cat.html">
+            All
+        </a>
+
+        <a href="electric-cat.html">
+            Electronics
+        </a>
+
+        <a href="vehicle-cat.html">
+            Vehicles
+        </a>
+
+        <a href="sport-cat.html">
+            Sports Equipment
+        </a>
+
+        <a href="Venues-cat.html">
+            Venues
+        </a>
+
+        <a href="Furniture-cat.html">
+            Furniture
+        </a>
+
+        <a href="Home-Appliances.html">
+            Home Appliances
+        </a>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+
+        <div class="hero-small">
+            VERIFIED NEIGHBORHOOD GEAR
+        </div>
+
+
+        <h1>
+            Rent Sports &amp; Fitness Gear
+            <span>near you</span>
+        </h1>
+
+
+        <p>
+            5 listings available today from verified neighbors
+            in Ahmedabad. Deposit-protected &amp; ID verified.
+        </p>
+
+
+        <div class="quick-filters">
+
+            <div class="quick-filter">
+                ⚡ Instant Book only
+            </div>
+
+            <div class="quick-filter">
+                📍 Within 5 km
+            </div>
+
+            <div class="quick-filter">
+                🏷️ Under ₹300/day
+            </div>
+
+            <div class="quick-filter">
+                ⭐ Top Rated (4.8+)
+            </div>
+
+        </div>
+
+
+        <div class="search-area">
+
+            <input
+                type="text"
+                placeholder="What do you need? Try dumbbells, cricket kit..."
+            >
+
+
+            <input
+                type="text"
+                placeholder="Ahmedabad, Gujarat"
+            >
+
+
+            <button class="search-button">
+                Browse
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="main">
+
+
+        <div class="top-line">
+
+            <div class="result-text">
+
+                <strong>
+                    Showing 5 vetted sports items
+                </strong>
+
+                nearby
+
+            </div>
+
+
+            <select class="sort">
+
+                <option>
+                    Newest first
+                </option>
+
+                <option>
+                    Price: Low to High
+                </option>
+
+                <option>
+                    Top Rated
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <div class="content">
+
+
+            <!-- =========================
+                 FILTER BOX
+            ========================= -->
+
+            <aside class="filter-box">
+
+
+                <h3>
+                    Filters
+                </h3>
+
+
+                <div class="filter-title">
+                    BOOKING
+                </div>
+
+
+                <label class="filter-option">
+
+                    <input type="checkbox">
+
+                    Instant Book Available
+
+                </label>
+
+
+                <div class="filter-title">
+                    DISTANCE
+                </div>
+
+
+                <label class="filter-option">
+
+                    <input type="checkbox">
+
+                    Within 5 km
+
+                </label>
+
+
+                <div class="filter-title">
+                    PRICE
+                </div>
+
+
+                <label class="filter-option">
+
+                    <input type="checkbox">
+
+                    Under ₹300/day
+
+                </label>
+
+
+                <div class="filter-title">
+                    RATING
+                </div>
+
+
+                <label class="filter-option">
+
+                    <input type="checkbox">
+
+                    Top Rated (4.8+)
+
+                </label>
+
+
+                <div class="filter-title">
+                    VERIFICATION
+                </div>
+
+
+                <label class="filter-option">
+
+                    <input type="checkbox">
+
+                    ID Verified Only
+
+                </label>
+
+            </aside>
+
+
+
+            <!-- =========================
+                 SPORTS ITEMS
+            ========================= -->
+
+            <section class="listings">
+
+
+                <!-- ITEM 1 -->
+
+                <div class="listing">
+
+                    <div class="listing-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=80"
+                            alt="Adjustable Dumbbells"
+                        >
+
+                    </div>
+
+
+                    <div class="listing-content">
+
+                        <div class="location">
+                            Bodakdev · 1.1 km away · 4.9 (28)
+                        </div>
+
+
+                        <h3>
+                            Bowflex SelectTech Adjustable Dumbbells
+                            (Pair, 24kg each)
+                        </h3>
+
+
+                        <div class="owner">
+
+                            <div class="owner-icon">
+                                R
+                            </div>
+
+                            <div class="owner-text">
+                                Rahul S. · Neighbor
+                            </div>
+
+                        </div>
+
+
+                        <div class="price-row">
+
+                            <div class="price">
+
+                                ₹250 / day
+
+                                <span class="deposit">
+                                    ₹2,000 security deposit
+                                </span>
+
+                            </div>
+
+
+                            <a href="sport-it-det.html" class="rent-button">
+                                Rent Now
+                            </a>
+
+                        </div>
+
+
+                        <div class="verified">
+                            ✓ Instant Book Available
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ITEM 2 -->
+
+                <div class="listing">
+
+                    <div class="listing-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=900&q=80"
+                            alt="Cricket Kit"
+                        >
+
+                    </div>
+
+
+                    <div class="listing-content">
+
+                        <div class="location">
+                            Navrangpura · 1.5 km away · 5.0 (34)
+                        </div>
+
+
+                        <h3>
+                            Complete Cricket Kit with English
+                            Willow Bat &amp; Full Guard Gear
+                        </h3>
+
+
+                        <div class="owner">
+
+                            <div class="owner-icon">
+                                A
+                            </div>
+
+                            <div class="owner-text">
+                                Amit P. · Neighbor
+                            </div>
+
+                        </div>
+
+
+                        <div class="price-row">
+
+                            <div class="price">
+
+                                ₹350 / day
+
+                                <span class="deposit">
+                                    ₹1,500 security deposit
+                                </span>
+
+                            </div>
+
+
+                            <a href="sport-it-det.html" class="rent-button">
+                                Rent Now
+                            </a>
+
+                        </div>
+
+
+                        <div class="verified">
+                            ✓ Instant Book Available
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ITEM 3 -->
+
+                <div class="listing">
+
+                    <div class="listing-image">
+
+                        <img
+    src="https://images.unsplash.com/photo-1635873021329-c0af04695c9d?auto=format&fit=crop&w=900&q=80"
+    alt="Tennis Rackets"
+>
+
+                    </div>
+
+
+                    <div class="listing-content">
+
+                        <div class="location">
+                            Vastrapur · 2.2 km away · 4.9 (19)
+                        </div>
+
+
+                        <h3>
+                            Wilson Pro Staff Tennis Rackets
+                            (Pair) + Pressure Balls Set
+                        </h3>
+
+
+                        <div class="owner">
+
+                            <div class="owner-icon">
+                                K
+                            </div>
+
+                            <div class="owner-text">
+                                Kavita M. · Neighbor
+                            </div>
+
+                        </div>
+
+
+                        <div class="price-row">
+
+                            <div class="price">
+
+                                ₹180 / day
+
+                                <span class="deposit">
+                                    ₹1,200 security deposit
+                                </span>
+
+                            </div>
+
+
+                            <a href="sport-it-det.html" class="request-button">
+                                Request Booking
+                            </a>
+
+                        </div>
+
+
+                        <div class="verified">
+                            ✓ Top Rated Available
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ITEM 4 -->
+
+                <div class="listing">
+
+                    <div class="listing-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?auto=format&fit=crop&w=900&q=80"
+                            alt="Mountain Bike"
+                        >
+
+                    </div>
+
+
+                    <div class="listing-content">
+
+                        <div class="location">
+                            Satellite · 1.8 km away · 4.9 (42)
+                        </div>
+
+
+                        <h3>
+                            Trek Marlin 7 Mountain Bike
+                            (Helmet &amp; U-Lock Included)
+                        </h3>
+
+
+                        <div class="owner">
+
+                            <div class="owner-icon">
+                                D
+                            </div>
+
+                            <div class="owner-text">
+                                Deepak T. · Neighbor
+                            </div>
+
+                        </div>
+
+
+                        <div class="price-row">
+
+                            <div class="price">
+
+                                ₹220 / day
+
+                                <span class="deposit">
+                                    ₹1,500 security deposit
+                                </span>
+
+                            </div>
+
+
+                            <a href="sport-it-det.html" class="rent-button">
+                                Rent Now
+                            </a>
+
+                        </div>
+
+
+                        <div class="verified">
+                            ✓ Instant Book Available
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ITEM 5 -->
+
+                <div class="listing">
+
+                    <div class="listing-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80"
+                            alt="Stand Up Paddle Board"
+                        >
+
+                    </div>
+
+
+                    <div class="listing-content">
+
+                        <div class="location">
+                            Prahlad Nagar · 3.4 km away · 4.8 (14)
+                        </div>
+
+
+                        <h3>
+                            Aqua Marina Inflatable Stand Up
+                            Paddle Board (SUP) Complete Set
+                        </h3>
+
+
+                        <div class="owner">
+
+                            <div class="owner-icon">
+                                S
+                            </div>
+
+                            <div class="owner-text">
+                                Siddharth J. · Neighbor
+                            </div>
+
+                        </div>
+
+
+                        <div class="price-row">
+
+                            <div class="price">
+
+                                ₹450 / day
+
+                                <span class="deposit">
+                                    ₹2,500 security deposit
+                                </span>
+
+                            </div>
+
+
+                            <a href="payment-select.html" class="rent-button">
+                                Rent Now
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     EARN BANNER
+                ========================= -->
+
+                <div class="earn-banner">
+
+
+                    <div>
+
+                        <h2>
+                            Have fitness or sports gear
+                            sitting idle?
+                        </h2>
+
+
+                        <p>
+                            Rent out your spare gym weights,
+                            cricket kit, rackets, or cycle to
+                            verified neighbors in Ahmedabad
+                            with ₹30,000 lender protection
+                            coverage.
+                        </p>
+
+                    </div>
+
+
+                    <a href="#" class="earn-button">
+                        Calculate Earnings
+                    </a>
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         PROTECTION
+    ========================= -->
+
+    <section class="protection">
+
+
+        <small>
+            BORROW WITH PEACE OF MIND
+        </small>
+
+
+        <h2>
+            Borrow with peace of mind.
+        </h2>
+
+
+        <p>
+            Every sports rental includes up to
+            <strong>₹30,000 Lender Protection Guarantee</strong>,
+            verified member IDs, and 100% refundable deposits.
+        </p>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         EARN MORE
+    ========================= -->
+
+    <section class="earn-more">
+
+
+        <h3>
+            Have sports gear to lend?
+        </h3>
+
+
+        <p>
+            Earn ₹6,000+/mo by sharing your unused gear.
+        </p>
+
+
+        <a href="#">
+            List Your Gear →
+        </a>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         NEIGHBORHOODS
+    ========================= -->
+
+    <section class="neighborhood-section">
+
+
+        <div class="section-title">
+
+            <small>
+                LOCAL SHARING
+            </small>
+
+
+            <h2>
+                Rent Sports Equipment in nearby neighborhoods
+            </h2>
+
+
+            <p>
+                Find workout gear, kits, and bikes just a few
+                blocks away across Ahmedabad.
+            </p>
+
+        </div>
+
+
+
+        <div class="neighborhoods">
+
+
+            <div class="neighborhood">
+
+                <h3>
+                    Navrangpura
+                </h3>
+
+                <p>
+                    2 items available
+                </p>
+
+            </div>
+
+
+            <div class="neighborhood">
+
+                <h3>
+                    Bodakdev
+                </h3>
+
+                <p>
+                    1 item available
+                </p>
+
+            </div>
+
+
+            <div class="neighborhood">
+
+                <h3>
+                    Vastrapur
+                </h3>
+
+                <p>
+                    1 item available
+                </p>
+
+            </div>
+
+
+            <div class="neighborhood">
+
+                <h3>
+                    Satellite
+                </h3>
+
+                <p>
+                    1 item available
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+
+        <div class="footer-content">
+
+
+            <!-- BRAND -->
+
+            <div class="footer-brand">
+
+
+                <div class="footer-logo">
+
+                    <img
+                        src="logo.png"
+                        alt="BorrowBox Logo"
+                    >
+
+                    <h3>
+                        BorrowBox
+                    </h3>
+
+                </div>
+
+
+                <p>
+                    Borrow • Share • Build Community.
+                    Empowering local neighborhoods to lend,
+                    borrow, and connect securely with trusted
+                    gear next door.
+                </p>
+
+
+            </div>
+
+
+
+            <!-- BROWSE -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Browse
+                </h3>
+
+                <a href="#">
+                    All Listings
+                </a>
+
+                <a href="#">
+                    Near Me
+                </a>
+
+                <a href="#">
+                    Top Rated Gear
+                </a>
+
+                <a href="#">
+                    Newly Added
+                </a>
+
+            </div>
+
+
+
+            <!-- CATEGORIES -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Categories
+                </h3>
+
+                <a href="#">
+                    Cameras &amp; Optics
+                </a>
+
+                <a href="#">
+                    Audio &amp; Music
+                </a>
+
+                <a href="#">
+                    Projectors &amp; Screens
+                </a>
+
+                <a href="#">
+                    Outdoor &amp; DIY Tools
+                </a>
+
+            </div>
+
+
+
+            <!-- LEND -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Lend
+                </h3>
+
+                <a href="#">
+                    List an Item
+                </a>
+
+                <a href="#">
+                    Lender Guarantee
+                </a>
+
+                <a href="#">
+                    Pricing Calculator
+                </a>
+
+                <a href="#">
+                    How It Works
+                </a>
+
+            </div>
+
+
+
+            <!-- SUPPORT -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Support &amp; Legal
+                </h3>
+
+                <a href="#">
+                    Community Guidelines
+                </a>
+
+                <a href="#">
+                    Help Center
+                </a>
+
+                <a href="#">
+                    Trust &amp; Safety
+                </a>
+
+                <a href="#">
+                    Terms of Service
+                </a>
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <span>
+                Verified Neighborhood Lenders in Ahmedabad
+            </span>
+
+
+            <span>
+                © 2025 BorrowBox Marketplace. All rights reserved.
+            </span>
+
+        </div>
+
+
+    </footer>
+
+
+</body>
+
+</html>
