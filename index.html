@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BorrowBox - Login</title>
+
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f7f2;
+            color: #064c3f;
+        }
+
+        /* Main page */
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar */
+        .navbar {
+            height: 50px;
+            background-color: white;
+            border-bottom: 1px solid #eeeeee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 35px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .brand-icon {
+            width: 22px;
+            height: 22px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .brand-icon img {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+            transform: translate(-10px, -7px);
+        }
+
+        .version {
+            color: #7a958e;
+            font-size: 9px;
+            font-weight: normal;
+        }
+
+        .secure {
+            font-size: 9px;
+            color: #42685f;
+        }
+
+        .secure span {
+            color: #0d9a70;
+        }
+
+        /* Two main div containers */
+        .main-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            padding: 45px 0;
+        }
+
+        /* LEFT DIV */
+        .left-container {
+            width: 50%;
+            padding-left: 20px;
+        }
+
+        .small-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .small-logo-icon {
+            width: 30px;
+            height: 30px;
+            overflow: hidden;
+            border-radius: 7px;
+        }
+
+        .small-logo-icon img {
+            width: 60px;
+            height: 60px;
+            transform: translate(-14px, -10px);
+        }
+
+        .small-logo-text h3 {
+            font-size: 14px;
+            color: #075346;
+        }
+
+        .small-logo-text p {
+            font-size: 7px;
+            color: #0a9b77;
+            margin-top: 2px;
+        }
+
+        .heading {
+            font-size: 42px;
+            line-height: 0.98;
+            color: #075346;
+            margin-bottom: 18px;
+        }
+
+        .heading .orange {
+            color: #f3a500;
+        }
+
+        .description {
+            width: 420px;
+            max-width: 100%;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #647871;
+            margin-bottom: 20px;
+        }
+
+        /* Illustration made from logo.png */
+        .image-box {
+            width: 390px;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 14px;
+            background-color: #eef3ee;
+            position: relative;
+            box-shadow: 0 12px 30px rgba(4, 76, 63, 0.08);
+        }
+
+        .image-box img {
+            width: 390px;
+            height: 390px;
+            position: absolute;
+            left: 0;
+            top: -45px;
+            object-fit: contain;
+        }
+
+        .stats {
+            display: flex;
+            gap: 18px;
+            margin-top: 10px;
+            font-size: 8px;
+            color: #527069;
+        }
+
+        .stats span::before {
+            content: "✓";
+            color: #0b9b72;
+            margin-right: 4px;
+        }
+
+        .trusted {
+            margin-top: 14px;
+            font-size: 8px;
+            color: #587069;
+        }
+
+        /* RIGHT DIV */
+        .right-container {
+            width: 50%;
+            max-width: 420px;
+        }
+
+        .login-card {
+            background-color: white;
+            border: 1px solid #e7ece8;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 10px 25px rgba(0, 60, 50, 0.10);
+        }
+
+        .login-title {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 4px;
+        }
+
+        .login-title h2 {
+            font-size: 20px;
+            color: #263b37;
+        }
+
+        .wave {
+            font-size: 18px;
+        }
+
+        .login-subtitle {
+            font-size: 10px;
+            color: #788681;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 13px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 9px;
+            font-weight: bold;
+            color: #40534e;
+            margin-bottom: 5px;
+        }
+
+        .input-box {
+            width: 100%;
+            height: 34px;
+            border: 1px solid #dfe6e3;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            background-color: #fbfcfb;
+        }
+
+        .input-box span {
+            color: #84938e;
+            font-size: 10px;
+            margin-right: 7px;
+        }
+
+        .input-box input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 9px;
+            color: #43534f;
+        }
+
+        .remember-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 8px;
+            margin: 3px 0 13px;
+            color: #687b75;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .remember input {
+            accent-color: #07876c;
+        }
+
+        .forgot {
+            color: #07876c;
+            text-decoration: none;
+        }
+
+        .login-button {
+            width: 100%;
+            height: 38px;
+            border: none;
+            border-radius: 8px;
+            background-color: #78d9eb;
+            color: white;
+            font-size: 10px;
+            cursor: pointer;
+            margin-bottom: 14px;
+        }
+
+        .google-button {
+            width: 100%;
+            height: 36px;
+            border: 1px solid #e0e6e3;
+            border-radius: 8px;
+            background-color: white;
+            color: #394944;
+            font-size: 9px;
+            cursor: pointer;
+        }
+
+        .google-button span {
+            color: #4285f4;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .account-text {
+            text-align: center;
+            font-size: 8px;
+            color: #87938f;
+            margin-top: 14px;
+        }
+
+        .account-text a {
+            color: #08775f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        .footer {
+            height: 38px;
+            background-color: white;
+            border-top: 1px solid #eeeeee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 35px;
+            font-size: 8px;
+            color: #7c8b86;
+        }
+
+        .footer strong {
+            color: #075346;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 18px;
+        }
+
+        /* Tablet */
+        @media (max-width: 800px) {
+            .main-container {
+                flex-direction: column;
+                gap: 35px;
+            }
+
+            .left-container,
+            .right-container {
+                width: 100%;
+                max-width: 500px;
+                padding-left: 0;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 500px) {
+            .navbar {
+                padding: 0 15px;
+            }
+
+            .secure {
+                display: none;
+            }
+
+            .main-container {
+                width: 92%;
+                padding: 30px 0;
+            }
+
+            .heading {
+                font-size: 34px;
+            }
+
+            .image-box {
+                width: 100%;
+            }
+
+            .image-box img {
+                width: 100%;
+                height: auto;
+            }
+
+            .login-card {
+                padding: 22px;
+            }
+
+            .footer {
+                height: auto;
+                padding: 12px 15px;
+                gap: 10px;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- Navbar -->
+        <header class="navbar">
+            <div class="brand">
+                <div class="brand-icon">
+                    <img src="logo.png" alt="BorrowBox logo">
+                </div>
+                <span>BorrowBox</span>
+                <span class="version">Design System v1.2</span>
+            </div>
+
+            <div class="secure">
+                <span>●</span> Fully Responsive Website
+            </div>
+        </header>
+
+        <!-- TWO MAIN DIV CONTAINERS -->
+        <main class="main-container">
+
+            <!-- LEFT DIV -->
+            <div class="left-container">
+
+                <div class="small-logo">
+                    <div class="small-logo-icon">
+                        <img src="logo.png" alt="BorrowBox logo">
+                    </div>
+
+                    <div class="small-logo-text">
+                        <h3>BorrowBox</h3>
+                        <p>BORROW • SHARE • BUILD COMMUNITY</p>
+                    </div>
+                </div>
+
+                <h1 class="heading">
+                    Borrow what you<br>
+                    need.<br>
+                    <span class="orange">Share what you have.</span>
+                </h1>
+
+                <p class="description">
+                    Connect with trusted neighbours and borrow useful things nearby.
+                    Save money, reduce waste, and build a stronger local community.
+                </p>
+
+                <div class="image-box">
+                    <img src="logo.png" alt="BorrowBox illustration">
+                </div>
+
+                <div class="stats">
+                    <span>Verified neighbours</span>
+                    <span>Safe &amp; trusted lending</span>
+                    <span>4.8k+ active borrowers</span>
+                </div>
+
+                <p class="trusted">
+                    ✓ Deposit-protected &amp; ID-verified peer-to-peer sharing
+                </p>
+            </div>
+
+            <!-- RIGHT DIV -->
+            <div class="right-container">
+                <div class="login-card">
+
+                    <div class="login-title">
+                        <h2>Welcome Back</h2>
+                        <span class="wave">👋</span>
+                    </div>
+
+                    <p class="login-subtitle">Sign in to continue to BorrowBox.</p>
+
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <div class="input-box">
+                            <span>✉</span>
+                            <input type="email" placeholder="sarah.jenkins@neighborhood.org">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Password</label>
+                        <div class="input-box">
+                            <span>▣</span>
+                            <input type="password" placeholder="**********">
+                            <span>◉</span>
+                        </div>
+                    </div>
+
+                    <div class="remember-row">
+                        <label class="remember">
+                            <input type="checkbox" checked>
+                            Remember me
+                        </label>
+
+                        <a href="forgot1.html" class="forgot">Forgot Password?</a>
+                    </div>
+                    <a href="accoune-created.html">
+                        <button class="login-button">Login →</button>
+                    </a>
+
+                    <button class="google-button">
+                        <span>G</span> Continue with Google
+                    </button>
+
+                    <p class="account-text">
+                        Don't have an account?
+                        <a href="creat-account.html">Create Account</a>
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div>
+                <strong>BorrowBox</strong> • Better Neighbours, Stronger Community
+            </div>
+
+            <div class="footer-links">
+                <span>Privacy Policy</span>
+                <span>Terms of Service</span>
+                <span>Help Center</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
