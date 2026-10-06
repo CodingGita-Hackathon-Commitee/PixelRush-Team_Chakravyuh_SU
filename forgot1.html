@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BorrowBox - Password Recovery</title>
+
+
+    <style>
+
+        /* -------------------------
+           BASIC SETTINGS
+        ------------------------- */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            color: #17483c;
+
+            background-color: #f3f8ef;
+        }
+
+
+        /* -------------------------
+           HEADER
+        ------------------------- */
+
+        .header {
+            height: 40px;
+
+            background-color: white;
+
+            border-bottom: 1px solid #dddddd;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 22px;
+        }
+
+
+        .header-left {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        .logo {
+            width: 82px;
+
+            height: auto;
+        }
+
+
+        .screen-name {
+            font-size: 8px;
+
+            color: #28715b;
+
+            background-color: #e8f5ed;
+
+            padding: 4px 8px;
+
+            border-radius: 10px;
+        }
+
+
+        .steps {
+            display: flex;
+
+            gap: 8px;
+
+            font-size: 7px;
+
+            color: #28715b;
+        }
+
+
+        .step {
+            background-color: #e8f5ed;
+
+            padding: 5px 8px;
+
+            border-radius: 10px;
+        }
+
+
+        /* -------------------------
+           MAIN BACKGROUND
+        ------------------------- */
+
+        .main {
+            min-height: calc(100vh - 80px);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background:
+
+                radial-gradient(
+                    circle at 15% 70%,
+                    #fff1b6 0,
+                    #fff1b6 8%,
+                    transparent 25%
+                ),
+
+                radial-gradient(
+                    circle at 85% 20%,
+                    #fff3bd 0,
+                    #fff3bd 8%,
+                    transparent 25%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #edf8ed,
+                    #fffdf0
+                );
+        }
+
+
+        /* -------------------------
+           CONTENT
+        ------------------------- */
+
+        .content {
+            width: 850px;
+
+            max-width: 90%;
+
+            display: flex;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+
+        /* -------------------------
+           LEFT SIDE
+        ------------------------- */
+
+        .left-side {
+            width: 50%;
+        }
+
+
+        .mini-logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .mini-logo img {
+            width: 75px;
+        }
+
+
+        .mini-text {
+            font-size: 7px;
+
+            color: #29745c;
+
+            margin-top: 2px;
+        }
+
+
+        .left-side h1 {
+            font-size: 28px;
+
+            line-height: 0.95;
+
+            margin: 0 0 12px;
+
+            color: #075d52;
+        }
+
+
+        .left-side h1 span {
+            color: #168064;
+        }
+
+
+        .description {
+            font-size: 11px;
+
+            line-height: 1.5;
+
+            color: #737d79;
+
+            max-width: 290px;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* -------------------------
+           ILLUSTRATION BOX
+        ------------------------- */
+
+        .illustration {
+            width: 290px;
+
+            height: 125px;
+
+            background:
+
+                radial-gradient(
+                    circle at 80% 20%,
+                    #fff0bd,
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #f5faf2,
+                    #edf3eb
+                );
+
+            border-radius: 12px;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        /* Simple lock illustration */
+
+        .lock {
+            position: relative;
+
+            width: 50px;
+
+            height: 40px;
+
+            background-color: #078064;
+
+            border-radius: 7px;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+        }
+
+
+        .lock:before {
+            content: "";
+
+            position: absolute;
+
+            width: 25px;
+
+            height: 25px;
+
+            border: 5px solid #078064;
+
+            border-bottom: 0;
+
+            border-radius: 20px 20px 0 0;
+
+            top: -22px;
+
+            left: 8px;
+        }
+
+
+        .key {
+            position: absolute;
+
+            width: 55px;
+
+            height: 13px;
+
+            background-color: #f4b500;
+
+            border-radius: 8px;
+
+            transform: rotate(25deg);
+
+            left: 105px;
+
+            top: 68px;
+        }
+
+
+        .key:after {
+            content: "";
+
+            position: absolute;
+
+            width: 15px;
+
+            height: 15px;
+
+            border: 4px solid #f4b500;
+
+            border-radius: 50%;
+
+            left: -8px;
+
+            top: -5px;
+        }
+
+
+        .check-circle {
+            position: absolute;
+
+            width: 13px;
+
+            height: 13px;
+
+            border-radius: 50%;
+
+            background-color: #168064;
+
+            color: white;
+
+            font-size: 8px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            left: 90px;
+
+            top: 53px;
+        }
+
+
+        .security-label {
+            position: absolute;
+
+            bottom: 18px;
+
+            background-color: white;
+
+            padding: 5px 10px;
+
+            border-radius: 10px;
+
+            font-size: 6px;
+
+            color: #4f7066;
+
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+
+        /* -------------------------
+           SECURITY TEXT
+        ------------------------- */
+
+        .security-text {
+            margin-top: 15px;
+
+            display: flex;
+
+            gap: 8px;
+
+            font-size: 7px;
+
+            color: #777f7b;
+
+            max-width: 290px;
+        }
+
+
+        .security-icon {
+            color: #148263;
+
+            font-size: 9px;
+        }
+
+
+        /* -------------------------
+           RIGHT FORM
+        ------------------------- */
+
+        .right-side {
+            width: 50%;
+        }
+
+
+        .form-box {
+            width: 100%;
+
+            background-color: white;
+
+            padding: 22px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 7px 20px rgba(40, 70, 50, 0.10);
+        }
+
+
+        .form-box h2 {
+            margin: 0 0 5px;
+
+            font-size: 19px;
+
+            color: #111d20;
+        }
+
+
+        .form-description {
+            font-size: 8px;
+
+            line-height: 1.4;
+
+            color: #858d8b;
+
+            margin: 0 0 15px;
+        }
+
+
+        /* -------------------------
+           FORM
+        ------------------------- */
+
+        label {
+            display: block;
+
+            font-size: 7px;
+
+            color: #3e514c;
+
+            margin-bottom: 5px;
+        }
+
+
+        input {
+            width: 100%;
+
+            height: 32px;
+
+            border: 1px solid #a8d5c4;
+
+            border-radius: 6px;
+
+            padding: 0 10px;
+
+            font-size: 8px;
+
+            margin-bottom: 12px;
+        }
+
+
+        input:focus {
+            outline: none;
+
+            border-color: #178365;
+        }
+
+
+        /* -------------------------
+           SEND BUTTON
+        ------------------------- */
+
+        .send-button {
+            width: 100%;
+
+            height: 32px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background-color: #79d9e9;
+
+            color: white;
+
+            font-size: 8px;
+
+            cursor: pointer;
+
+            margin-top: 3px;
+        }
+
+
+        .send-button:hover {
+            background-color: #5fc9da;
+        }
+
+
+        /* -------------------------
+           BACK TO LOGIN
+        ------------------------- */
+
+        .back-login {
+            display: block;
+
+            text-align: center;
+
+            margin: 12px 0;
+
+            color: #15805f;
+
+            text-decoration: none;
+
+            font-size: 8px;
+        }
+
+
+        .back-login:hover {
+            text-decoration: underline;
+        }
+
+
+        /* -------------------------
+           DIVIDER
+        ------------------------- */
+
+        .divider {
+            border-top: 1px solid #eeeeee;
+
+            margin: 12px 0;
+        }
+
+
+        .protected {
+            text-align: center;
+
+            font-size: 7px;
+
+            color: #688078;
+        }
+
+
+        /* -------------------------
+           FOOTER
+        ------------------------- */
+
+        .footer {
+            height: 40px;
+
+            background-color: white;
+
+            border-top: 1px solid #dddddd;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 22px;
+
+            font-size: 7px;
+
+            color: #7c8582;
+        }
+
+
+        .footer-left {
+            color: #55736a;
+        }
+
+
+        .footer-right {
+            display: flex;
+
+            gap: 14px;
+        }
+
+
+        /* -------------------------
+           MOBILE
+        ------------------------- */
+
+        @media screen and (max-width: 750px) {
+
+            .content {
+                flex-direction: column;
+
+                gap: 25px;
+
+                padding: 30px 0;
+            }
+
+
+            .left-side {
+                width: 100%;
+
+                text-align: center;
+            }
+
+
+            .right-side {
+                width: 100%;
+
+                max-width: 400px;
+            }
+
+
+            .description {
+                margin-left: auto;
+
+                margin-right: auto;
+            }
+
+
+            .illustration {
+                margin-left: auto;
+
+                margin-right: auto;
+            }
+
+
+            .security-text {
+                margin-left: auto;
+
+                margin-right: auto;
+
+                text-align: left;
+            }
+
+
+            .steps {
+                display: none;
+            }
+
+
+            .footer-right {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+
+        <div class="header-left">
+
+            <img
+                src="logo.png"
+                alt="BorrowBox Logo"
+                class="logo"
+            >
+
+
+            <span class="screen-name">
+                Screen 3 • Password Recovery
+            </span>
+
+        </div>
+
+
+        <div class="steps">
+
+            <span class="step">
+                1. Request Form
+            </span>
+
+            <span class="step">
+                2. Check Inbox State
+            </span>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main">
+
+
+        <div class="content">
+
+
+            <!-- =====================
+                 LEFT SIDE
+            ====================== -->
+
+            <section class="left-side">
+
+
+                <div class="mini-logo">
+
+                    <img
+                        src="logo.png"
+                        alt="BorrowBox Logo"
+                    >
+
+                </div>
+
+
+                <h1>
+                    Forgot your<br>
+                    <span>password?</span>
+                </h1>
+
+
+                <p class="description">
+
+                    No worries. We'll help you get back into
+                    your BorrowBox account in a few simple steps.
+
+                </p>
+
+
+                <!-- ILLUSTRATION -->
+
+                <div class="illustration">
+
+
+                    <div class="key"></div>
+
+
+                    <div class="check-circle">
+                        ✓
+                    </div>
+
+
+                    <div class="lock"></div>
+
+
+                    <div class="security-label">
+                        🔒 Encrypted end-to-end recovery link
+                    </div>
+
+                </div>
+
+
+                <!-- SECURITY MESSAGE -->
+
+                <div class="security-text">
+
+                    <span class="security-icon">
+                        ◉
+                    </span>
+
+                    <span>
+                        Password reset links expire in 15 minutes
+                        for community security.
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================
+                 RIGHT SIDE
+            ====================== -->
+
+            <section class="right-side">
+
+
+                <div class="form-box">
+
+
+                    <h2>
+                        Reset your password
+                    </h2>
+
+
+                    <p class="form-description">
+
+                        Enter the email address connected to your
+                        account and we'll send you a reset link.
+
+                    </p>
+
+
+                    <!-- EMAIL -->
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="sarah.jenkins@neighborhood.org"
+                    >
+
+
+                    <!-- SEND BUTTON -->
+                    <a href="otp.html">
+                    <button class="send-button">
+                        Send Reset Code →
+                    </button>
+                    </a>
+
+
+                    <!-- LOGIN -->
+
+                    <a
+                        href="index.html"
+                        class="back-login"
+                    >
+                        ← Back to Login
+                    </a>
+
+
+                    <div class="divider"></div>
+
+
+                    <p class="protected">
+                        🔒 Your account information is protected.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+
+        <div class="footer-left">
+
+            ● BorrowBox &nbsp; • &nbsp;
+            Better Neighborhoods. Stronger Community.
+
+        </div>
+
+
+        <div class="footer-right">
+
+            <span>
+                Community Guidelines
+            </span>
+
+            <span>
+                Security Center
+            </span>
+
+            <span>
+                Terms of Service
+            </span>
+
+        </div>
+
+
+    </footer>
+
+
+</body>
+
+</html>
