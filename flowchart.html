@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BorrowBox - Trust Profile</title>
+
+    <style>
+
+        /* =========================
+           BASIC CSS
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f9f7;
+            color: #173d32;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            height: 55px;
+
+            background-color: white;
+
+            border-bottom: 1px solid #e1e9e5;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 18px;
+        }
+
+
+        /* Logo */
+
+        .logo {
+            width: 105px;
+
+            color: #08794f;
+
+            font-size: 16px;
+
+            font-weight: bold;
+        }
+
+        .logo small {
+            display: block;
+
+            font-size: 6px;
+
+            color: #71827b;
+
+            margin-top: -2px;
+        }
+
+
+        /* Search */
+
+        .search {
+            width: 280px;
+
+            height: 29px;
+
+            background-color: #f4f7f6;
+
+            border: 1px solid #e0e8e4;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 9px;
+
+            color: #76867f;
+
+            font-size: 10px;
+        }
+
+        .search input {
+            width: 100%;
+
+            border: none;
+
+            outline: none;
+
+            background-color: transparent;
+
+            font-size: 8px;
+
+            margin-left: 5px;
+        }
+
+
+        /* Header right */
+
+        .header-right {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            font-size: 10px;
+        }
+
+        .header-icon {
+            color: #08794f;
+
+            font-size: 13px;
+        }
+
+        .header-user {
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+        }
+
+        .header-avatar {
+            width: 25px;
+
+            height: 25px;
+
+            border-radius: 50%;
+
+            background-color: #b9d7c8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #176048;
+
+            font-size: 8px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .page {
+            display: flex;
+
+            min-height: calc(100vh - 55px);
+        }
+
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            width: 103px;
+
+            background-color: #064a31;
+
+            color: white;
+
+            padding: 10px 7px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+        }
+
+
+        /* Menu */
+
+        .menu-item {
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 7px;
+
+            margin-bottom: 3px;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            color: #dcebe5;
+
+            font-size: 7px;
+        }
+
+        .menu-item:hover {
+            background-color: #176344;
+        }
+
+        .menu-item.active {
+            background-color: #286b4c;
+        }
+
+        .menu-icon {
+            width: 18px;
+
+            font-size: 10px;
+        }
+
+        .notification {
+            margin-left: auto;
+
+            width: 11px;
+
+            height: 11px;
+
+            border-radius: 50%;
+
+            background-color: #ff6540;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 6px;
+        }
+
+
+        /* =========================
+           SHARE CARD
+        ========================= */
+
+        .share-card {
+            border: 1px solid #bd8d29;
+
+            background-color: #104f35;
+
+            border-radius: 5px;
+
+            padding: 7px 6px;
+
+            font-size: 6px;
+        }
+
+        .share-card h3 {
+            margin: 0 0 5px;
+
+            color: #ffd75c;
+
+            font-size: 8px;
+        }
+
+        .share-card p {
+            margin: 0 0 7px;
+
+            line-height: 9px;
+
+            color: #e1eee8;
+        }
+
+        .share-button {
+            border: none;
+
+            background-color: #ff653c;
+
+            color: white;
+
+            border-radius: 3px;
+
+            padding: 4px 7px;
+
+            font-size: 6px;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .content {
+            flex: 1;
+
+            padding: 12px 14px;
+
+            max-width: 950px;
+        }
+
+
+        /* Page title */
+
+        .title {
+            margin-bottom: 10px;
+        }
+
+        .title h1 {
+            margin: 0;
+
+            font-size: 17px;
+
+            color: #163d32;
+        }
+
+        .title p {
+            margin: 3px 0;
+
+            color: #75847e;
+
+            font-size: 7px;
+        }
+
+
+        /* =========================
+           TOP GRID
+        ========================= */
+
+        .top-grid {
+            display: flex;
+
+            gap: 8px;
+
+            align-items: stretch;
+        }
+
+
+        /* =========================
+           LEFT PROFILE
+        ========================= */
+
+        .profile-card {
+            width: 33%;
+
+            background-color: white;
+
+            border: 1px solid #dfe9e5;
+
+            border-radius: 7px;
+
+            padding: 9px;
+        }
+
+
+        .section-title {
+            margin: 0 0 7px;
+
+            font-size: 9px;
+
+            color: #284d40;
+        }
+
+        .section-subtitle {
+            margin: -4px 0 8px;
+
+            font-size: 6px;
+
+            color: #84918c;
+        }
+
+
+        /* Profile */
+
+        .profile-person {
+            display: flex;
+
+            align-items: center;
+
+            margin-bottom: 8px;
+        }
+
+        .profile-avatar {
+            width: 34px;
+
+            height: 34px;
+
+            border-radius: 50%;
+
+            background-color: #b9d7c8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #175b43;
+
+            font-size: 9px;
+
+            font-weight: bold;
+
+            margin-right: 7px;
+        }
+
+        .profile-name {
+            font-size: 8px;
+
+            font-weight: bold;
+        }
+
+        .member-date {
+            font-size: 6px;
+
+            color: #71817a;
+
+            margin-top: 2px;
+        }
+
+        .verified {
+            display: inline-block;
+
+            background-color: #dff5e9;
+
+            color: #16855d;
+
+            padding: 2px 4px;
+
+            border-radius: 8px;
+
+            font-size: 5px;
+
+            margin-top: 2px;
+        }
+
+
+        /* Personal information */
+
+        .info-title {
+            font-size: 7px;
+
+            font-weight: bold;
+
+            color: #52665d;
+
+            margin-top: 7px;
+
+            margin-bottom: 4px;
+        }
+
+        .profile-info {
+            font-size: 6px;
+
+            line-height: 13px;
+
+            color: #63736d;
+        }
+
+
+        /* =========================
+           CENTER ANALYTICS
+        ========================= */
+
+        .analytics-card {
+            width: 35%;
+
+            background-color: white;
+
+            border: 1px solid #dfe9e5;
+
+            border-radius: 7px;
+
+            padding: 9px;
+        }
+
+        .analytics-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .analytics-header h2 {
+            margin: 0;
+
+            font-size: 9px;
+        }
+
+        .analytics-header span {
+            font-size: 6px;
+
+            color: #7a8983;
+        }
+
+
+        /* Chart */
+
+        .chart {
+            height: 130px;
+
+            margin-top: 7px;
+
+            position: relative;
+
+            border-left: 1px solid #b9c9c3;
+
+            border-bottom: 1px solid #b9c9c3;
+
+            background-color: #fbfdfc;
+        }
+
+        .chart-line {
+            position: absolute;
+
+            left: 8%;
+
+            bottom: 17%;
+
+            width: 78%;
+
+            height: 65%;
+
+            border-top: 2px solid #15966a;
+
+            transform: rotate(-25deg);
+        }
+
+        .chart-line::before {
+            content: "";
+
+            position: absolute;
+
+            width: 8px;
+
+            height: 8px;
+
+            border-radius: 50%;
+
+            background-color: #15966a;
+
+            left: 15%;
+
+            top: -5px;
+        }
+
+        .chart-line::after {
+            content: "";
+
+            position: absolute;
+
+            width: 8px;
+
+            height: 8px;
+
+            border-radius: 50%;
+
+            background-color: #15966a;
+
+            right: 0;
+
+            top: -5px;
+        }
+
+        .chart-months {
+            position: absolute;
+
+            bottom: -14px;
+
+            left: 8px;
+
+            right: 0;
+
+            display: flex;
+
+            justify-content: space-around;
+
+            font-size: 5px;
+
+            color: #8a9892;
+        }
+
+        .chart-note {
+            margin-top: 18px;
+
+            background-color: #e9f8f1;
+
+            color: #16855d;
+
+            padding: 4px;
+
+            border-radius: 4px;
+
+            font-size: 6px;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           RIGHT REPUTATION
+        ========================= */
+
+        .reputation-card {
+            width: 32%;
+
+            background-color: white;
+
+            border: 1px solid #dfe9e5;
+
+            border-radius: 7px;
+
+            padding: 9px;
+        }
+
+        .reputation-card h2 {
+            margin: 0;
+
+            font-size: 9px;
+
+            line-height: 12px;
+        }
+
+        .reputation-card > p {
+            font-size: 6px;
+
+            color: #84918c;
+
+            margin: 3px 0 7px;
+        }
+
+
+        /* Reputation rows */
+
+        .reputation-row {
+            margin-bottom: 7px;
+        }
+
+        .reputation-row b {
+            font-size: 6px;
+
+            color: #53665e;
+        }
+
+        .progress {
+            height: 5px;
+
+            background-color: #e5ece9;
+
+            border-radius: 4px;
+
+            margin-top: 3px;
+        }
+
+        .progress span {
+            display: block;
+
+            height: 100%;
+
+            border-radius: 4px;
+
+            background-color: #11976b;
+        }
+
+        .green-90 {
+            width: 90%;
+        }
+
+        .green-80 {
+            width: 80%;
+        }
+
+        .green-70 {
+            width: 70%;
+        }
+
+
+        /* =========================
+           TRUST METRICS
+        ========================= */
+
+        .trust-title {
+            margin-top: 7px;
+
+            font-size: 7px;
+
+            font-weight: bold;
+
+            color: #4e635a;
+        }
+
+        .trust-row {
+            display: flex;
+
+            align-items: center;
+
+            margin-top: 5px;
+
+            font-size: 6px;
+
+            color: #63736c;
+        }
+
+        .trust-icon {
+            width: 17px;
+
+            font-size: 9px;
+        }
+
+        .trust-green {
+            color: #13916a;
+        }
+
+        .trust-orange {
+            color: #e98a2b;
+        }
+
+        .trust-red {
+            color: #e35e4c;
+        }
+
+
+        /* =========================
+           BOTTOM GRID
+        ========================= */
+
+        .bottom-grid {
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 8px;
+        }
+
+
+        /* =========================
+           HISTORY
+        ========================= */
+
+        .history-card {
+            width: 55%;
+
+            background-color: white;
+
+            border: 1px solid #dfe9e5;
+
+            border-radius: 7px;
+
+            padding: 9px;
+        }
+
+        .history-card h2 {
+            margin: 0;
+
+            font-size: 9px;
+        }
+
+        .history-card > p {
+            margin: 3px 0 8px;
+
+            font-size: 6px;
+
+            color: #84918c;
+        }
+
+
+        /* History item */
+
+        .history-item {
+            border-top: 1px solid #edf1ef;
+
+            padding: 6px 0;
+        }
+
+        .history-item:first-of-type {
+            border-top: none;
+        }
+
+        .history-item b {
+            font-size: 7px;
+
+            color: #455b53;
+        }
+
+        .history-item p {
+            margin: 2px 0;
+
+            font-size: 6px;
+
+            color: #7b8984;
+        }
+
+        .stars {
+            color: #e8a822;
+
+            font-size: 8px;
+        }
+
+
+        /* =========================
+           SECURITY ACTIONS
+        ========================= */
+
+        .security-card {
+            width: 45%;
+
+            background-color: #f3faf7;
+
+            border: 1px solid #dcebe5;
+
+            border-radius: 7px;
+
+            padding: 9px;
+        }
+
+        .security-card h2 {
+            margin: 0;
+
+            font-size: 9px;
+        }
+
+        .security-card > p {
+            margin: 3px 0 7px;
+
+            font-size: 6px;
+
+            color: #84918c;
+        }
+
+
+        /* Security item */
+
+        .security-item {
+            background-color: white;
+
+            border: 1px solid #e3ece8;
+
+            border-radius: 5px;
+
+            padding: 7px;
+
+            margin-top: 5px;
+
+            display: flex;
+
+            align-items: center;
+        }
+
+        .security-icon {
+            width: 23px;
+
+            font-size: 10px;
+
+            color: #168a62;
+        }
+
+        .security-text {
+            flex: 1;
+        }
+
+        .security-text b {
+            display: block;
+
+            font-size: 7px;
+
+            color: #4b5e56;
+        }
+
+        .security-text span {
+            font-size: 6px;
+
+            color: #8a9691;
+        }
+
+        .security-arrow {
+            color: #71827b;
+
+            font-size: 11px;
+        }
+
+
+        /* Security button */
+
+        .security-button {
+            width: 100%;
+
+            margin-top: 7px;
+
+            height: 25px;
+
+            border: 1px solid #b9ddce;
+
+            background-color: white;
+
+            color: #087a54;
+
+            border-radius: 5px;
+
+            font-size: 6px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .search {
+                width: 220px;
+            }
+
+            .top-grid {
+                flex-wrap: wrap;
+            }
+
+            .profile-card,
+            .analytics-card,
+            .reputation-card {
+                width: 100%;
+            }
+
+            .bottom-grid {
+                flex-wrap: wrap;
+            }
+
+            .history-card,
+            .security-card {
+                width: 100%;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .header {
+                padding: 0 8px;
+            }
+
+            .search {
+                display: none;
+            }
+
+            .header-right {
+                gap: 5px;
+            }
+
+            .sidebar {
+                width: 55px;
+
+                padding: 8px 5px;
+            }
+
+            .menu-item {
+                justify-content: center;
+
+                padding: 0;
+            }
+
+            .menu-icon {
+                width: auto;
+            }
+
+            .menu-text {
+                display: none;
+            }
+
+            .notification {
+                display: none;
+            }
+
+            .share-card {
+                display: none;
+            }
+
+            .content {
+                padding: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+
+        <!-- Logo -->
+
+        <div class="logo">
+
+            📦 BorrowBox
+
+            <small>
+                Borrow • Share • Save
+            </small>
+
+        </div>
+
+
+
+        <!-- Search -->
+
+        <div class="search">
+
+            🔍
+
+            <input
+                type="text"
+                placeholder="Search for books, gadgets, tools, fashion..."
+            >
+
+        </div>
+
+
+
+        <!-- Header Right -->
+
+        <div class="header-right">
+
+            <span class="header-icon">
+                🔔
+            </span>
+
+            <span class="header-icon">
+                ♡
+            </span>
+
+
+            <div class="header-user">
+
+                <div class="header-avatar">
+                    AC
+                </div>
+
+                <b>
+                    user
+                </b>
+
+                <span>
+                    ▼
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- =========================
+         PAGE
+    ========================== -->
+
+    <div class="page">
+
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside class="sidebar">
+
+
+            <div>
+
+
+                <a href="profile.html" class="menu-item">
+
+                    <span class="menu-icon">
+                        ⌂
+                    </span>
+
+                    <span class="menu-text">
+                        Dashboard
+                    </span>
+
+                </a>
+
+
+                <a href="#" class="menu-item">
+
+                    <span class="menu-icon">
+                        ▣
+                    </span>
+
+                    <span class="menu-text">
+                        My Borrowings
+                    </span>
+
+                </a>
+
+
+                <a href="addlist.html" class="menu-item">
+
+                    <span class="menu-icon">
+                        ▤
+                    </span>
+
+                    <span class="menu-text">
+                        My Listings
+                    </span>
+
+                </a>
+
+
+                <a href="chatbox.html" class="menu-item">
+
+                    <span class="menu-icon">
+                        💬
+                    </span>
+
+                    <span class="menu-text">
+                        Messages
+                    </span>
+
+                    <span class="notification">
+                        2
+                    </span>
+
+                </a>
+
+
+                <a href="#" class="menu-item">
+
+                    <span class="menu-icon">
+                        ♧
+                    </span>
+
+                    <span class="menu-text">
+                        Notifications
+                    </span>
+
+                    <span class="notification">
+                        3
+                    </span>
+
+                </a>
+
+
+                <a href="#" class="menu-item">
+
+                    <span class="menu-icon">
+                        ♡
+                    </span>
+
+                    <span class="menu-text">
+                        Wishlist
+                    </span>
+
+                </a>
+
+
+                <a href="setting.html" class="menu-item active">
+
+                    <span class="menu-icon">
+                        ⚙
+                    </span>
+
+                    <span class="menu-text">
+                        Settings
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- Share Card -->
+
+            <div class="share-card">
+
+                <h3>
+                    📦 Share more.
+                </h3>
+
+                <p>
+                    Earn more.<br><br>
+                    Ask your friends for borrowing and grow your community.
+                </p>
+
+                <button class="share-button">
+                    List an Item
+                </button>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =========================
+             MAIN CONTENT
+        ========================== -->
+
+        <main class="content">
+
+
+            <!-- Title -->
+
+            <div class="title">
+
+                <h1>
+                    Trust Profile & Security
+                </h1>
+
+                <p>
+                    Manage your trust profile, verification and security.
+                </p>
+
+            </div>
+
+
+
+            <!-- =========================
+                 TOP GRID
+            ========================== -->
+
+            <div class="top-grid">
+
+
+                <!-- =========================
+                     PROFILE CARD
+                ========================== -->
+
+                <div class="profile-card">
+
+
+                    <h2 class="section-title">
+                        Profile & Lender info
+                    </h2>
+
+
+                    <p class="section-subtitle">
+                        Your verified lender profile.
+                    </p>
+
+
+
+                    <div class="profile-person">
+
+
+                        <div class="profile-avatar">
+                            AC
+                        </div>
+
+
+                        <div>
+
+                            <div class="profile-name">
+                                Akash
+                            </div>
+
+                            <div class="member-date">
+                                Lender since Mar 2023
+                            </div>
+
+                            <span class="verified">
+                                ✓ Verified
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="info-title">
+                        Personal Information
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        <b>Phone Number</b><br>
+                        +91 98765 43210<br>
+
+                        <b>Email Address</b><br>
+                        akash.chaudhary@example.com<br>
+
+                        <b>Phone Verified</b><br>
+                        ✓ Verified
+
+                    </div>
+
+
+
+                    <div class="info-title">
+                        User Verification
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        Identity
+                        <span style="float:right;color:#15966a;">
+                            ✓ Verified
+                        </span>
+
+                        <br>
+
+                        Phone
+                        <span style="float:right;color:#15966a;">
+                            ✓ Verified
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================
+                     ANALYTICS
+                ========================== -->
+
+                <div class="analytics-card">
+
+
+                    <div class="analytics-header">
+
+                        <div>
+
+                            <h2>
+                                Trust Analytics & Trend
+                            </h2>
+
+                            <span>
+                                Lender Trust Score
+                            </span>
+
+                        </div>
+
+                        <span>
+                            2025
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="chart">
+
+                        <div class="chart-line"></div>
+
+
+                        <div class="chart-months">
+
+                            <span>
+                                Jan
+                            </span>
+
+                            <span>
+                                Mar
+                            </span>
+
+                            <span>
+                                May
+                            </span>
+
+                            <span>
+                                Jul
+                            </span>
+
+                            <span>
+                                Sep
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="chart-note">
+                        Recent: Trust +16 points this year
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================
+                     REPUTATION
+                ========================== -->
+
+                <div class="reputation-card">
+
+
+                    <h2>
+                        New Lender Reputation &
+                        <br>
+                        Security & Security Actions
+                    </h2>
+
+
+                    <p>
+                        Your lender reputation.
+                    </p>
+
+
+
+                    <div class="reputation-row">
+
+                        <b>
+                            Reliability
+                        </b>
+
+                        <div class="progress">
+                            <span class="green-90"></span>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="reputation-row">
+
+                        <b>
+                            Communication
+                        </b>
+
+                        <div class="progress">
+                            <span class="green-80"></span>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="reputation-row">
+
+                        <b>
+                            Item Condition
+                        </b>
+
+                        <div class="progress">
+                            <span class="green-70"></span>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="trust-title">
+                        Security Metrics
+                    </div>
+
+
+                    <div class="trust-row">
+
+                        <span class="trust-icon trust-green">
+                            ✓
+                        </span>
+
+                        Profile Complete
+
+                    </div>
+
+
+                    <div class="trust-row">
+
+                        <span class="trust-icon trust-green">
+                            ✓
+                        </span>
+
+                        Two-Factor Auth
+
+                    </div>
+
+
+                    <div class="trust-row">
+
+                        <span class="trust-icon trust-orange">
+                            !
+                        </span>
+
+                        Device Activity
+
+                    </div>
+
+
+                    <div class="trust-row">
+
+                        <span class="trust-icon trust-red">
+                            !
+                        </span>
+
+                        Security Review
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 BOTTOM GRID
+            ========================== -->
+
+            <div class="bottom-grid">
+
+
+                <!-- =========================
+                     HISTORY
+                ========================== -->
+
+                <div class="history-card">
+
+
+                    <h2>
+                        Extended Lender History (New)
+                    </h2>
+
+
+                    <p>
+                        Borrower & Trust history
+                    </p>
+
+
+
+                    <div class="history-item">
+
+                        <b>
+                            Apr 1 - 5 • Fantastic camera gear lender
+                        </b>
+
+                        <p>
+                            5-star rating and reliable service
+                        </p>
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="history-item">
+
+                        <b>
+                            Apr 5 - 10 • Fast and reliable
+                        </b>
+
+                        <p>
+                            Prompt return and excellent communication
+                        </p>
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="history-item">
+
+                        <b>
+                            Recent Reviews
+                        </b>
+
+                        <p>
+                            Trusted lender with excellent service.
+                        </p>
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================
+                     SECURITY ACTIONS
+                ========================== -->
+
+                <div class="security-card">
+
+
+                    <h2>
+                        Renewed Security Actions
+                    </h2>
+
+
+                    <p>
+                        Manage your account security.
+                    </p>
+
+
+
+                    <div class="security-item">
+
+
+                        <div class="security-icon">
+                            🔒
+                        </div>
+
+
+                        <div class="security-text">
+
+                            <b>
+                                Change Password
+                            </b>
+
+                            <span>
+                                Update your password for better security.
+                            </span>
+
+                        </div>
+
+
+                        <div class="security-arrow">
+                            ›
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="security-item">
+
+
+                        <div class="security-icon">
+                            ✓
+                        </div>
+
+
+                        <div class="security-text">
+
+                            <b>
+                                Identity Verification
+                            </b>
+
+                            <span>
+                                Your identity has been verified.
+                            </span>
+
+                        </div>
+
+
+                        <div class="security-arrow">
+                            ›
+                        </div>
+
+
+                    </div>
+
+
+
+                    <button class="security-button">
+                        Manage 2FA Settings
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+</body>
+
+</html>
